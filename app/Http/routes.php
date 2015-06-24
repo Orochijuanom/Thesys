@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//home admin thesys
+Route::get('admin/home', 'Admin\HomeController@index');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
