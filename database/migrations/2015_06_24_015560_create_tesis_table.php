@@ -16,14 +16,20 @@ class CreateTesisTable extends Migration
 
             $table->increments('id');
             $table->string('titulo');
-            $table->string('area_inst');
-            $table->string('linea_inve');
+            $table->integer('linea_id')->unsigned();
+            $table->integer('cod_sede_ryca');
             $table->integer('cod_prog_ryca');
+            $table->string('semestre',1);
             $table->integer('director_cod_user_ryca')->nullable();
             $table->integer('tipo_id')->unsigned();
             $table->integer('estado_id')->unsigned();
             $table->string('source');
             $table->timestamps();
+
+            $table->foreign('linea_id')
+                  ->references('id')->on('lineas')
+                  ->onDelete('restrict')
+                  ->onUpdate('no action');
 
             $table->foreign('tipo_id')
                   ->references('id')->on('tipos')
