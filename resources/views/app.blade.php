@@ -27,10 +27,16 @@
 				</button>
 				<a class="navbar-brand" href="/">Thesys</a> 
 			</div>
-			<div style="color: white;
-			padding: 15px 50px 5px 50px;
-			float: right;
-			font-size: 16px;"> JsCruz &nbsp; <a href="{{'/'}}auth/logout" class="btn btn-danger square-btn-adjust">Salir</a> </div>
+			@if (Auth::guest())
+						<li><a href="/auth/login">Login</a></li>
+				@else
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img style="max-width: 30px;  margin-right: 5px;  border-radius: 50%;" src="{{Auth::user()->gravatar}}" alt="user">{{ Auth::user()->name }} <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/auth/logout">Cerrar Sesión</a></li>
+						</ul>
+					</li>
+			@endif
 		</nav>   
 		<!-- /. NAV TOP  -->	
 		
