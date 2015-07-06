@@ -33,7 +33,17 @@
 			font-size: 16px;"> JsCruz &nbsp; <a href="{{'/'}}auth/logout" class="btn btn-danger square-btn-adjust">Salir</a> </div>
 		</nav>   
 		<!-- /. NAV TOP  -->	
+		
 
+			<nav class="navbar-default navbar-side" role="navigation">
+		    	<div class="sidebar-collapse">
+		    		@section('sidebar')
+		    		@show
+		    	</div>
+			</nav>
+
+		
+		
 		@yield('content')
 
 	</div>

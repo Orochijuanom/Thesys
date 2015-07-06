@@ -1,10 +1,9 @@
 @extends('app')
 
-@section('content')
+@section('sidebar')
+    @parent
 
-<nav class="navbar-default navbar-side" role="navigation">
-    <div class="sidebar-collapse">
-        <ul class="nav" id="main-menu">
+    <ul class="nav" id="main-menu">
             <li class="text-center">
                 <img src="{{ '/' }}assets/img/logow.png" class="user-image img-responsive"/>
             </li>
@@ -22,8 +21,14 @@
                 <a href="chart.html"><i class="fa fa-tachometer fa-3x"></i>Administrador</a>
             </li>
         </ul>
-    </div>
-</nav>  
+
+@endsection
+
+@section('content')
+
+
+        
+      
 <!-- /. NAV SIDE  -->
 <div id="page-wrapper" >
     <div id="page-inner">    
