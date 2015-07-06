@@ -25,21 +25,22 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="{{ '/' }}assets/img/logow.png"></a> 
+				<a class="navbar-brand" href="/">Thesys</a> 
 			</div>
 			<div style="color: white;
 			padding: 15px 50px 5px 50px;
 			float: right;
-			font-size: 16px;"> JsCruz &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Salir</a> </div>
+			font-size: 16px;"> JsCruz &nbsp; <a href="{{'/'}}auth/logout" class="btn btn-danger square-btn-adjust">Salir</a> </div>
 		</nav>   
-		<!-- /. NAV TOP  -->		
-	</div>	
+		<!-- /. NAV TOP  -->	
 
-	<div>
-
-	@yield('content')	
+		@yield('content')
 
 	</div>
+
+	<div id="footer">
+		Ingeniería de Sistemas - ITFIP 2015
+	</div>		
 
 	<!-- JQUERY SCRIPTS -->
 	<script src="{{ '/' }}assets/js/jquery-1.10.2.js"></script>
