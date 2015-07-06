@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 //home admin thesys
 Route::get('admin/home', 'Admin\HomeController@index');
+Route::resource('admin/decanos', 'Admin\DecanosController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

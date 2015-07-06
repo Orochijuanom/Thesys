@@ -9,7 +9,7 @@
 
 				<div class="panel-body" style="text-align: center">
 					
-					<div class="col-xs-6 col-md-4"><a href="#"><img src="http://www.speisoft.vivecundinamarca.com/iconos/usuarios.png" width="100px" /></a><h4>Decanos</h4></div>
+					<div class="col-xs-6 col-md-4"><a href="/admin/decanos"><img src="http://www.speisoft.vivecundinamarca.com/iconos/usuarios.png" width="100px" /></a><h4>Decanos</h4></div>
 
 					<div class="col-xs-6 col-md-4"><a href="#"><img src="http://www.speisoft.vivecundinamarca.com/iconos/clientes.png" width="100px" /></a><h4>Comite Curricular</h4></div>
 
