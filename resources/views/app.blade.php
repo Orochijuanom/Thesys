@@ -27,26 +27,24 @@
 				</button>
 				<a class="navbar-brand" href="/">Thesys</a> 
 			</div>
+			<div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">			
 			@if (Auth::guest())
-						<li><a href="/auth/login">Login</a></li>
-				@else
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img style="max-width: 30px;  margin-right: 5px;  border-radius: 50%;" src="{{Auth::user()->gravatar}}" alt="user">{{ Auth::user()->name }} <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="/auth/logout">Cerrar Sesión</a></li>
-						</ul>
-					</li>
+			<a href="/auth/login" class="btn btn-danger square-btn-adjust">Login</a>
+			@else
+			{{ Auth::user()->name }}
+			<a href="/auth/logout" class="btn btn-danger square-btn-adjust">Cerrar Sesión</a>
 			@endif
+			</div>
 		</nav>   
 		<!-- /. NAV TOP  -->	
 		
 
-			<nav class="navbar-default navbar-side" role="navigation">
-		    	<div class="sidebar-collapse">
-		    		@section('sidebar')
-		    		@show
-		    	</div>
-			</nav>
+		<nav class="navbar-default navbar-side" role="navigation">
+			<div class="sidebar-collapse">
+				@section('sidebar')
+				@show
+			</div>
+		</nav>
 
 		
 		

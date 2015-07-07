@@ -1,34 +1,34 @@
 @extends('app')
 
 @section('sidebar')
-    @parent
+@parent
 
-    <ul class="nav" id="main-menu">
-            <li class="text-center">
-                <img src="{{ '/' }}assets/img/logow.png" class="user-image img-responsive"/>
-            </li>
+<ul class="nav" id="main-menu">
+    <li class="text-center">
+        <img src="{{ '/' }}assets/img/logow.png" class="user-image img-responsive"/>
+    </li>
 
-            <li>
-                <a class="active-menu" href="index.html"><i class="fa fa-book fa-3x"></i>Estudiante</a>
-            </li>
-            <li>
-                <a href="tab-panel.html"><i class="fa fa-check-square-o fa-3x"></i>Jurado</a>
-            </li>
-            <li>
-                <a href="ui.html"><i class="fa fa-users fa-3x"></i>Cómite Curricular</a>
-            </li>            
-            <li>
-                <a href="chart.html"><i class="fa fa-tachometer fa-3x"></i>Administrador</a>
-            </li>
-        </ul>
+    <li>
+        <a href="index.html"><i class="fa fa-book fa-3x"></i>Estudiante</a>
+    </li>
+    <li>
+        <a href="tab-panel.html"><i class="fa fa-check-square-o fa-3x"></i>Jurado</a>
+    </li>
+    <li>
+        <a href="tab-panel.html"><i class="fa fa-user fa-3x"></i>Decano</a>
+    </li>
+    <li>
+        <a href="ui.html"><i class="fa fa-users fa-3x"></i>Cómite Curricular</a>
+    </li>            
+    <li>
+        <a class="active-menu" href="chart.html"><i class="fa fa-tachometer fa-3x"></i>Administrador</a>
+    </li>
+</ul>
 
 @endsection
 
 @section('content')
 
-
-        
-      
 <!-- /. NAV SIDE  -->
 <div id="page-wrapper" >
     <div id="page-inner">    
