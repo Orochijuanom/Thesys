@@ -49,12 +49,16 @@
             <a class="navbar-brand" href="/">Thesys</a> 
         </div>
         <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
+            <a href="/auth/login" class="btn btn-danger square-btn-adjust">Iniciar Sesión</a>
+        <!--
             @if (Auth::guest())
             <a href="/auth/login" class="btn btn-danger square-btn-adjust">Iniciar Sesión</a>
             @else
             {{ Auth::user()->name }}
             <a href="/auth/logout" class="btn btn-danger square-btn-adjust">Cerrar Sesión</a>
             @endif
+        -->
+
         </div>
     </nav>   
     <!-- /. NAV TOP  --> 

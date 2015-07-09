@@ -50,12 +50,12 @@
                             </div>
                             @endif
 
-                            <form class="form-horizontal" role="form" method="POST" action="/auth/login">
+                            <form class="form-horizontal" role="form" method="POST" action="/admin/login">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="form-group input-group input-group-lg">
                                     <span class="input-group-addon">@</span>                            
-                                    <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>                            
+                                    <input type="text" class="form-control" placeholder="Usuario" name="username" value="{{ old('username') }}" required>                            
                                 </div>
 
                                 <div class="form-group input-group input-group-lg">
@@ -72,7 +72,7 @@
                                         </div>                                
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="/password/email">¿Olvidaste tu contraseña?</a>
+                                        <a href="http://ryca.itfip.edu.co/RYCAWeb/estudiantes">¿Olvidaste tu contraseña?</a>
                                     </div>
                                 </div>
 
