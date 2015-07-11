@@ -28,11 +28,11 @@
 				<a class="navbar-brand" href="/">Thesys</a> 
 			</div>
 			<div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">			
-			@if (Auth::guest())
+			@if (!session()->has('user'))
 			<a href="/admin/login" class="btn btn-danger square-btn-adjust">Login</a>
 			@else
-			{{ Auth::user()->name }}
-			<a href="/auth/logout" class="btn btn-danger square-btn-adjust">Cerrar Sesión</a>
+			{{ session('user.name') }}
+			<a href="/logout" class="btn btn-danger square-btn-adjust">Cerrar Sesión</a>
 			@endif
 			</div>
 		</nav>   

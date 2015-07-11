@@ -15,10 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('logout', function(){
 
+	session()->forget('user');
+	return redirect('/');
+
+});
+
+//rutas del admin
 Route::controller('admin/login', 'Admin\LoginController');
-
-//home admin thesys
 Route::get('admin/home', 'Admin\HomeController@index');
 Route::resource('admin/decanos', 'Admin\DecanosController');
 

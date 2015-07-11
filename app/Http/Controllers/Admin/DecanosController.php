@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Classes\Rest;
+use App\Classes\Buscador;
+use App\Decano;
+
+use View;
+use Redirect;
+
+
 
 class DecanosController extends Controller
 {
@@ -13,9 +21,10 @@ class DecanosController extends Controller
     public function __construct()
     {
 
-        $this->middleware('auth');
+        $this->middleware('authadmin');
 
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +32,26 @@ class DecanosController extends Controller
      */
     public function index()
     {
-        //
+        
+        $rest = new Rest();
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/administrativo/', 
+          [
+
+            'token' => session('user.token')
+
+          ]);
+
+        $administrativos = json_decode($response,true); 
+        
+        $decanos = Decano::all();
+        
+        $buscador = new Buscador();
+
+        $administrativos=$buscador->buscadorDecano($administrativos, $decanos);
+            
+
+        return View::make('decanos.index')->with(['administrativos' => $administrativos, 'decanos' => $decanos]);
+
     }
 
     /**
@@ -33,7 +61,24 @@ class DecanosController extends Controller
      */
     public function create()
     {
-        //
+
+        $rest = new Rest();
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/administrativo/', 
+          [
+
+            'token' => session('user.token')
+
+          ]);
+
+        $administrativos = json_decode($response,true);
+
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+
+        $programas = json_decode($response,true);
+        
+        return View::make('decanos.create')->with(['administrativos' => $administrativos, 'programas' => $programas]);
+
+
     }
 
     /**
@@ -41,9 +86,33 @@ class DecanosController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        
+        $this->validate($request,[
+
+            'funcionario' => 'required',
+            'facultad' => 'required'
+
+            ]);
+
+        try {
+
+            $decano = Decano::create([
+
+                'cod_user_ryca' => $request['funcionario'],
+                'cod_facu_ryca' => $request['facultad']
+
+                ]);
+            
+        } catch (\PDOException $exception) {
+           
+            return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMessage()]);
+
+        }
+
+        return Redirect::back() -> with('mensagge', 'Decano asignado');
+
     }
 
     /**

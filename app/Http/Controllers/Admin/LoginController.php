@@ -14,12 +14,19 @@ use Redirect;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 use App\Classes\Rest;
-use App\Classes\StringManager;
+
 
 
 class LoginController extends Controller
 {
     
+    public function __construct()
+    {
+    
+      $this->middleware('guest');
+    
+    }
+
     public function getIndex(){
 
         return View::make('admin.auth.login');
@@ -55,27 +62,18 @@ class LoginController extends Controller
 
           ]);
 
-          $strign = new StringManager();
+          $usuario = json_decode($response);
 
-          $resultado = $strign->arreglar($response);
-
-          
           //valida si se devulve error de la consulta, en cuyo caso no hubo loggin
-          if($resultado['error'] == 'true'){
+          if($usuario->error == true){
 
             return Redirect::back()->withInput()->withErrors(['mesagge' => 'Los datos no coinciden con nuestros registros.']);
 
           }
+          
+          session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'admin']);
 
-          session()->put(['user.name' => $resultado['nombres'].' '.$resultado['apellidos'], 'user.token' => $resultado['token'], 'user.tipo' => 'admin']);
-
-
-          //ya fue creada la session, queda crear el middleware adecuado y hacer la redireccion al home del admin.
-          dd(session());
-
-
-          dd($resultado);
-          return $response;  
+          return Redirect::to('/admin/home');  
 
         }
 

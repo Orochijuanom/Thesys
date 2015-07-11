@@ -64,13 +64,7 @@
                                 </div>                        
 
                                 <div class="form-group">
-                                    <div class="col-md-6">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="remember">No cerrar sesión
-                                            </label>                                    
-                                        </div>                                
-                                    </div>
+                                    
                                     <div class="col-md-6">
                                         <a href="http://ryca.itfip.edu.co/RYCAWeb/estudiantes">¿Olvidaste tu contraseña?</a>
                                     </div>
