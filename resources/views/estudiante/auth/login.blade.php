@@ -66,35 +66,35 @@
                                 <div class="form-group input-group input-group-lg">
                                     <span class="input-group-addon">Programa</span>                            
                                     <select class="form-control" name="programa">
-                                        
+
                                         @foreach ($programas['programas'] as $programa)
-                                                
-                                            @if (old('programa') == $programa['programa']['id'])
-                                            
-                                                <option value="{{$programa['programa']['id']}}" selected>{{$programa['programa']['programa']}}</option>
-                                            @else
 
-                                                <option value="{{$programa['programa']['id']}}">{{$programa['programa']['programa']}}</option>
+                                        @if (old('programa') == $programa['programa']['id'])
 
-                                            @endif
+                                        <option value="{{$programa['programa']['id']}}" selected>{{$programa['programa']['programa']}}</option>
+                                        @else
 
-                                            @endforeach
+                                        <option value="{{$programa['programa']['id']}}">{{$programa['programa']['programa']}}</option>
+
+                                        @endif
+
+                                        @endforeach
 
                                     </select>
 
                                 </div>                        
 
                                 <div class="form-group">
-                                    
+
                                     <div class="col-md-6">
                                         <a href="http://ryca.itfip.edu.co/RYCAWeb/">¿Olvidaste tu contraseña?</a>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-md-6 col-md-offset-4">
+                                <div class="col-md-5 col-md-offset-5">
                                         <button type="submit" class="btn btn-primary btn-lg">
-                                            Aceptar
+                                            <i class="fa fa-check"> Aceptar</i>
                                         </button>                                
                                     </div>
                                 </div>
