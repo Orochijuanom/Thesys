@@ -51,11 +51,12 @@
                                         <tr>
                                             <td data-title='Funcionario'>{{$administrativos[$decano['cod_user_ryca']]['nombre']}}</td>
                                             <td data-title='Facultad'>{{$decano['cod_facu_ryca']}}</td>
-                                                <td>
+                                                <td data-title='Eliminar'>
+                                                    <form action='/admin/decanos/{{$decano->id}}' method='post'>
                                                         <input name='_method' type='hidden' value='DELETE'>
                                                         <input name='_token' type='hidden' value='{{csrf_token()}}'>
                                                         <button type='submit' class="btn btn-danger">
-                                                            Eliminar Mascota
+                                                            Eliminar decano
                                                         </button>
                                                     </form>
                                                 </td>
@@ -69,11 +70,12 @@
                         </section>
                     @else
 
-                        <p class='alert alert-info'><strong>Whoops!</strong> No se encuetran mascotas en el sistema.</p>
+                        <p class='alert alert-info'><strong>Whoops!</strong> No se encuetran decanos en el sistema.</p>
 
                     @endif
 
-                    
+                    <a href="{{url('admin/decanos/create')}}">Añadir Decanos</a>
+                                        
                             </div>
                                 </div>
                             

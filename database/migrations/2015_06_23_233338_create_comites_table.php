@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCurricularesTable extends Migration
+class CreateComitesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreateCurricularesTable extends Migration
      */
     public function up()
     {
-        Schema::create('curriculares', function(Blueprint $table){
+        Schema::create('comites', function(Blueprint $table){
 
             $table->increments('id');
             $table->integer('cod_user_ryca');
-            $table->integer('cod_prog_ryca');
+            $table->integer('cod_prog_ryca')->unique();
 
             $table->unique(['cod_user_ryca', 'cod_prog_ryca'], 'user_prog_unique');
 
@@ -30,6 +30,6 @@ class CreateCurricularesTable extends Migration
      */
     public function down()
     {
-       Schema::drop('curriculares');
+       Schema::drop('comites');
     }
 }

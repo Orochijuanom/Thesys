@@ -25,7 +25,8 @@ Route::get('logout', function(){
 //rutas del admin
 Route::controller('admin/login', 'Admin\LoginController');
 Route::get('admin/home', 'Admin\HomeController@index');
-Route::resource('admin/decanos', 'Admin\DecanosController');
+Route::resource('admin/decanos', 'Admin\DecanosController', ['except' => ['show', 'edit', 'update']]);
+Route::resource('admin/comites', 'Admin\ComitesController', ['except' => ['show', 'edit', 'update']]);
 
 
 

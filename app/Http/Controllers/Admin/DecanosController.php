@@ -13,8 +13,6 @@ use App\Decano;
 use View;
 use Redirect;
 
-
-
 class DecanosController extends Controller
 {
 
@@ -50,7 +48,7 @@ class DecanosController extends Controller
         $administrativos=$buscador->buscadorDecano($administrativos, $decanos);
             
 
-        return View::make('decanos.index')->with(['administrativos' => $administrativos, 'decanos' => $decanos]);
+        return View::make('admin.decanos.index')->with(['administrativos' => $administrativos, 'decanos' => $decanos]);
 
     }
 
@@ -76,7 +74,7 @@ class DecanosController extends Controller
 
         $programas = json_decode($response,true);
         
-        return View::make('decanos.create')->with(['administrativos' => $administrativos, 'programas' => $programas]);
+        return View::make('admin.decanos.create')->with(['administrativos' => $administrativos, 'programas' => $programas]);
 
 
     }
@@ -115,40 +113,7 @@ class DecanosController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
+       /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -156,6 +121,31 @@ class DecanosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        try {
+
+                $decano = DEcano::findOrFail($id);
+                
+            } catch (Exception $e) {
+
+                return Response::view('errors/404', array(), 404);
+                
+            }
+
+            try {
+
+                $decano -> delete();
+                
+            } catch (\PDOException $exception) {
+                
+                return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMesagge()]);
+
+            }
+            
+            
+            return Redirect::back() -> with('mensagge_delete', 'Decano eliminado');
+
+            
+
     }
 }

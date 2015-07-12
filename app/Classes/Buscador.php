@@ -6,6 +6,7 @@ class Buscador{
 	
 	function buscadorDecano($fucionarios, $ids){
 
+		$decano = "";
 		foreach ($fucionarios['administrativos'] as $funcionario) {
 			
 			foreach ($ids as $id) {
