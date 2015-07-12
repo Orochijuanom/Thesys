@@ -32,6 +32,7 @@ class ComitesController extends Controller
     {
         
         $rest = new Rest();
+        
         $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/profesor/activo', 
           [
 
