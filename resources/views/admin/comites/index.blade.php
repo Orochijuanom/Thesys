@@ -68,7 +68,7 @@
                                                 <form action='/admin/comites/{{$comite->id}}' method='post'>
                                                     <input name='_method' type='hidden' value='DELETE'>
                                                     <input name='_token' type='hidden' value='{{csrf_token()}}'>
-                                                    <button type='submit' class="btn btn-danger">
+                                                    <button type="submit" onclick="clicked(event)" class="btn btn-danger">
                                                         <i class="fa fa-trash-o"></i>
                                                     </button>
                                                 </form>

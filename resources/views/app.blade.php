@@ -28,12 +28,12 @@
 				<a class="navbar-brand" href="/">Thesys</a> 
 			</div>
 			<div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">			
-			@if (!session()->has('user'))
-			<a href="/admin/login" class="btn btn-danger square-btn-adjust">Login</a>
-			@else
-			{{ session('user.name') }}&nbsp;
-			<a href="/logout" class="btn btn-danger square-btn-adjust" title="Cerrar Sesión"><i class="fa fa-sign-out fa-lg"></i></a>
-			@endif
+				@if (!session()->has('user'))
+				<a href="/admin/login" class="btn btn-danger square-btn-adjust">Login</a>
+				@else
+				{{ session('user.name') }}&nbsp;
+				<a href="/logout" class="btn btn-danger square-btn-adjust" title="Cerrar Sesión"><i class="fa fa-sign-out fa-lg"></i></a>
+				@endif
 			</div>
 		</nav>   
 		<!-- /. NAV TOP  -->	
@@ -62,6 +62,12 @@
 	<script src="{{ '/' }}assets/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="{{ '/' }}assets/js/custom.js"></script>
+	<script>
+		function clicked(e)
+		{
+			if(!confirm('¿Estás seguro de eliminar este registro?'))e.preventDefault();
+		}
+	</script>
 
 </body>
 </html>
