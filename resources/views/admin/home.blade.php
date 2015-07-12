@@ -12,7 +12,7 @@
 		<a href="http://thesys.vivecundinamarca.com/admin/decanos"><i class="fa fa-users fa-3x"></i>Decanos</a>
 	</li>
 	<li>
-		<a href="tab-panel.html"><i class="fa fa-sitemap fa-3x"></i>Comite Curricular</a>
+		<a href="http://thesys.vivecundinamarca.com/admin/comites"><i class="fa fa-sitemap fa-3x"></i>Comite Curricular</a>
 	</li>    
 </ul>
 
