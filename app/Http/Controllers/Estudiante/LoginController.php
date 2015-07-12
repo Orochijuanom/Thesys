@@ -8,12 +8,13 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use View;
-use App\User;
+use App\Estudiante;
 use Response;
 use Redirect;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 use App\Classes\Rest;
+use App\Classes\Buscador;
 
 
 
@@ -41,51 +42,84 @@ class LoginController extends Controller
 
     public function postIndex(Request $request){
 
-        $this->validate($request, [
-            
-            'username' => 'required|min:4',
-            'password' => 'required|min:4',
-            'programa' => 'required',
-
-            ]);
-
-        $rest = new Rest();
-        
-        $response = $rest->CallAPI('POST', 'http://ryca.itfip.edu.co:8888/estudiante/login', 
-          [
-
-            'usuario' => $request['username'],
-            'clave' => $request['password'],
-            'programa' => $request['programa'], 
+      $this->validate($request, [
+          
+          'username' => 'required|min:4',
+          'password' => 'required|min:4',
+          'programa' => 'required',
 
           ]);
 
-          $usuario = json_decode($response);
+      $rest = new Rest();
+      
+      $response = $rest->CallAPI('POST', 'http://ryca.itfip.edu.co:8888/estudiante/login', 
+        [
 
-          //valida si se devulve error de la consulta, en cuyo caso no hubo loggin
-          if($usuario->error == true){
+          'usuario' => $request['username'],
+          'clave' => $request['password'],
+          'programa' => $request['programa'], 
 
-            return Redirect::back()->withInput()->withErrors(['mesagge' => 'Los datos no coinciden con nuestros registros.']);
+        ]);
 
-          }
+      $usuario = json_decode($response);
 
-          dd($usuario);
+      //valida si se devulve error de la consulta, en cuyo caso no hubo loggin
+      if($usuario->error == true){
 
-        try {
-            
-           $user = User::where('username', $request['username'])->firstOrFail();
-
-        } 
-        catch (ModelNotFoundException $e) {
-            
-          return Redirect::back()->withInput()->withErrors(['mesagge' => 'El usuario no se encuentra como administrador en el sistema']);
-        }
-
-
-        session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'admin']);
-
-        return Redirect::to('/admin/home');  
-
-        }
+        return Redirect::back()->withInput()->withErrors(['mesagge' => 'Los datos no coinciden con nuestros registros.']);
 
       }
+
+      $usuario = json_decode($response);
+
+      $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/estudiante/'.$usuario->user->codigo.'/prematricula', 
+        [
+
+          'token' => $usuario->token,
+          
+        ]);
+
+        
+      $prematricula = json_decode($response,true);
+        
+      $buscador = new Buscador();
+
+      $prematricula = $buscador->buscadorPrematricula($prematricula);  
+        
+      if ($prematricula==false) {
+          
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/estudiante/'.$usuario->user->codigo.'/cursadas', 
+        [
+
+          'token' => $usuario->token,
+          
+        ]);
+
+        $cursadas = json_decode($response,true);
+
+        $cursadas = $buscador->buscadorCursadas($cursadas);
+
+        if ($cursadas==false) {
+          
+          return Redirect::back()->withInput()->withErrors(['mesagge' => 'El usuario no cumple con los requisitos para presetar opción de grado.']);
+
+        }else{
+
+          $estudiante = Estudiante::where('documento', '=', $usuario->user->dni)->first();
+          dd($estudiante);
+          session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante']);
+
+          return Redirect::to('/estudiante/home'); 
+
+        }
+
+      }else{
+        
+        $estudiante = Estudiante::where('documento', '=', $usuario->user->dni)->first();
+        dd($estudiante);
+        return Redirect::to('/estudiante/home'); 
+
+      }
+ 
+    }
+}

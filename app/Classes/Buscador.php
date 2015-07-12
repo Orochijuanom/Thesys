@@ -85,6 +85,44 @@ class Buscador{
 
 	}
 
+	function buscadorPrematricula($prematricula){
+		
+		if (!$prematricula==null) {
+			
+			foreach ($prematricula['prematricula']['materias'] as $value) {
+				
+				if (preg_match('/GRADO/', $value['materia']['materia'])) {
+					
+					return true;
+				}
+				
+			}
+
+		}
+
+
+		return false;
+	}
+
+	function buscadorCursadas($cursadas){
+		
+		if (!$cursadas==null) {
+			
+			foreach ($cursadas['estudiante']['asignaturas'] as $value) {
+				
+				if (preg_match('/GRADO/', $value['materia']['materia'])) {
+					
+					return true;
+				}
+				
+			}
+
+		}
+
+
+		return false;
+	}
+
 	
 
 
