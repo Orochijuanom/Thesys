@@ -39,12 +39,12 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="form-group input-group input-group-lg">
-                                    <span class="input-group-addon">Funcionario</span>                            
-                                    <select class="form-control" name="funcionario">
+                                    <span class="input-group-addon">Administrativo</span>                            
+                                    <select class="form-control" name="administrativo">
 
                                         @foreach ($administrativos['administrativos'] as $administrativo)
 
-                                            @if (old('funcionario') == $administrativo['administrativo']['id'])
+                                            @if (old('administrativo') == $administrativo['administrativo']['id'])
                                             
                                                 <option value="{{$administrativo['administrativo']['id']}}" selected>{{$administrativo['administrativo']['nombres']}} {{$administrativo['administrativo']['apellidos']}}</option>
                                             @else
@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="form-group input-group input-group-lg">
-                                    <span class="input-group-addon">Facultad</span>                            
+                                    <span class="input-group-addon">Facultad</span>
                                     <select class="form-control" name="facultad">
                                         {{$facultad = ""}}
                                         @foreach ($programas['programas'] as $programa)

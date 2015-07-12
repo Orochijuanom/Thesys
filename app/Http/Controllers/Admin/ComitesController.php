@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
@@ -39,16 +39,30 @@ class ComitesController extends Controller
 
           ]);
 
-        $profesores = json_decode($response,true); 
-        dd($profesores);
-        $comites = Comite::all();
+        $profesores = json_decode($response,true);
+
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas', 
+          [
+
+            'token' => session('user.token')
+
+          ]);
+
+        $programas = json_decode($response,true);  
         
-        //$buscador = new Buscador();
+        $comites = Comite::all();
 
-        //$administrativos=$buscador->buscadorComite($profesores, $comites);
-            
+        $buscador = new Buscador();
 
-        return View::make('comites.index')->with(['profesores' => $profesores, 'comites' => $comites]);
+        $profesores = $buscador->buscadorProfesor($profesores, $comites);
+
+        $buscador->__destruct();
+
+        $programas = $buscador->buscadorPrograma($programas, $comites);
+        
+        $buscador->__destruct();
+        
+        return View::make('admin.comites.index')->with(['profesores' => $profesores, 'programas' => $programas, 'comites' => $comites]);
 
 
     }
@@ -74,7 +88,7 @@ class ComitesController extends Controller
         $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
 
         $programas = json_decode($response,true);
-    
+        
         return View::make('admin.comites.create')->with(['profesores' => $profesores, 'programas' => $programas]);
 
 
@@ -85,42 +99,33 @@ class ComitesController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
-    }
+        
+        $this->validate($request,[
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
+            'profesor' => 'required',
+            'programa' => 'required'
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
+        try {
+
+            $comite = Comite::create([
+
+                'cod_user_ryca' => $request['profesor'],
+                'cod_prog_ryca' => $request['programa']
+
+                ]);
+            
+        } catch (\PDOException $exception) {
+           
+            return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMessage()]);
+
+        }
+
+        return Redirect::back() -> with('mensagge', 'Docente asignado como representante del comite curricular');
+
     }
 
     /**
@@ -131,6 +136,28 @@ class ComitesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        try {
+
+                $comite = Comite::findOrFail($id);
+                
+            } catch (Exception $e) {
+
+                return Response::view('errors/404', array(), 404);
+                
+            }
+
+            try {
+
+                $comite -> delete();
+                
+            } catch (\PDOException $exception) {
+                
+                return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMesagge()]);
+
+            }
+            
+        return Redirect::back() -> with('mensagge_delete', 'Miembro del comite curricular eliminado');
+
     }
 }
