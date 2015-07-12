@@ -25,7 +25,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Thesys</a> 
+				<a class="navbar-brand" href="{{ '/' }}{{ session('user.tipo') }}/home">Thesys</a> 
 			</div>
 			<div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">			
 				@if (!session()->has('user'))
@@ -41,10 +41,22 @@
 
 		<nav class="navbar-default navbar-side" role="navigation">
 			<div class="sidebar-collapse">
+				<ul class="nav">
+					<li class="text-center">
+						<img src="{{ '/' }}assets/img/logow.png" class="user-image img-responsive"/>
+					</li>
+				</ul>
+
 				@section('sidebar')
 				@show
+
+				<ul class="nav">		
+					<li>
+						<a href="{{ '/' }}"><i class="fa fa-search fa-3x"></i>Buscar Tesis</a>
+					</li>			    
+				</ul>
 			</div>
-		</nav>	
+		</nav>
 		
 		@yield('content')
 

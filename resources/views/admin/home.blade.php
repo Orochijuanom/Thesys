@@ -4,15 +4,11 @@
 @parent
 
 <ul class="nav" id="main-menu">
-	<li class="text-center">
-		<img src="{{ '/' }}assets/img/logow.png" class="user-image img-responsive"/>
-	</li>
-
 	<li>
-		<a href="http://thesys.vivecundinamarca.com/admin/decanos"><i class="fa fa-users fa-3x"></i>Decanos</a>
+		<a href="{{ '/' }}admin/decanos"><i class="fa fa-users fa-3x"></i>Decanos</a>
 	</li>
 	<li>
-		<a href="http://thesys.vivecundinamarca.com/admin/comites"><i class="fa fa-sitemap fa-3x"></i>Comite Curricular</a>
+		<a href="{{ '/' }}admin/comites"><i class="fa fa-sitemap fa-3x"></i>Comite Curricular</a>
 	</li>    
 </ul>
 

@@ -69,72 +69,72 @@
                     <label>Escribe el título de la tesis</label>
                     <input class="form-control" placeholder="Título de la Tesis">
                 </div>
-                <div class="form-group">
-                    <label>Área Institucional</label>
+                <div class="form-group input-group">                    
+                    <span class="input-group-addon">Área Institucional</span>
                     <select id="area" name="area" class="form-control">
                         <option>Area 1</option>
                         <option>Area 2</option>
                         <option>Area 3</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Linea de Investigación</label>
+                <div class="form-group input-group">                    
+                    <span class="input-group-addon">Linea de Investigación</span>
                     <select id="linea" name="linea" class="form-control">
                         <option>Linea 1</option>
                         <option>Linea 2</option>
                         <option>Linea 3</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Facultad</label>
+                <div class="form-group input-group">                    
+                    <span class="input-group-addon">Facultad</span>
                     <select id="facultad" name="facultad" class="form-control">
                         <option>Facultad 1</option>
                         <option>Facultad 2</option>
                         <option>Facultad 3</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Programa</label>
+                <div class="form-group input-group">                    
+                    <span class="input-group-addon">Programa</span>
                     <select id="programa" name="programa" class="form-control">
                         <option>Programa 1</option>
                         <option>Programa 2</option>
                         <option>Programa 3</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Director del Proyecto</label>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">Director del Proyecto</span>
                     <select id="director" name="director" class="form-control">
                         <option>Director 1</option>
                         <option>Director 2</option>
                         <option>Director 3</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Tipo de Proyecto</label>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">Tipo de Proyecto</span>
                     <select id="tipo" name="tipo" class="form-control">
                         <option>Tipo 1</option>
                         <option>Tipo 2</option>
                         <option>Tipo 3</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Estado de la Tesis</label>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">Estado de la Tesis</span>
                     <select id="estado" name="estado" class="form-control">
                         <option>Estado 1</option>
                         <option>Estado 2</option>
                         <option>Estado 3</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Año</label>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">Año</span>
                     <select id="anio" name="anio" class="form-control">
                         <option>Año 1</option>
                         <option>Año 2</option>
                         <option>Año 3</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Período Académico</label>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">Período Académico</span>
                     <select id="periodo" name="periodo" class="form-control">
                         <option>Semestre A</option>
                         <option>Semestre B</option>                        

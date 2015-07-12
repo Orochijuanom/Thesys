@@ -4,15 +4,11 @@
 @parent
 
 <ul class="nav" id="main-menu">
-    <li class="text-center">
-        <img src="{{ '/' }}assets/img/logow.png" class="user-image img-responsive"/>
-    </li>
-
     <li>
         <a class="active-menu" href="#"><i class="fa fa-users fa-3x"></i>Decanos</a>
     </li>
     <li>
-        <a href="http://thesys.vivecundinamarca.com/admin/comites"><i class="fa fa-sitemap fa-3x"></i>Comite Curricular</a>
+        <a href="{{ '/' }}admin/comites"><i class="fa fa-sitemap fa-3x"></i>Comité Curricular</a>
     </li>    
 </ul>
 
@@ -50,35 +46,39 @@
 
                             @if(count($decanos)>0)
                             <section id='no-more-tables'>
-                                <table class='table table-responsive'>
-                                    <thead>
-                                        <tr>
-                                            <th>Administrativo</th>
-                                            <th>Facultad</th>
-                                            <th>Eliminar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($decanos as $decano)
-                                        
-                                        <tr>
-                                            <td data-title='Administrativo'>{{$administrativos[$decano['cod_user_ryca']]['nombre']}}</td>
-                                            <td data-title='Facultad'>{{$decano['cod_facu_ryca']}}</td>
-                                            <td data-title='Eliminar'>
-                                                <form action='/admin/decanos/{{$decano->id}}' method='post'>
-                                                    <input name='_method' type='hidden' value='DELETE'>
-                                                    <input name='_token' type='hidden' value='{{csrf_token()}}'>
-                                                    <button type="submit" onclick="clicked(event)" class="btn btn-danger">
-                                                        <i class="fa fa-trash-o"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
 
-                                        @endforeach
-                                    </tbody>
+                                <div class="table-responsive">
 
-                                </table>
+                                <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Administrativo</th>
+                                                <th>Facultad</th>
+                                                <th>Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($decanos as $decano)
+
+                                            <tr>
+                                                <td data-title='Administrativo'>{{$administrativos[$decano['cod_user_ryca']]['nombre']}}</td>
+                                                <td data-title='Facultad'>{{$decano['cod_facu_ryca']}}</td>
+                                                <td data-title='Eliminar' class="center">
+                                                    <form action='/admin/decanos/{{$decano->id}}' method='post'>
+                                                        <input name='_method' type='hidden' value='DELETE'>
+                                                        <input name='_token' type='hidden' value='{{csrf_token()}}'>
+                                                        <button type="submit" onclick="clicked(event)" class="btn btn-danger">
+                                                            <i class="fa fa-trash-o"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+
+                                </div>                               
                                 
                             </section>
                             @else

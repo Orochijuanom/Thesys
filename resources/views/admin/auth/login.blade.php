@@ -4,10 +4,6 @@
 @parent
 
 <ul class="nav" id="main-menu">
-    <li class="text-center">
-        <img src="{{ '/' }}assets/img/logow.png" class="user-image img-responsive"/>
-    </li>
-
     <li>
         <a href="/estudiante/login"><i class="fa fa-book fa-3x"></i>Estudiante</a>
     </li>

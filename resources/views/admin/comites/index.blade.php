@@ -3,16 +3,12 @@
 @section('sidebar')
 @parent
 
-<ul class="nav" id="main-menu">
-    <li class="text-center">
-        <img src="{{ '/' }}assets/img/logow.png" class="user-image img-responsive"/>
-    </li>
-
+<ul class="nav" id="main-menu"> 
     <li>
-        <a href="http://thesys.vivecundinamarca.com/admin/decanos"><i class="fa fa-users fa-3x"></i>Decanos</a>
+        <a href="{{ '/' }}admin/decanos"><i class="fa fa-users fa-3x"></i>Decanos</a>
     </li>
     <li>
-        <a class="active-menu" href="#"><i class="fa fa-sitemap fa-3x"></i>Comite Curricular</a>
+        <a class="active-menu" href="#"><i class="fa fa-sitemap fa-3x"></i>Comité Curricular</a>
     </li>    
 </ul>
 
@@ -28,7 +24,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><b>Miembros del Comite Curricular</b></div>
+                        <div class="panel-heading"><b>Miembros del Comité Curricular</b></div>
                         <div class="panel-body" style="padding: 30px;">
                             @if (Session::get('mensagge_delete'))
                             <div class="alert alert-success">
@@ -87,7 +83,7 @@
 
                             @endif
 
-                            <a href="{{url('admin/comites/create')}}">Añadir Miembros al Comite</a>
+                            <a href="{{url('admin/comites/create')}}" class="btn btn-success"><i class="fa fa-plus"> Añadir Miembros al Comité</i></a>
                             
                         </div>
                     </div>

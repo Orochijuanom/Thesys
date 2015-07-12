@@ -66,6 +66,11 @@ p {
     line-height:25px;
     padding-top:20px;
 }
+.title-caja{
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
 /*==============================================
    DASHBOARD STYLES    
     =============================================*/

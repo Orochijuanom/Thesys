@@ -3,6 +3,15 @@
 @section('sidebar')
 @parent
 
+<ul class="nav" id="main-menu">
+    <li>
+        <a href="{{ '/' }}admin/decanos"><i class="fa fa-users fa-3x"></i>Decanos</a>
+    </li>
+    <li>
+        <a class="active-menu" href="#"><i class="fa fa-sitemap fa-3x"></i>Comité Curricular</a>
+    </li>    
+</ul>
+
 @endsection
 
 @section('content')
@@ -82,7 +91,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary btn-lg">
-                                            Guardar
+                                            <i class="fa fa-check"> Aceptar</i>
                                         </button>                                
                                     </div>
                                 </div>
