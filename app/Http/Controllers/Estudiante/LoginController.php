@@ -1,85 +1,91 @@
 <?php
 
-namespace App\Http\Controllers\estudiante;
+namespace App\Http\Controllers\Estudiante;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use View;
+use App\User;
+use Response;
+use Redirect;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+use App\Classes\Rest;
+
+
+
 class LoginController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
+    
+    public function __construct()
     {
-        //
+    
+      $this->middleware('guest');
+    
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
+    public function getIndex(){
+
+        $rest = new Rest();
+
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+
+        $programas = json_decode($response,true); 
+
+        return View::make('estudiante.auth.login')->with('programas', $programas);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
+    public function postIndex(Request $request){
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $this->validate($request, [
+            
+            'username' => 'required|min:4',
+            'password' => 'required|min:4',
+            'programa' => 'required',
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
+        $rest = new Rest();
+        
+        $response = $rest->CallAPI('POST', 'http://ryca.itfip.edu.co:8888/estudiante/login', 
+          [
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-}
+            'usuario' => $request['username'],
+            'clave' => $request['password'],
+            'programa' => $request['programa'], 
+
+          ]);
+
+          $usuario = json_decode($response);
+
+          //valida si se devulve error de la consulta, en cuyo caso no hubo loggin
+          if($usuario->error == true){
+
+            return Redirect::back()->withInput()->withErrors(['mesagge' => 'Los datos no coinciden con nuestros registros.']);
+
+          }
+
+          dd($usuario);
+
+        try {
+            
+           $user = User::where('username', $request['username'])->firstOrFail();
+
+        } 
+        catch (ModelNotFoundException $e) {
+            
+          return Redirect::back()->withInput()->withErrors(['mesagge' => 'El usuario no se encuentra como administrador en el sistema']);
+        }
+
+
+        session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'admin']);
+
+        return Redirect::to('/admin/home');  
+
+        }
+
+      }

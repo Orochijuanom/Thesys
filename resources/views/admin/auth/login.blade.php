@@ -9,7 +9,7 @@
     </li>
 
     <li>
-        <a href="index.html"><i class="fa fa-book fa-3x"></i>Estudiante</a>
+        <a href="/estudiante/login"><i class="fa fa-book fa-3x"></i>Estudiante</a>
     </li>
     <li>
         <a href="tab-panel.html"><i class="fa fa-check-square-o fa-3x"></i>Jurado</a>
@@ -21,7 +21,7 @@
         <a href="ui.html"><i class="fa fa-users fa-3x"></i>Cómite Curricular</a>
     </li>            
     <li>
-        <a class="active-menu" href="chart.html"><i class="fa fa-tachometer fa-3x"></i>Administrador</a>
+        <a class="active-menu" href="/admin/login"><i class="fa fa-tachometer fa-3x"></i>Administrador</a>
     </li>
 </ul>
 
