@@ -106,8 +106,14 @@ class LoginController extends Controller
         }else{
 
           $estudiante = Estudiante::where('documento', '=', $usuario->user->dni)->first();
-          dd($estudiante);
-          session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante']);
+          
+          if (!$estudiante) {
+            
+            Estudiante::create(['documento' => $usuario->user->dni]);
+
+          }
+
+          session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante', 'user.dni' => $usuario->user->dni]);
 
           return Redirect::to('/estudiante/home'); 
 
@@ -116,7 +122,15 @@ class LoginController extends Controller
       }else{
         
         $estudiante = Estudiante::where('documento', '=', $usuario->user->dni)->first();
-        dd($estudiante);
+        
+        if (!$estudiante) {
+            
+          Estudiante::create(['documento' => $usuario->user->dni]);
+
+        }
+
+        session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante', 'user.dni' => $usuario->user->dni]);
+        
         return Redirect::to('/estudiante/home'); 
 
       }
