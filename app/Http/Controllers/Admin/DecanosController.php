@@ -38,16 +38,17 @@ class DecanosController extends Controller
             'token' => session('user.token')
 
           ]);
-
+        
         $administrativos = json_decode($response,true); 
         
         $decanos = Decano::all();
         
         $buscador = new Buscador();
 
-        $administrativos=$buscador->buscadorDecano($administrativos, $decanos);
+        $administrativos = $buscador->buscadorAdministrativo($administrativos, $decanos);
             
-
+        $buscador->__destruct();
+        
         return View::make('admin.decanos.index')->with(['administrativos' => $administrativos, 'decanos' => $decanos]);
 
     }
@@ -89,7 +90,7 @@ class DecanosController extends Controller
         
         $this->validate($request,[
 
-            'funcionario' => 'required',
+            'administrativo' => 'required',
             'facultad' => 'required'
 
             ]);
@@ -98,7 +99,7 @@ class DecanosController extends Controller
 
             $decano = Decano::create([
 
-                'cod_user_ryca' => $request['funcionario'],
+                'cod_user_ryca' => $request['administrativo'],
                 'cod_facu_ryca' => $request['facultad']
 
                 ]);
@@ -124,7 +125,7 @@ class DecanosController extends Controller
         
         try {
 
-                $decano = DEcano::findOrFail($id);
+                $decano = Decano::findOrFail($id);
                 
             } catch (Exception $e) {
 
@@ -142,10 +143,7 @@ class DecanosController extends Controller
 
             }
             
+        return Redirect::back() -> with('mensagge_delete', 'Decano eliminado');
             
-            return Redirect::back() -> with('mensagge_delete', 'Decano eliminado');
-
-            
-
     }
 }

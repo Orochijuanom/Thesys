@@ -11,7 +11,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if (session()->has('user')) {
-            return back();
+            return redirect(''.session('user.tipo').'/home');
         }
 
         return $next($request);
