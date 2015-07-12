@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><b>Decanos</b></div>
+                        <div class="panel-heading title-caja">Decanos</div>
                         <div class="panel-body" style="padding: 30px;">
                             @if (Session::get('mensagge_delete'))
                             <div class="alert alert-success">
