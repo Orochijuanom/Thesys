@@ -3,6 +3,19 @@
 @section('sidebar')
 @parent
 
+<ul class="nav" id="main-menu">
+    <li class="text-center">
+        <img src="{{ '/' }}assets/img/logow.png" class="user-image img-responsive"/>
+    </li>
+
+    <li>
+        <a class="active-menu" href="http://thesys.vivecundinamarca.com/admin/decanos"><i class="fa fa-users fa-3x"></i>Decanos</a>
+    </li>
+    <li>
+        <a href="tab-panel.html"><i class="fa fa-sitemap fa-3x"></i>Comite Curricular</a>
+    </li>    
+</ul>
+
 @endsection
 
 @section('content')
@@ -56,7 +69,7 @@
                                                         <input name='_method' type='hidden' value='DELETE'>
                                                         <input name='_token' type='hidden' value='{{csrf_token()}}'>
                                                         <button type='submit' class="btn btn-danger">
-                                                            Eliminar decano
+                                                            <i class="fa fa-trash-o"></i>
                                                         </button>
                                                     </form>
                                                 </td>
@@ -74,7 +87,7 @@
 
                     @endif
 
-                    <a href="{{url('admin/decanos/create')}}">Añadir Decanos</a>
+                    <a href="{{url('admin/decanos/create')}}" class="btn btn-success"><i class="fa fa-plus"> Añadir Decano</i></a> 
                                         
                             </div>
                                 </div>

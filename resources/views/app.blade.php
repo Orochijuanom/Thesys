@@ -31,8 +31,8 @@
 			@if (!session()->has('user'))
 			<a href="/admin/login" class="btn btn-danger square-btn-adjust">Login</a>
 			@else
-			{{ session('user.name') }}
-			<a href="/logout" class="btn btn-danger square-btn-adjust">Cerrar Sesión</a>
+			{{ session('user.name') }}&nbsp;
+			<a href="/logout" class="btn btn-danger square-btn-adjust" title="Cerrar Sesión"><i class="fa fa-sign-out fa-lg"></i></a>
 			@endif
 			</div>
 		</nav>   
