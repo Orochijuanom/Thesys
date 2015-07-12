@@ -54,19 +54,19 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="form-group input-group input-group-lg">
-                                    <span class="input-group-addon">@</span>                            
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>                            
                                     <input type="text" class="form-control" placeholder="Usuario" name="username" value="{{ old('username') }}" required>                            
                                 </div>
 
                                 <div class="form-group input-group input-group-lg">
-                                    <span class="input-group-addon"><i class="fa fa-key "></i></span>                            
+                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>                            
                                     <input type="password" class="form-control" placeholder="Contraseña" name="password" value="{{ old('email') }}" required>                            
                                 </div>                        
 
                                 <div class="form-group">
                                     
                                     <div class="col-md-6">
-                                        <a href="http://ryca.itfip.edu.co/RYCAWeb/estudiantes">¿Olvidaste tu contraseña?</a>
+                                        <a href="http://ryca.itfip.edu.co/RYCAWeb/">¿Olvidaste tu contraseña?</a>
                                     </div>
                                 </div>
 

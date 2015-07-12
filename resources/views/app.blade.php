@@ -44,9 +44,7 @@
 				@section('sidebar')
 				@show
 			</div>
-		</nav>
-
-		
+		</nav>	
 		
 		@yield('content')
 
