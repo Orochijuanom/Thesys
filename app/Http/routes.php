@@ -32,6 +32,11 @@ Route::resource('admin/comites', 'Admin\ComitesController', ['except' => ['show'
 Route::controller('estudiante/login', 'Estudiante\LoginController');
 Route::get('estudiante/home', 'Estudiante\HomeController@index');
 
+//rutas del decano
+//Route::controller('decano/login', 'Decano\LoginController');
+Route::get('decano/home', 'Decano\HomeController@index');
+
+
 /*// Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
