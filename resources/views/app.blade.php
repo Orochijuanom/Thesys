@@ -25,7 +25,11 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ '/' }}{{ session('user.tipo') }}/home">Thesys</a> 
+				@if (!session()->has('user'))
+				<a class="navbar-brand" href="#">Thesys</a>
+				@else				
+				<a class="navbar-brand" href="{{ '/' }}{{ session('user.tipo') }}/home">Thesys</a>
+				@endif				 
 			</div>
 			<div style="color: white; padding: 15px 10px 5px 0; float: right; font-size: 16px;">			
 				@if (!session()->has('user'))

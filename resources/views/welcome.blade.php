@@ -52,7 +52,7 @@
             @if (!session()->has('user'))
             <a href="/admin/login" class="btn btn-danger square-btn-adjust">Login</a>
             @else
-            <a href="http://thesys.vivecundinamarca.com/{{ session('user.tipo') }}/home" style="text-decoration: underline; color: #fff;">{{ session('user.name') }}</a>&nbsp;
+            <a href="{{ session('user.tipo') }}/home" style="text-decoration: underline; color: #fff;" title="Ir al menú de Usuario">{{ session('user.name') }}</a>&nbsp;
             <a href="/logout" class="btn btn-danger square-btn-adjust" title="Cerrar Sesión"><i class="fa fa-sign-out fa-lg"></i></a>
             @endif
             </div>
