@@ -21,8 +21,7 @@
     <div id="page-inner">    
 
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
+            <div class="row">                
                     <div class="panel panel-default">
                         <div class="panel-heading title-caja">Miembros del Comité Curricular</div>
                         <div class="panel-body" style="padding: 30px;">
@@ -46,36 +45,37 @@
 
                             @if(count($comites)>0)
                             <section id='no-more-tables'>
-                                <table class='table table-responsive'>
-                                    <thead>
-                                        <tr>
-                                            <th>Profesor</th>
-                                            <th>Programa</th>
-                                            <th>Eliminar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($comites as $comite)
-                                        
-                                        <tr>
-                                            <td data-title='Profesor'>{{$profesores[$comite['cod_user_ryca']]['nombre']}}</td>
-                                            <td data-title='Programa'>{{$programas[$comite['cod_prog_ryca']]['programa']}}</td>
-                                            <td data-title='Eliminar'>
-                                                <form action='/admin/comites/{{$comite->id}}' method='post'>
-                                                    <input name='_method' type='hidden' value='DELETE'>
-                                                    <input name='_token' type='hidden' value='{{csrf_token()}}'>
-                                                    <button type="submit" onclick="clicked(event)" class="btn btn-danger">
-                                                        <i class="fa fa-trash-o"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Profesor</th>
+                                                <th>Programa</th>
+                                                <th>Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($comites as $comite)
 
-                                        @endforeach
-                                    </tbody>
+                                            <tr>
+                                                <td data-title='Profesor'>{{$profesores[$comite['cod_user_ryca']]['nombre']}}</td>
+                                                <td data-title='Programa'>{{$programas[$comite['cod_prog_ryca']]['programa']}}</td>
+                                                <td data-title='Eliminar'>
+                                                    <form action='/admin/comites/{{$comite->id}}' method='post'>
+                                                        <input name='_method' type='hidden' value='DELETE'>
+                                                        <input name='_token' type='hidden' value='{{csrf_token()}}'>
+                                                        <button type="submit" onclick="clicked(event)" class="btn btn-danger">
+                                                            <i class="fa fa-trash-o"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
 
-                                </table>
-                                
+                                            @endforeach
+                                        </tbody>
+
+                                    </table>
+                                </div>                                
                             </section>
                             @else
 
@@ -86,9 +86,7 @@
                             <a href="{{url('admin/comites/create')}}" class="btn btn-success"><i class="fa fa-plus"> Añadir Miembros al Comité</i></a>
                             
                         </div>
-                    </div>
-                    
-                </div>
+                    </div> 
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@
         <a href="{{ '/' }}admin/decanos"><i class="fa fa-users fa-3x"></i>Decanos</a>
     </li>
     <li>
-        <a class="active-menu" href="#"><i class="fa fa-sitemap fa-3x"></i>Comité Curricular</a>
+        <a class="active-menu" href="{{ '/' }}admin/comites"><i class="fa fa-sitemap fa-3x"></i>Comité Curricular</a>
     </li>    
 </ul>
 
@@ -21,8 +21,7 @@
     <div id="page-inner">    
 
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
+            <div class="row">                
                     <div class="panel panel-default">
                         <div class="panel-heading title-caja">Asignar Miembros del Comite Curricular</div>
                         <div class="panel-body" style="padding: 30px;">
@@ -47,7 +46,7 @@
                             <form class="form-horizontal" role="form" method="POST" action="/admin/comites">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                <div class="form-group input-group input-group-lg">
+                                <div class="form-group input-group">
                                     <span class="input-group-addon">Profesor</span>                            
                                     <select class="form-control" name="profesor">
 
@@ -67,7 +66,7 @@
 
                                 </div>
 
-                                <div class="form-group input-group input-group-lg">
+                                <div class="form-group input-group">
                                     <span class="input-group-addon">Programa</span>                            
                                     <select class="form-control" name="programa">
                                         
@@ -89,7 +88,7 @@
                                 </div>                        
 
                                 <div class="form-group">
-                                    <div class="col-md-6 col-md-offset-4">
+                                    <div class="col-md-5 col-md-offset-5">
                                         <button type="submit" class="btn btn-primary btn-lg">
                                             <i class="fa fa-check"> Aceptar</i>
                                         </button>                                
@@ -97,8 +96,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
-                </div>
+                    </div>                
             </div>
         </div>
 

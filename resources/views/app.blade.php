@@ -27,7 +27,7 @@
 				</button>
 				<a class="navbar-brand" href="{{ '/' }}{{ session('user.tipo') }}/home">Thesys</a> 
 			</div>
-			<div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">			
+			<div style="color: white; padding: 15px 10px 5px 0; float: right; font-size: 16px;">			
 				@if (!session()->has('user'))
 				<a href="/admin/login" class="btn btn-danger square-btn-adjust">Login</a>
 				@else

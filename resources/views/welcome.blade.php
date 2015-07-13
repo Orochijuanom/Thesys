@@ -48,7 +48,7 @@
             </button>
             <a class="navbar-brand" href="/">Thesys</a> 
         </div>
-        <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">         
+        <div style="color: white; padding: 15px 10px 5px 0; float: right; font-size: 16px;">         
             @if (!session()->has('user'))
             <a href="/admin/login" class="btn btn-danger square-btn-adjust">Login</a>
             @else
@@ -141,7 +141,7 @@
                     </select>
                 </div>
 
-                <p style="text-align: center;"><a href="#" onclick="$(this).closest('form').submit()" class="btn btn-primary"><i class="fa fa-search"></i> Buscar Tesis</a></p>
+                <p style="text-align: center;"><a href="#" onclick="$(this).closest('form').submit()" class="btn btn-primary btn-lg"><i class="fa fa-search"></i> Buscar Tesis</a></p>
             </form>
         </div>        
 

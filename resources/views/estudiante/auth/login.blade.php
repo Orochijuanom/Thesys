@@ -88,7 +88,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                <div class="col-md-5 col-md-offset-5">
+                                    <div class="col-md-5 col-md-offset-5">
                                         <button type="submit" class="btn btn-primary btn-lg">
                                             <i class="fa fa-check"> Aceptar</i>
                                         </button>                                
