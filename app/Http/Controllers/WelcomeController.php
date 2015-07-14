@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Estado;
+use App\Tipo;
+
 use View;
 
 use App\Classes\Rest;
@@ -21,11 +24,22 @@ class WelcomeController extends Controller
      */
     public function index()
     {   
+
+
         $rest = new Rest();
 
         $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
 
         $programas = json_decode($response,true);
+
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/profesor/activo', 
+          [
+
+            'token' => session('user.token')
+
+          ]);
+
+        $profesores = json_decode($response,true);
 
         $buscador = new Buscador();
 
@@ -33,7 +47,15 @@ class WelcomeController extends Controller
 
         $buscador->__destruct();
 
-        return View::make('welcome')->with(['programas' => $programas, 'facultades' => $facultades]);
+        $profesores = $buscador->buscadorProfesores($profesores);
+
+        $buscador->__destruct();
+
+        $tipos = Tipo::all();
+
+        $estados = Estado::all();
+
+        return View::make('welcome')->with(['programas' => $programas, 'facultades' => $facultades, 'estados' => $estados, 'tipos' => $tipos, 'profesores' => $profesores]);
     }
 
    

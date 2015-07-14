@@ -122,26 +122,56 @@
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">Director del Proyecto</span>
-                    <select id="director" name="director" class="form-control">
-                        <option>Director 1</option>
-                        <option>Director 2</option>
-                        <option>Director 3</option>
+                    <select id="profesor" name="profesor" class="form-control">
+                        @foreach ($profesores as $id => $profesor)
+
+                                    
+                        @if (old('profesor') == $id)
+
+                        <option value="{{$id}}" selected>{{$profesor}}</option>
+                        @else
+
+                        <option value="{{$id}}">{{$profesor}}</option>
+
+                        @endif
+
+                        @endforeac
                     </select>
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">Tipo de Proyecto</span>
                     <select id="tipo" name="tipo" class="form-control">
-                        <option>Tipo 1</option>
-                        <option>Tipo 2</option>
-                        <option>Tipo 3</option>
+                        @foreach ($tipos as $tipo)
+
+                                    
+                        @if (old('tipo') == $tipo->id)
+
+                        <option value="{{$tipo->id}}" selected>{{$tipo->tipo}}</option>
+                        @else
+
+                        <option value="{{$tipo->id}}">{{$tipo->tipo }}</option>
+
+                        @endif
+
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">Estado de la Tesis</span>
                     <select id="estado" name="estado" class="form-control">
-                        <option>Estado 1</option>
-                        <option>Estado 2</option>
-                        <option>Estado 3</option>
+                        @foreach ($estados as $estado)
+
+                                    
+                        @if (old('estado') == $estado->id)
+
+                        <option value="{{$estado->id}}" selected>{{$estado->estado}}</option>
+                        @else
+
+                        <option value="{{$estado->id}}">{{$estado->estado }}</option>
+
+                        @endif
+
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group input-group">
