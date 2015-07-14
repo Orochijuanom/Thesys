@@ -88,9 +88,19 @@
                 <div class="form-group input-group">                    
                     <span class="input-group-addon">Facultad</span>
                     <select id="facultad" name="facultad" class="form-control">
-                        <option>Facultad 1</option>
-                        <option>Facultad 2</option>
-                        <option>Facultad 3</option>
+                        @foreach ($facultades as $id => $facultad)
+
+                                    
+                        @if (old('facultad') == $id)
+
+                        <option value="{{$id}}" selected>{{$facultad}}</option>
+                        @else
+
+                        <option value="{{$id}}">{{$facultad}}</option>
+
+                        @endif
+
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group input-group">                    

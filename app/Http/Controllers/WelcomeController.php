@@ -31,8 +31,9 @@ class WelcomeController extends Controller
 
         $facultades = $buscador->buscadorFacultades($programas);
 
+        $buscador->__destruct();
 
-        return View::make('welcome')->with(['programas' => $programas]);
+        return View::make('welcome')->with(['programas' => $programas, 'facultades' => $facultades]);
     }
 
    

@@ -48,8 +48,16 @@ class DecanosController extends Controller
         $administrativos = $buscador->buscadorAdministrativo($administrativos, $decanos);
             
         $buscador->__destruct();
+
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+
+        $programas = json_decode($response,true);
+
+        $facultades = $buscador->buscadorfacultades($programas);
+            
+        $buscador->__destruct();
         
-        return View::make('admin.decanos.index')->with(['administrativos' => $administrativos, 'decanos' => $decanos]);
+        return View::make('admin.decanos.index')->with(['administrativos' => $administrativos, 'decanos' => $decanos, 'facultades' => $facultades]);
 
     }
 

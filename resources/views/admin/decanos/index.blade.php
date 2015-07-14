@@ -61,7 +61,7 @@
 
                                         <tr>
                                             <td data-title='Administrativo'>{{$administrativos[$decano['cod_user_ryca']]['nombre']}}</td>
-                                            <td data-title='Facultad'>{{$decano['cod_facu_ryca']}}</td>
+                                            <td data-title='Facultad'>{{$facultades[$decano['cod_facu_ryca']]}}</td>
                                             <td data-title='Eliminar' class="center">
                                                 <form action='/admin/decanos/{{$decano->id}}' method='post'>
                                                     <input name='_method' type='hidden' value='DELETE'>

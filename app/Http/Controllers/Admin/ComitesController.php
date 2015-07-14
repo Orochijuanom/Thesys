@@ -55,6 +55,7 @@ class ComitesController extends Controller
 
         $buscador = new Buscador();
 
+        //compara los profesores de ryca con los datos del sistema
         $profesores = $buscador->buscadorProfesor($profesores, $comites);
 
         $buscador->__destruct();
@@ -85,6 +86,13 @@ class ComitesController extends Controller
           ]);
 
         $profesores = json_decode($response,true);
+
+        $buscador = new Buscador();
+
+        //formatea los profesores
+        $profesores = $buscador->buscadorProfesores($profesores);
+
+        $buscador->__destruct();
 
         $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
 

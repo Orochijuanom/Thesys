@@ -125,16 +125,23 @@ class Buscador{
 
 	function buscadorFacultades($programas){
 		
-
-		$facultad = "";
 		foreach ($programas['programas'] as $programa) {
-			$facultad[$programa['programa']['id_facultad']] = $programa['programa']['facultad'];
-			
-			
+			$this->resultado[$programa['programa']['id_facultad']] = $programa['programa']['facultad'];
 			
 		}
 		
-		return $facultad;
+		return $this->resultado;
+	}
+
+	function buscadorProfesores($profesores){
+
+		foreach ($profesores['profesores'] as $profesor) {
+			
+			$this->resultado[$profesor['profesor']['id']] = $profesor['profesor']['nombres'].' '.$profesor['profesor']['apellidos'];
+		}
+
+		return $this->resultado;
+
 	}
 
 	

@@ -50,14 +50,14 @@
                                     <span class="input-group-addon">Profesor</span>                            
                                     <select class="form-control" name="profesor">
 
-                                        @foreach ($profesores['profesores'] as $profesor)
+                                        @foreach ($profesores as $id => $profesor)
 
-                                            @if (old('profesor') == $profesor['profesor']['id'])
+                                            @if (old('profesor') == $id)
                                             
-                                                <option value="{{$profesor['profesor']['id']}}" selected>{{$profesor['profesor']['nombres']}} {{$profesor['profesor']['apellidos']}}</option>
+                                                <option value="{{$id}}" selected>{{$profesor}}</option>
                                             @else
 
-                                                <option value="{{$profesor['profesor']['id']}}">{{$profesor['profesor']['nombres']}} {{$profesor['profesor']['apellidos']}}</option>
+                                                <option value="{{$id}}">{{$profesor}}</option>
 
                                             @endif
                                         @endforeach
