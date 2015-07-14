@@ -55,7 +55,7 @@
             <a href="{{ session('user.tipo') }}/home" style="text-decoration: underline; color: #fff;" title="Ir al menú de Usuario">{{ session('user.name') }}</a>&nbsp;
             <a href="/logout" class="btn btn-danger square-btn-adjust" title="Cerrar Sesión"><i class="fa fa-sign-out fa-lg"></i></a>
             @endif
-            </div>
+        </div>
     </nav>   
     <!-- /. NAV TOP  --> 
 
@@ -97,15 +97,15 @@
                     <span class="input-group-addon">Programa</span>
                     <select id="programa" name="programa" class="form-control">
                         @foreach ($programas['programas'] as $programa)
-                                                
-                            @if (old('programa') == $programa['programa']['id'])
-                            
-                                <option value="{{$programa['programa']['id']}}" selected>{{$programa['programa']['programa']}}</option>
-                            @else
+                        
+                        @if (old('programa') == $programa['programa']['id'])
+                        
+                        <option value="{{$programa['programa']['id']}}" selected>{{$programa['programa']['programa']}}</option>
+                        @else
 
-                                <option value="{{$programa['programa']['id']}}">{{$programa['programa']['programa']}}</option>
+                        <option value="{{$programa['programa']['id']}}">{{$programa['programa']['programa']}}</option>
 
-                            @endif
+                        @endif
 
                         @endforeach
                     </select>

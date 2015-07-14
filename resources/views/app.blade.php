@@ -45,7 +45,7 @@
 
 		<nav class="navbar-default navbar-side" role="navigation">
 			<div class="sidebar-collapse">
-				<ul class="nav">
+				<ul id="minilogo" class="nav">
 					<li class="text-center">
 						<img src="{{ '/' }}assets/img/logow.png" class="user-image img-responsive"/>
 					</li>
