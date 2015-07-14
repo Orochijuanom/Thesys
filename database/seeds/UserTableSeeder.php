@@ -18,5 +18,12 @@ class UserTableSeeder extends Seeder
         	
 
         	]);
+
+        DB::table('users')->insert([
+
+            'username' => 'RDIAZ13',
+            
+
+        ]);
     }
 }

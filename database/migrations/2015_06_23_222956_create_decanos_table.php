@@ -15,7 +15,7 @@ class CreateDecanosTable extends Migration
         Schema::create('decanos', function(Blueprint $table){
             $table->increments('id');
             $table->integer('cod_user_ryca')->unique();
-            $table->string('cod_facu_ryca')->unique();
+            $table->integer('cod_facu_ryca')->unique();
 
             $table->unique(['cod_user_ryca','cod_facu_ryca'], 'user_facu_unique');
 

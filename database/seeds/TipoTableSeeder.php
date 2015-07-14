@@ -13,26 +13,27 @@ class TipoTableSeeder extends Seeder
     public function run()
     {
         DB::table('tipos')->insert(
+            [
+                'tipo' => 'Pasantia',	 
+                'descripcion' => 'Ejercicio aplicativo que exige la presencia regula en una empresa u organizacion'
+            ]);
 
-        	[
-	        	'tipo' => 'Pasantia',
-	        	'descripcion' => 'Ejercicio aplicativo que exige la presencia regula en una empresa u organizacion'
-        	],
+        DB::table('tipos')->insert(
+            [
+                'tipo' => 'Práctica Supervisada',
+                'descripcion' => 'Aplicación a una realidad concreta que no requiere la presencia permante del practicante en la empresa o comunidad'
+            ]);
 
-        	[
-        		'tipo' => 'Práctica Supervisada',
-        		'descripcion' => 'Aplicación a una realidad concreta que no requiere la presencia permante del practicante en la empresa o comunidad'
-        	],
+        DB::table('tipos')->insert(
+            [
+                'tipo' => 'Proyecto de Investigación',
+                'descripcion' => 'Acción de generación, convalidación y aplicación de conocimientos en los niveles y metodologias que correspondan'
+            ]);
 
-        	[
-        		'tipo' => 'Proyecto de Investigación',
-        		'descripcion' => 'Acción de generación, convalidación y aplicación de conocimientos en los niveles y metodologias que correspondan'
-        	],
-
-        	[
-        		'tipo' => 'Monografía',
-        		'Constituye una actividad investigativa que se caractriza por un alto componente teórico que recopila lo logrado en investigaciones existentes'
-        	]
-        	);
+        DB::table('tipos')->insert(
+            [
+                'tipo' => 'Monografía',
+                'descripcion' => 'Constituye una actividad investigativa que se caractriza por un alto componente teórico que recopila lo logrado en investigaciones existentes'
+            ]);
     }
 }

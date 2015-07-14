@@ -124,8 +124,17 @@ class Buscador{
 	}
 
 	function buscadorFacultades($programas){
+		
 
-		dd($programas);
+		$facultad = "";
+		foreach ($programas['programas'] as $programa) {
+			$facultad[$programa['programa']['id_facultad']] = $programa['programa']['facultad'];
+			
+			
+			
+		}
+		
+		return $facultad;
 	}
 
 	
