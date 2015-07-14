@@ -89,7 +89,6 @@
                     <span class="input-group-addon">Facultad</span>
                     <select id="facultad" name="facultad" class="form-control">
                         @foreach ($facultades as $id => $facultad)
-
                                     
                         @if (old('facultad') == $id)
 
@@ -125,7 +124,6 @@
                     <span class="input-group-addon">Director del Proyecto</span>
                     <select id="profesor" name="profesor" class="form-control">
                         @foreach ($profesores as $id => $profesor)
-
                                     
                         @if (old('profesor') == $id)
 
@@ -144,7 +142,6 @@
                     <span class="input-group-addon">Tipo de Proyecto</span>
                     <select id="tipo" name="tipo" class="form-control">
                         @foreach ($tipos as $tipo)
-
                                     
                         @if (old('tipo') == $tipo->id)
 
@@ -162,7 +159,6 @@
                     <span class="input-group-addon">Estado de la Tesis</span>
                     <select id="estado" name="estado" class="form-control">
                         @foreach ($estados as $estado)
-
                                     
                         @if (old('estado') == $estado->id)
 
@@ -179,16 +175,18 @@
                 <div class="form-group input-group">
                     <span class="input-group-addon">Año</span>
                     <select id="anio" name="anio" class="form-control">
-                        <option>Año 1</option>
-                        <option>Año 2</option>
-                        <option>Año 3</option>
+                        @for ($i = 1981 ; $i <= date('Y') ; $i++)                              
+                       
+                        <option value="{{$i}}" selected>{{$i}}</option>
+                        
+                        @endfor
                     </select>
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">Período Académico</span>
                     <select id="periodo" name="periodo" class="form-control">
-                        <option>Semestre A</option>
-                        <option>Semestre B</option>                        
+                        <option value="a">Semestre A</option>
+                        <option value="b">Semestre B</option>                        
                     </select>
                 </div>
 
