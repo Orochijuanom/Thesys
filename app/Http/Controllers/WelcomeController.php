@@ -48,7 +48,7 @@ class WelcomeController extends Controller
         $buscador->__destruct();
 
         $profesores = $buscador->buscadorProfesores($profesores);
-
+        
         $buscador->__destruct();
 
         $tipos = Tipo::all();

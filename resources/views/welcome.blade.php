@@ -120,6 +120,7 @@
                         @endforeach
                     </select>
                 </div>
+                @if(session()->has('user'))
                 <div class="form-group input-group">
                     <span class="input-group-addon">Director del Proyecto</span>
                     <select id="profesor" name="profesor" class="form-control">
@@ -135,9 +136,10 @@
 
                         @endif
 
-                        @endforeac
+                        @endforeach
                     </select>
                 </div>
+                @endif
                 <div class="form-group input-group">
                     <span class="input-group-addon">Tipo de Proyecto</span>
                     <select id="tipo" name="tipo" class="form-control">

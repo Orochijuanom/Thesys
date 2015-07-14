@@ -135,12 +135,20 @@ class Buscador{
 
 	function buscadorProfesores($profesores){
 
-		foreach ($profesores['profesores'] as $profesor) {
+		if (isset($profesores['error'])) {
 			
-			$this->resultado[$profesor['profesor']['id']] = $profesor['profesor']['nombres'].' '.$profesor['profesor']['apellidos'];
-		}
+			return $this->resultado;
 
-		return $this->resultado;
+		}else{
+
+			foreach ($profesores['profesores'] as $profesor) {
+				
+				$this->resultado[$profesor['profesor']['id']] = $profesor['profesor']['nombres'].' '.$profesor['profesor']['apellidos'];
+			}
+
+			return $this->resultado;
+
+		}
 
 	}
 
