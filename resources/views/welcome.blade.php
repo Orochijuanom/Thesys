@@ -63,7 +63,7 @@
 
         <div class="search"> 
             <h1 style="text-align: center;">Buscador de Tesis</h1>
-            <p>* Seleccione cada uno de ls elementos por los cuales desea filtrar la búsqueda.</p>
+            <p>* Seleccione cada uno de los elementos por los cuales desea filtrar la búsqueda.</p>
             <form action="/search" method="POST">
                 <div class="form-group">
                     <label>Escribe el título de la tesis</label>
