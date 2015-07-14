@@ -96,9 +96,18 @@
                 <div class="form-group input-group">                    
                     <span class="input-group-addon">Programa</span>
                     <select id="programa" name="programa" class="form-control">
-                        <option>Programa 1</option>
-                        <option>Programa 2</option>
-                        <option>Programa 3</option>
+                        @foreach ($programas['programas'] as $programa)
+                                                
+                            @if (old('programa') == $programa['programa']['id'])
+                            
+                                <option value="{{$programa['programa']['id']}}" selected>{{$programa['programa']['programa']}}</option>
+                            @else
+
+                                <option value="{{$programa['programa']['id']}}">{{$programa['programa']['programa']}}</option>
+
+                            @endif
+
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group input-group">

@@ -123,6 +123,11 @@ class Buscador{
 		return false;
 	}
 
+	function buscadorFacultades($programas){
+
+		dd($programas);
+	}
+
 	
 
 
