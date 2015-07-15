@@ -37,15 +37,14 @@
     </style>
 
     <script type="text/javascript">
-    function filtrado() {
-    var f = document.getElementById('filtrar').value; 
-        if (f==0) {
-            $('#filtros').css('display','none');
-        };
-        if (f==1) {
-            document.getElementById('filtros').style.display = "block";
-        }             
-    }
+        function filtrado() {     
+            if (document.getElementById('filtrar').checked == true) {
+                $('#filtros').css('display','block');
+            };
+            if (document.getElementById('filtrar').checked == false) {
+                $('#filtros').css('display','none');
+            }             
+        }
     </script>
 
 </head>
@@ -75,21 +74,17 @@
     <div class="content">
 
         <div class="search"> 
-            <h1 style="text-align: center;">Buscador de Trabajos de Grado</h1>
-            <p>* Seleccione cada uno de los elementos por los cuales desea filtrar la búsqueda.</p>     
+            <h1 style="text-align: center;">Buscador de Trabajos de Grado</h1>                 
             <form action="/search" method="POST">
-                <div class="form-group input-group">                    
-                    <span class="input-group-addon">Utilizar Filtros</span>
-                    <select id="filtrar" name="filtrar" class="form-control" onchange="filtrado();">
-                        <option value="0">NO Filtrar</option>
-                        <option value="1" selected>SI Filtrar</option>                        
-                    </select>
+                <div class="form-group input-group">
+                    <input type="checkbox" id="filtrar" onclick="filtrado();"> Utilizar Búsqueda Avanzada
                 </div>
                 <div class="form-group">
                     <label>Escribe el título del proyecto</label>
                     <input class="form-control" placeholder="Título del proyecto o parte del título">
                 </div>                
-                <div id="filtros" style="display: block">
+                <div id="filtros" style="display: none;">
+                    <p>* Seleccione cada uno de los elementos por los cuales desea filtrar la búsqueda.</p>
                     <div class="form-group input-group">                    
                         <span class="input-group-addon">Área Institucional</span>
                         <select id="area" name="area" class="form-control">
