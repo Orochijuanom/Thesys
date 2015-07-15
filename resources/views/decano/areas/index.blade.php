@@ -51,6 +51,7 @@
                                             <tr>
                                                 <th>Facultad</th>
                                                 <th>Area</th>
+                                                <th>Editar</th>
                                                 <th>Eliminar</th>
                                             </tr>
                                         </thead>
@@ -60,6 +61,13 @@
                                             <tr>
                                                 <td data-title='Facultad'>{{$facultades[$area['cod_facu_ryca']]}}</td>
                                                 <td data-title='Area'>{{$area['area']}}</td>
+                                                <td data-title='Editar'>
+                                                    <form action='/decano/areas/{{$area->id}}/edit' method='get'>
+                                                        <button type="submit" onclick="clicked(event)" class="btn btn-danger">
+                                                            <i class="fa fa-trash-o"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
                                                 <td data-title='Eliminar'>
                                                     <form action='/decano/areas/{{$area->id}}' method='post'>
                                                         <input name='_method' type='hidden' value='DELETE'>
@@ -83,7 +91,7 @@
 
                             @endif
 
-                            <a href="{{url('admin/comites/create')}}" class="btn btn-success"><i class="fa fa-plus"> Añadir Area</i></a>
+                            <a href="{{url('decano/areas/create')}}" class="btn btn-success"><i class="fa fa-plus"> Añadir Area</i></a>
                             
                         </div>
                     </div> 

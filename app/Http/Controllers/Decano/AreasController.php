@@ -122,8 +122,21 @@ class AreasController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $area = Area::where('id', '=', $id)->first();
+
+        $rest = new Rest();
+
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+
+        $programas = json_decode($response,true);
+
+        $buscador = new Buscador();       
+
+        $facultades = $buscador->buscadorfacultades($programas);
+            
+        $buscador->__destruct();
+
+        return View::make('decano.areas.edit')->with(['area' => $area , 'facultades' => $facultades]);    }
 
     /**
      * Update the specified resource in storage.
@@ -131,9 +144,33 @@ class AreasController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($id, Request $request)
     {
-        //
+        $this->validate($request,[
+
+            'facultad' => 'required',
+            'area' => 'required'
+
+            ]);
+
+        try {
+            
+            $area = Area::find($id);  
+            
+            $area->cod_facu_ryca = $request['facultad'];
+            $area->area = $request['area'];
+
+            $area->save();
+
+            
+
+        }catch (\PDOException $exception) {
+            
+            return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMesagge()]);
+
+        }
+
+        return Redirect::back() -> with('mensagge', 'Area de investigación institucional editada');
     }
 
     /**
@@ -144,6 +181,27 @@ class AreasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+
+                $area = Area::findOrFail($id);
+                
+            } catch (Exception $e) {
+
+                return Response::view('errors/404', array(), 404);
+                
+            }
+
+            try {
+
+                $area -> delete();
+                
+            } catch (\PDOException $exception) {
+                
+                return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMesagge()]);
+
+            }
+            
+        return Redirect::back() -> with('mensagge_delete', 'Area de investigación institucional eliminada');
+
     }
 }
