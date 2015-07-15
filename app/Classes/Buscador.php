@@ -71,22 +71,19 @@ class Buscador{
 	/**
 	*filtra los programas de acuerdo a los que halla en la database
 	**/
-	function buscadorPrograma($programas, $ids){
+	function buscadorProgramaFacultad($programas){
 
 		foreach ($programas['programas'] as $programa) {
 			
-			foreach ($ids as $id) {
-				
-				if ($programa['programa']['id'] == $id['cod_prog_ryca']) {
-					
-					$this->resultado[$programa['programa']['id']]['programa'] = $programa['programa']['programa'];
+			foreach ($programas['programas'] as $programa) {
 
-					
-				}
+			$this->resultado[$programa['programa']['id']]['programa'] = $programa['programa']['programa'];
+			$this->resultado[$programa['programa']['id']]['facultad'] = $programa['programa']['id_facultad'];
 
+		}
 
-			}
-
+		asort($this->resultado);
+		return $this->resultado;
 
 		}
 

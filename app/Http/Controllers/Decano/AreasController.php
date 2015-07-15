@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use View;
+use App\Area;
+use Redirect;
 
 use App\Classes\Rest;
 use App\Classes\Buscador;
@@ -29,8 +31,21 @@ class AreasController extends Controller
     public function index()
     {
        
+        $areas = Area::all();
 
+        $rest = new Rest();
 
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+
+        $programas = json_decode($response,true);
+
+        $buscador = new Buscador();       
+
+        $facultades = $buscador->buscadorfacultades($programas);
+            
+        $buscador->__destruct();
+
+        return View::make('decano.areas.index')->with(['areas' => $areas , 'facultades' => $facultades]);
 
     }
 
@@ -61,9 +76,31 @@ class AreasController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+
+            'facultad' => 'required',
+            'area' => 'required'
+
+            ]);
+
+        try {
+
+            $area = Area::create([
+
+                'cod_facu_ryca' => $request['facultad'],
+                'area' => $request['area']
+
+                ]);
+            
+        } catch (\PDOException $exception) {
+           
+            return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMessage()]);
+
+        }
+
+        return Redirect::back() -> with('mensagge', 'Area institucional creada');
     }
 
     /**

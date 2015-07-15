@@ -8,7 +8,7 @@ class Area extends Model
 {
     protected $table = 'areas';
 
-    protected $fillable = ['cod_prog_ryca', 'area'];
+    protected $fillable = ['cod_facu_ryca', 'area'];
 
     public $timestamps = false;
 }
