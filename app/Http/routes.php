@@ -31,7 +31,7 @@ Route::controller('estudiante/login', 'Estudiante\LoginController');
 Route::get('estudiante/home', 'Estudiante\HomeController@index');
 
 //rutas del decano
-//Route::controller('decano/login', 'Decano\LoginController');
+Route::controller('decano/login', 'Decano\LoginController');
 Route::get('decano/home', 'Decano\HomeController@index');
 
 

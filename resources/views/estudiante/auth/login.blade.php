@@ -11,7 +11,7 @@
         <a href="tab-panel.html"><i class="fa fa-check-square-o fa-3x"></i>Jurado</a>
     </li>
     <li>
-        <a href="tab-panel.html"><i class="fa fa-user fa-3x"></i>Decano</a>
+        <a href="/decano/login"><i class="fa fa-user fa-3x"></i>Decano</a>
     </li>
     <li>
         <a href="ui.html"><i class="fa fa-users fa-3x"></i>Comité Curricular</a>

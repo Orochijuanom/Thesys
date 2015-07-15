@@ -113,7 +113,7 @@ class LoginController extends Controller
 
           }
 
-          session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante', 'user.dni' => $usuario->user->dni]);
+          session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante', 'user.dni' => $usuario->user->dni, 'user.foto' => $usuario->user->foto]);
 
           return Redirect::to('/estudiante/home'); 
 
@@ -129,7 +129,7 @@ class LoginController extends Controller
 
         }
 
-        session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante', 'user.dni' => $usuario->user->dni]);
+        session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante', 'user.dni' => $usuario->user->dni, 'user.foto' => $usuario->user->foto]);
         
         return Redirect::to('/estudiante/home'); 
 

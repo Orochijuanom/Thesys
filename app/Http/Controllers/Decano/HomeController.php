@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Estudiante;
+namespace App\Http\Controllers\Decano;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('authestudiante');
+        //$this->middleware('authadmin');
     }
 
     /**
@@ -20,7 +20,7 @@ class HomeController extends Controller
      * @return Response
      */
     public function index()
-    {   
-        return view('estudiante/home');
+    {
+        return view('decano/home');
     }
 }

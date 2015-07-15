@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AuthEstudianteMiddleware
+class AuthDecanoMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,12 @@ class AuthEstudianteMiddleware
     {
         if (session()->has('user')) {
 
-            if (session('user.tipo')=='estudiante') {
+            if (session('user.tipo')=='decano') {
                 
                 return $next($request);
                 
             }else{
-                //no es estudiante
+                //no es decano
 
                 return response::view('errors/401',array() ,401);
 
@@ -31,7 +31,7 @@ class AuthEstudianteMiddleware
         }else{
             //no hay ningun usuario
 
-            return redirect('/estudiante/login');
+            return redirect('/decano/login');
 
         }
     }

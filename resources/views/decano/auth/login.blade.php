@@ -11,13 +11,13 @@
         <a href="tab-panel.html"><i class="fa fa-check-square-o fa-3x"></i>Jurado</a>
     </li>
     <li>
-        <a href="/decano/login"><i class="fa fa-user fa-3x"></i>Decano</a>
+        <a class="active-menu" href="/decano/login"><i class="fa fa-user fa-3x"></i>Decano</a>
     </li>
     <li>
         <a href="ui.html"><i class="fa fa-users fa-3x"></i>Cómite Curricular</a>
     </li>            
     <li>
-        <a class="active-menu" href="/admin/login"><i class="fa fa-tachometer fa-3x"></i>Administrador</a>
+        <a  href="/admin/login"><i class="fa fa-tachometer fa-3x"></i>Administrador</a>
     </li>
 </ul>
 
@@ -46,7 +46,7 @@
                             </div>
                             @endif
 
-                            <form class="form-horizontal" role="form" method="POST" action="/admin/login">
+                            <form class="form-horizontal" role="form" method="POST" action="/decano/login">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="form-group input-group input-group-lg">
