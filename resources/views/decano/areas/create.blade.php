@@ -50,17 +50,8 @@
                             <div class="form-group input-group">
                                 <span class="input-group-addon">Facultad</span>
                                 <select id="facultad" name="facultad" class="form-control">
-                                    @foreach ($facultades as $id => $facultad)
-
-                                    @if (old('programa') == $id)
-
-                                    <option value="{{$id}}" selected>{{$facultad}}</option>
-                                    @else
-
-                                    <option value="{{$id}}">{{$facultad}}</option>
-
-                                    @endif
-                                    @endforeach
+                                    <option value="{{session()->get('user.facultad')}}" selected>{{$facultades[session()->get('user.facultad')]}}</option>
+                                    
                                 </select>
                             </div>
 

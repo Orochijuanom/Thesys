@@ -60,6 +60,7 @@
                                                 <option value="{{$id}}">{{$profesor}}</option>
 
                                             @endif
+                                            
                                         @endforeach
 
                                     </select>
