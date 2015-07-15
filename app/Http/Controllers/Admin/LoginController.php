@@ -42,6 +42,8 @@ class LoginController extends Controller
 
             ]);
 
+        $request['username'] = strtoupper($request['username']);
+
         try {
             
            $user = User::where('username', $request['username'])->firstOrFail();
@@ -53,6 +55,7 @@ class LoginController extends Controller
         }
 
         $rest = new Rest();
+        
         $response = $rest->CallAPI('POST', 'http://ryca.itfip.edu.co:8888/administrativo/login', 
           [
 

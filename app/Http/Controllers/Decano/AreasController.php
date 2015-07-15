@@ -50,9 +50,9 @@ class AreasController extends Controller
 
         $buscador = new Buscador();
 
-        $facultades = $buscador->buscadorFacultades($programas, session()->get('user.facultad'));
+        $facultades = $buscador->buscadorFacultades($programas);
 
-        return View::make('decano.areas.create')->with('programas', $programas);
+        return View::make('decano.areas.create')->with('facultades', $facultades);
 
     }
 

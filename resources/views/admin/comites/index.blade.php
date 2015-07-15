@@ -58,8 +58,8 @@
                                             @foreach ($comites as $comite)
 
                                             <tr>
-                                                <td data-title='Profesor'>{{$profesores[$comite['cod_user_ryca']]['nombre']}}</td>
-                                                <td data-title='Programa'>{{$programas[$comite['cod_prog_ryca']]['programa']}}</td>
+                                                <td data-title='Profesor'>{{$profesores[$comite['cod_user_ryca']]}}</td>
+                                                <td data-title='Programa'>{{$programas[$comite['cod_prog_ryca']]}}</td>
                                                 <td data-title='Eliminar'>
                                                     <form action='/admin/comites/{{$comite->id}}' method='post'>
                                                         <input name='_method' type='hidden' value='DELETE'>

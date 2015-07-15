@@ -48,16 +48,16 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group input-group">
-                                <span class="input-group-addon">Programa</span>
-                                <select id="programa" name="programa" class="form-control">
-                                    @foreach ($programas as $id => $programa)
+                                <span class="input-group-addon">Facultad</span>
+                                <select id="facultad" name="facultad" class="form-control">
+                                    @foreach ($facultades as $id => $facultad)
 
                                     @if (old('programa') == $id)
 
-                                    <option value="{{$id}}" selected>{{$programa}}</option>
+                                    <option value="{{$id}}" selected>{{$facultad}}</option>
                                     @else
 
-                                    <option value="{{$id}}">{{$programa}}</option>
+                                    <option value="{{$id}}">{{$facultad}}</option>
 
                                     @endif
                                     @endforeach

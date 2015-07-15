@@ -56,11 +56,11 @@ class ComitesController extends Controller
         $buscador = new Buscador();
 
         //compara los profesores de ryca con los datos del sistema
-        $profesores = $buscador->buscadorProfesor($profesores, $comites);
+        $profesores = $buscador->buscadorProfesores($profesores);
 
         $buscador->__destruct();
 
-        $programas = $buscador->buscadorPrograma($programas, $comites);
+        $programas = $buscador->buscadorProgramas($programas);
         
         $buscador->__destruct();
         

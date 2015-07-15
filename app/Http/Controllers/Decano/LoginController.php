@@ -43,7 +43,7 @@ class LoginController extends Controller
         $response = $rest->CallAPI('POST', 'http://ryca.itfip.edu.co:8888/administrativo/login', 
           [
 
-            'usuario' => $request['username'],
+            'usuario' => strtoupper($request['username']),
             'clave' => $request['password'],
             
           ]);
