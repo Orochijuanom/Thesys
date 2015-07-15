@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 
 use App\Estado;
 use App\Tipo;
+use App\Area;
+use App\Linea;
 
 use View;
 
@@ -24,7 +26,6 @@ class WelcomeController extends Controller
      */
     public function index()
     {   
-
 
         $rest = new Rest();
 
@@ -59,7 +60,11 @@ class WelcomeController extends Controller
 
         $estados = Estado::all();
 
-        return View::make('welcome')->with(['programas' => $programas, 'facultades' => $facultades, 'estados' => $estados, 'tipos' => $tipos, 'profesores' => $profesores]);
+        $areas = Area::all();
+
+        $lineas = Linea::with('areas')->get();
+
+        return View::make('welcome')->with(['programas' => $programas, 'facultades' => $facultades, 'estados' => $estados, 'tipos' => $tipos, 'profesores' => $profesores, 'areas' => $areas, 'lineas' => $lineas]);
     }
 
    
