@@ -213,7 +213,8 @@
 
     </div>
 
-    <div id="footer">
+    <div id="footer" style="text-align: center;">
+        <img src="/assets/img/logow.png"><br />
         Roberto Andrés Díaz Ricardo<br />
         Juan Sebastian Cruz Perdomo<br />       
         Miguel Mauricio Correcha Peña<br />

@@ -216,7 +216,7 @@
 
 
     .user-image {
-        margin: 25px auto;
+        margin: 15px auto;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px;
@@ -226,7 +226,7 @@
 
     .navbar-cls-top .navbar-brand {
      color: #fff;
-     background: #C90000;
+     background: #A70303;
      width: 260px;
      text-align: center;
      height: 60px;
