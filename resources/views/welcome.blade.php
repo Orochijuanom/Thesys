@@ -35,6 +35,19 @@
             height: 35px;            
         }
     </style>
+
+    <script type="text/javascript">
+    function filtrado() {
+    var f = document.getElementById('filtrar').value; 
+        if (f==0) {
+            $('#filtros').css('display','none');
+        };
+        if (f==1) {
+            document.getElementById('filtros').style.display = "block";
+        }             
+    }
+    </script>
+
 </head>
 <body>
 
@@ -62,129 +75,141 @@
     <div class="content">
 
         <div class="search"> 
-            <h1 style="text-align: center;">Buscador de Tesis</h1>
-            <p>* Seleccione cada uno de los elementos por los cuales desea filtrar la búsqueda.</p>
+            <h1 style="text-align: center;">Buscador de Trabajos de Grado</h1>
+            <p>* Seleccione cada uno de los elementos por los cuales desea filtrar la búsqueda.</p>     
             <form action="/search" method="POST">
+                <div class="form-group input-group">                    
+                    <span class="input-group-addon">Utilizar Filtros</span>
+                    <select id="filtrar" name="filtrar" class="form-control" onchange="filtrado();">
+                        <option value="0">NO Filtrar</option>
+                        <option value="1" selected>SI Filtrar</option>                        
+                    </select>
+                </div>
                 <div class="form-group">
-                    <label>Escribe el título de la tesis</label>
-                    <input class="form-control" placeholder="Título de la Tesis">
-                </div>
-                <div class="form-group input-group">                    
-                    <span class="input-group-addon">Área Institucional</span>
-                    <select id="area" name="area" class="form-control">
-                        <option>Area 1</option>
-                        <option>Area 2</option>
-                        <option>Area 3</option>
-                    </select>
-                </div>
-                <div class="form-group input-group">                    
-                    <span class="input-group-addon">Línea de Investigación</span>
-                    <select id="linea" name="linea" class="form-control">
-                        <option>Linea 1</option>
-                        <option>Linea 2</option>
-                        <option>Linea 3</option>
-                    </select>
-                </div>
-                <div class="form-group input-group">                    
-                    <span class="input-group-addon">Facultad</span>
-                    <select id="facultad" name="facultad" class="form-control">
-                        @foreach ($facultades as $id => $facultad)
-                                    
-                        @if (old('facultad') == $id)
-
-                        <option value="{{$id}}" selected>{{$facultad}}</option>
-                        @else
-
-                        <option value="{{$id}}">{{$facultad}}</option>
-
-                        @endif
-
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group input-group">                    
-                    <span class="input-group-addon">Programa</span>
-                    <select id="programa" name="programa" class="form-control">
-                        @foreach ($programas['programas'] as $programa)
-                        
-                        @if (old('programa') == $programa['programa']['id'])
-                        
-                        <option value="{{$programa['programa']['id']}}" selected>{{$programa['programa']['programa']}}</option>
-                        @else
-
-                        <option value="{{$programa['programa']['id']}}">{{$programa['programa']['programa']}}</option>
-
-                        @endif
-
-                        @endforeach
-                    </select>
-                </div>
-                @if(session()->has('user'))
-                <div class="form-group input-group">
-                    <span class="input-group-addon">Director del Proyecto</span>
-                    <select id="profesor" name="profesor" class="form-control">
-                        @foreach ($profesores as $id => $profesor)
-                                    
-                        @if (old('profesor') == $id)
-
-                        <option value="{{$id}}" selected>{{$profesor}}</option>
-                        @else
-
-                        <option value="{{$id}}">{{$profesor}}</option>
-
-                        @endif
-
-                        @endforeach
-                    </select>
-                </div>
-                @endif
-                <div class="form-group input-group">
-                    <span class="input-group-addon">Tipo</span>
-                    <select id="tipo" name="tipo" class="form-control">
-                        @foreach ($tipos as $tipo)
-                                    
-                        @if (old('tipo') == $tipo->id)
-
-                        <option value="{{$tipo->id}}" selected>{{$tipo->tipo}}</option>
-                        @else
-
-                        <option value="{{$tipo->id}}">{{$tipo->tipo }}</option>
-
-                        @endif
-
-                        @endforeach
-                    </select>
-                    <span class="input-group-addon">Estado</span>
-                    <select id="estado" name="estado" class="form-control">
-                        @foreach ($estados as $estado)
-                                    
-                        @if (old('estado') == $estado->id)
-
-                        <option value="{{$estado->id}}" selected>{{$estado->estado}}</option>
-                        @else
-
-                        <option value="{{$estado->id}}">{{$estado->estado }}</option>
-
-                        @endif
-
-                        @endforeach
-                    </select>
+                    <label>Escribe el título del proyecto</label>
+                    <input class="form-control" placeholder="Título del proyecto o parte del título">
                 </div>                
-                <div class="form-group input-group">
-                    <span class="input-group-addon">Año</span>
-                    <select id="anio" name="anio" class="form-control">
-                        @for ($i = 1981 ; $i <= date('Y') ; $i++)                              
-                       
-                        <option value="{{$i}}" selected>{{$i}}</option>
-                        
-                        @endfor
-                    </select>
-                    <span class="input-group-addon">Período</span>
-                    <select id="periodo" name="periodo" class="form-control">
-                        <option value="a">Semestre A</option>
-                        <option value="b">Semestre B</option>                        
-                    </select>
-                </div>                
+                <div id="filtros" style="display: block">
+                    <div class="form-group input-group">                    
+                        <span class="input-group-addon">Área Institucional</span>
+                        <select id="area" name="area" class="form-control">
+                            <option value="0">---</option>                        
+                        </select>
+                    </div>
+                    <div class="form-group input-group">                    
+                        <span class="input-group-addon">Línea de Investigación</span>
+                        <select id="linea" name="linea" class="form-control">
+                            <option value="0">---</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">                    
+                        <span class="input-group-addon">Facultad</span>
+                        <select id="facultad" name="facultad" class="form-control">
+                            <option value="0">---</option>
+                            @foreach ($facultades as $id => $facultad)
+
+                            @if (old('facultad') == $id)
+
+                            <option value="{{$id}}" selected>{{$facultad}}</option>
+                            @else
+
+                            <option value="{{$id}}">{{$facultad}}</option>
+
+                            @endif
+
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group input-group">                    
+                        <span class="input-group-addon">Programa</span>
+                        <select id="programa" name="programa" class="form-control">
+                            <option value="0">---</option>
+                            @foreach ($programas['programas'] as $programa)
+
+                            @if (old('programa') == $programa['programa']['id'])
+
+                            <option value="{{$programa['programa']['id']}}" selected>{{$programa['programa']['programa']}}</option>
+
+                            @else
+                            <option value="{{$programa['programa']['id']}}">{{$programa['programa']['programa']}}</option>
+
+                            @endif
+
+                            @endforeach
+                        </select>
+                    </div>
+                    @if(session()->has('user'))
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">Director del Proyecto</span>
+                        <select id="profesor" name="profesor" class="form-control">
+                            <option value="0">---</option>
+                            @foreach ($profesores as $id => $profesor)
+
+                            @if (old('profesor') == $id)
+
+                            <option value="{{$id}}" selected>{{$profesor}}</option>
+                            @else
+
+                            <option value="{{$id}}">{{$profesor}}</option>
+
+                            @endif
+
+                            @endforeach
+                        </select>
+                    </div>
+                    @endif
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">Tipo</span>
+                        <select id="tipo" name="tipo" class="form-control">
+                            <option value="0">---</option>
+                            @foreach ($tipos as $tipo)
+
+                            @if (old('tipo') == $tipo->id)
+
+                            <option value="{{$tipo->id}}" selected>{{$tipo->tipo}}</option>
+                            @else
+
+                            <option value="{{$tipo->id}}">{{$tipo->tipo }}</option>
+
+                            @endif
+
+                            @endforeach
+                        </select>
+                        <span class="input-group-addon">Estado</span>
+                        <select id="estado" name="estado" class="form-control">
+                            <option value="0">---</option>
+                            @foreach ($estados as $estado)
+
+                            @if (old('estado') == $estado->id)
+
+                            <option value="{{$estado->id}}" selected>{{$estado->estado}}</option>
+                            @else
+
+                            <option value="{{$estado->id}}">{{$estado->estado }}</option>
+
+                            @endif
+
+                            @endforeach
+                        </select>
+                    </div>                
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">Año</span>
+                        <select id="anio" name="anio" class="form-control">                        
+                            @for ($i = 1981 ; $i <= date('Y') ; $i++)                              
+
+                            <option value="{{$i}}">{{$i}}</option>
+
+                            @endfor
+                            <option value="0" selected>---</option>
+                        </select>
+                        <span class="input-group-addon">Período</span>
+                        <select id="periodo" name="periodo" class="form-control">
+                            <option value="0">---</option>
+                            <option value="a">Semestre A</option>
+                            <option value="b">Semestre B</option>                        
+                        </select>
+                    </div> 
+                </div>               
 
                 <p style="text-align: center;"><a href="#" onclick="$(this).closest('form').submit()" class="btn btn-primary btn-lg"><i class="fa fa-search"></i> Buscar Tesis</a></p>
             </form>
