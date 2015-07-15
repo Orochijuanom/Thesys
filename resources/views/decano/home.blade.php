@@ -16,14 +16,16 @@
 
 @section('content')
 
+{{ $nombre = strtok(session('user.name'), " ") }}
+
 <!-- /. NAV SIDE  -->
 <div id="page-wrapper" >
 	<div id="page-inner"> 
 
 		<div style="text-align: center;">
-			<h1>Bienvenido {{ strtok(session('user.name'), " ") }}</h1>			
+			<h1>Bienvenido {{ $nombre }}</h1>			
 			<div id="foto">
-				<img src="{{Session::get('user.foto')}}"><br />
+				<img src="{{Session::get('user.foto')}}" alt="{{ $nombre }}" title="{{ $nombre }}"><br />
 			</div>
 		</div>
 
