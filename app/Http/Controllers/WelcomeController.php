@@ -51,7 +51,7 @@ class WelcomeController extends Controller
         
         $buscador->__destruct();
 
-        $programas = $buscador->buscadorProgramas($programas);
+        $programas = $buscador->buscadorProgramaFacultad($programas);
 
         $buscador->__destruct();
 

@@ -48,9 +48,7 @@
             }             
         }
 
-        function prog() {
-            var 
-        }
+        
     </script>
 
 </head>
@@ -129,10 +127,10 @@
 
                             @if (old('programa') == $id)
 
-                            <option value="{{$id}}" selected>{{$programa}}</option>
+                            <option value="{{$id}}" selected>{{$programa['programa']}}</option>
                             @else
 
-                            <option value="{{$id}}">{{$programa}}</option>
+                            <option value="{{$id}}">{{$programa['programa']}}</option>
 
                             @endif
 
