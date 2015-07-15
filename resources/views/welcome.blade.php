@@ -20,7 +20,8 @@
             background-color: #fff;                       
         }        
         .content {                                   
-            min-height:100%;                         
+            min-height:100%;
+            background-color: #fff;                         
         }
         .title {
             font-size: 96px;

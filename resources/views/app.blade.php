@@ -64,11 +64,11 @@
 		
 		@yield('content')
 
-	</div>
-
 	<div id="footer">
 		Ingeniería de Sistemas - ITFIP 2015
-	</div>		
+	</div>
+
+	</div>			
 
 	<!-- JQUERY SCRIPTS -->
 	<script src="{{ '/' }}assets/js/jquery-1.10.2.js"></script>
