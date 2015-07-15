@@ -94,7 +94,11 @@ class LineasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $areas = Area::all();
+
+        $linea = Linea::with('areas')->where('id', '=', $id)->first();
+
+        return View::make('decano.lineas.edit')->with(['areas' => $areas, 'linea' => $linea]);
     }
 
     /**
@@ -103,9 +107,34 @@ class LineasController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($id, Request $request)
     {
-        //
+        $this->validate($request,[
+
+            'area' => 'required',
+            'linea' => 'required'
+
+            ]);
+
+        try {
+            
+            $linea = Linea::find($id);  
+            
+            $linea->area_id = $request['area'];
+            $linea->linea = $request['linea'];
+
+            $linea->save();
+
+            
+
+        }catch (\PDOException $exception) {
+            
+            return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMesagge()]);
+
+        }
+
+        return Redirect::back() -> with('mensagge', 'Linea de investigación editada');
+    
     }
 
     /**
