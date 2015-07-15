@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<head>    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,10 +46,36 @@
             if (document.getElementById('filtrar').checked == false) {
                 $('#filtros').css('display','none');
             }             
-        }
+        } 
 
-        
-    </script>
+        function facul(){   
+            var sel = document.getElementById('programa');
+            var length = sel.options.length;
+            for (i = 0; i < length; i++) {
+              sel.remove(sel.selectedIndex);
+          }
+          var option2 = document.createElement('option');
+                option2.innerHTML = "---";
+                option2.value = 0;
+                option2.selected = true;
+                sel.appendChild(option2);
+          var f = document.getElementById('facultad').value;
+          if (f != 0 ) {
+            document.getElementById('programa').disabled=false;
+            @foreach($programas as $id => $programa)
+            if ({{$programa['facultad']}} == f) {
+                var option = document.createElement('option');
+                option.innerHTML = "{{$programa['programa']}}";
+                option.value = {{$id}};
+                sel.appendChild(option);
+            }                
+            @endforeach
+        }
+        else {            
+            sel.disabled=true;                
+        }
+    }       
+</script>
 
 </head>
 <body>
@@ -103,7 +129,7 @@
                     </div>
                     <div class="form-group input-group">                    
                         <span class="input-group-addon">Facultad</span>
-                        <select id="facultad" name="facultad" class="form-control">
+                        <select id="facultad" name="facultad" onchange="facul();" class="form-control">
                             <option value="0">---</option>
                             @foreach ($facultades as $id => $facultad)
 
@@ -121,20 +147,8 @@
                     </div>
                     <div class="form-group input-group">                    
                         <span class="input-group-addon">Programa</span>
-                        <select id="programa" name="programa" class="form-control">
-                            <option value="0">---</option>
-                            @foreach ($programas as $id => $programa)
-
-                            @if (old('programa') == $id)
-
-                            <option value="{{$id}}" selected>{{$programa['programa']}}</option>
-                            @else
-
-                            <option value="{{$id}}">{{$programa['programa']}}</option>
-
-                            @endif
-
-                            @endforeach
+                        <select id="programa" name="programa" class="form-control" disabled>
+                            <option value="0">---</option>                            
                         </select>
                     </div>
                     @if(session()->has('user'))
