@@ -50,7 +50,7 @@
         </div>
         <div style="color: white; padding: 15px 10px 5px 0; float: right; font-size: 16px;">         
             @if (!session()->has('user'))
-            <a href="/admin/login" class="btn btn-danger square-btn-adjust">Login</a>
+            <a href="/estudiante/login" class="btn btn-danger square-btn-adjust">Login</a>
             @else
             <a href="{{ session('user.tipo') }}/home" style="text-decoration: underline; color: #fff;" title="Ir al menú de Usuario">{{ session('user.name') }}</a>&nbsp;
             <a href="/logout" class="btn btn-danger square-btn-adjust" title="Cerrar Sesión"><i class="fa fa-sign-out fa-lg"></i></a>
@@ -78,7 +78,7 @@
                     </select>
                 </div>
                 <div class="form-group input-group">                    
-                    <span class="input-group-addon">Linea de Investigación</span>
+                    <span class="input-group-addon">Línea de Investigación</span>
                     <select id="linea" name="linea" class="form-control">
                         <option>Linea 1</option>
                         <option>Linea 2</option>
@@ -139,7 +139,7 @@
                 </div>
                 @endif
                 <div class="form-group input-group">
-                    <span class="input-group-addon">Tipo de Proyecto</span>
+                    <span class="input-group-addon">Tipo</span>
                     <select id="tipo" name="tipo" class="form-control">
                         @foreach ($tipos as $tipo)
                                     
@@ -154,9 +154,7 @@
 
                         @endforeach
                     </select>
-                </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon">Estado de la Tesis</span>
+                    <span class="input-group-addon">Estado</span>
                     <select id="estado" name="estado" class="form-control">
                         @foreach ($estados as $estado)
                                     
@@ -171,7 +169,7 @@
 
                         @endforeach
                     </select>
-                </div>
+                </div>                
                 <div class="form-group input-group">
                     <span class="input-group-addon">Año</span>
                     <select id="anio" name="anio" class="form-control">
@@ -181,14 +179,12 @@
                         
                         @endfor
                     </select>
-                </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon">Período Académico</span>
+                    <span class="input-group-addon">Período</span>
                     <select id="periodo" name="periodo" class="form-control">
                         <option value="a">Semestre A</option>
                         <option value="b">Semestre B</option>                        
                     </select>
-                </div>
+                </div>                
 
                 <p style="text-align: center;"><a href="#" onclick="$(this).closest('form').submit()" class="btn btn-primary btn-lg"><i class="fa fa-search"></i> Buscar Tesis</a></p>
             </form>

@@ -3,19 +3,22 @@
 @section('sidebar')
 @parent
 
-
-
 @endsection
 
 @section('content')
+
+{{ $nombre = strtok(session('user.name'), " ") }}
 
 <!-- /. NAV SIDE  -->
 <div id="page-wrapper" >
 	<div id="page-inner"> 
 
 		<div style="text-align: center;">
-			<h1>Bienvenido Estudiante</h1>
-			<img src="{{ '/' }}assets/img/logo.png" width="60%">
+			<h1>Bienvenido {{ $nombre }}</h1>
+
+			<div id="foto">
+				<img src="{{Session::get('user.foto')}}" alt="{{ $nombre }}" title="{{ $nombre }}"><br />
+			</div>			
 			
 		</div>
 

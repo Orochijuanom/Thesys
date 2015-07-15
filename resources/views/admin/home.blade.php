@@ -21,7 +21,7 @@
 	<div id="page-inner"> 
 
 		<div style="text-align: center;">
-			<h1>Bienvenido Administrador</h1>
+			<h1>Bienvenido Administrador</h1>			
 			<img src="{{ '/' }}assets/img/logo.png" width="60%">
 		</div>
 

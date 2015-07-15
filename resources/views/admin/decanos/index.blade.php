@@ -95,7 +95,4 @@
     </div>
 </div>
 
-<!-- /. PAGE INNER  -->
-
-<!-- /. PAGE WRAPPER  -->
 @endsection
