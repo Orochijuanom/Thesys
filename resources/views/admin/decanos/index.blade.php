@@ -86,9 +86,14 @@
 
                         @endif
 
-                        <a href="{{url('admin/decanos/create')}}" class="btn btn-success"><i class="fa fa-plus"> Añadir Decano</i></a> 
+                        <div class="form-group">
+                            <div class="col-md-5 col-md-offset-5">
+                                <a href="{{url('admin/decanos/create')}}" class="btn btn-primary btn-lg"><i class="fa fa-plus"> Añadir Decano</i></a>
+                            </div>
+                        </div>
                         
                     </div>
+
                 </div>
             </div>
         </div>

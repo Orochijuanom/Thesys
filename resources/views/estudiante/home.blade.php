@@ -15,11 +15,9 @@
 
 		<div style="text-align: center;">
 			<h1>Bienvenido {{ $nombre }}</h1>
-
 			<div id="foto">
 				<img src="{{Session::get('user.foto')}}" alt="{{ $nombre }}" title="{{ $nombre }}"><br />
-			</div>			
-			
+			</div>
 		</div>
 
 	</div>
