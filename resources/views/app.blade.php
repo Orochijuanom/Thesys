@@ -65,6 +65,9 @@
 		@yield('content')
 
 	<div id="footer">
+	    Roberto Andrés Díaz Ricardo<br />
+	    Juan Sebastian Cruz Perdomo<br />	    
+	    Miguel Mauricio Correcha Peña<br />
 		Ingeniería de Sistemas - ITFIP 2015
 	</div>
 
