@@ -37,7 +37,9 @@ class LoginController extends Controller
         $programas = json_decode($response,true); 
 
         $buscador = new Buscador();
-        $programas = $buscador->buscadorProgramas($programas); 
+
+        $programas = $buscador->buscadorProgramas($programas);
+         
         return View::make('estudiante.auth.login')->with('programas', $programas);
 
     }

@@ -70,16 +70,16 @@
                                     <span class="input-group-addon">Programa</span>                            
                                     <select class="form-control" name="programa">
                                         
-                                        @foreach ($programas['programas'] as $programa)
-                                                
-                                            @if (old('programa') == $programa['programa']['id'])
-                                            
-                                                <option value="{{$programa['programa']['id']}}" selected>{{$programa['programa']['programa']}}</option>
-                                            @else
+                                        @foreach ($programas as $id => $programa)
 
-                                                <option value="{{$programa['programa']['id']}}">{{$programa['programa']['programa']}}</option>
+                                        @if (old('programa') == $id)
 
-                                            @endif
+                                        <option value="{{$id}}" selected>{{$programa}}</option>
+                                        @else
+
+                                        <option value="{{$id}}">{{$programa}}</option>
+
+                                        @endif
 
                                         @endforeach
 

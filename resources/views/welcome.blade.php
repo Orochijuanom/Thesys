@@ -120,14 +120,14 @@
                         <span class="input-group-addon">Programa</span>
                         <select id="programa" name="programa" class="form-control">
                             <option value="0">---</option>
-                            @foreach ($programas['programas'] as $programa)
+                            @foreach ($programas as $id => $programa)
 
-                            @if (old('programa') == $programa['programa']['id'])
+                            @if (old('programa') == $id)
 
-                            <option value="{{$programa['programa']['id']}}" selected>{{$programa['programa']['programa']}}</option>
-
+                            <option value="{{$id}}" selected>{{$programa}}</option>
                             @else
-                            <option value="{{$programa['programa']['id']}}">{{$programa['programa']['programa']}}</option>
+
+                            <option value="{{$id}}">{{$programa}}</option>
 
                             @endif
 

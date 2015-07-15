@@ -97,6 +97,8 @@ class ComitesController extends Controller
         $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
 
         $programas = json_decode($response,true);
+
+        $programas = $buscador->buscadorProgramas($programas); 
         
         return View::make('admin.comites.create')->with(['profesores' => $profesores, 'programas' => $programas]);
 
