@@ -5,10 +5,10 @@
 
 <ul class="nav" id="main-menu">
     <li>
-        <a href="{{ '/' }}decano/areas" class="active-menu"><i class="fa fa-users fa-3x"></i>Áreas Institucionales</a>
+        <a href="{{ '/' }}decano/areas"><i class="fa fa-list fa-3x"></i>Áreas Institucionales</a>
     </li>
     <li>
-        <a href="{{ '/' }}decano/lineas"><i class="fa fa-sitemap fa-3x"></i>Líneas de Investigación</a>
+        <a href="{{ '/' }}decano/lineas" class="active-menu"><i class="fa fa-lightbulb-o fa-3x"></i>Líneas de Investigación</a>
     </li>   
 </ul>
 
@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="row">                
                 <div class="panel panel-primary">
-                    <div class="panel-heading title-caja">Crear Linea de investigación</div>
+                    <div class="panel-heading title-caja">Crear Línea de investigación</div>
                     <div class="panel-body" style="padding: 30px;">
                         @if (Session::get('mensagge'))
                         <div class="alert alert-success">
@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="form-group input-group">
-                                <span class="input-group-addon">Linea</span>
+                                <span class="input-group-addon">Línea</span>
                                 <input type="text" id="linea" name="linea" class="form-control" value="{{old('linea')}}">
                             </div>
                         
