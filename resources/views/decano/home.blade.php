@@ -21,8 +21,10 @@
 	<div id="page-inner"> 
 
 		<div style="text-align: center;">
-			<h1>Bienvenido Decano</h1>
-			<img src="{{ '/' }}assets/img/logo.png" width="60%">
+			<h1>Bienvenido {{ strtok(session('user.name'), " ") }}</h1>			
+			<div id="foto">
+				<img src="{{Session::get('user.foto')}}"><br />
+			</div>
 		</div>
 
 	</div>

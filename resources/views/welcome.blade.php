@@ -157,7 +157,7 @@
                     <div class="form-group input-group">
                         <span class="input-group-addon">Tipo</span>
                         <select id="tipo" name="tipo" class="form-control">
-                            <option value="0">---</option>
+                            <option value="0">---</option>                                                        
                             @foreach ($tipos as $tipo)
 
                             @if (old('tipo') == $tipo->id)
@@ -174,6 +174,7 @@
                         <span class="input-group-addon">Estado</span>
                         <select id="estado" name="estado" class="form-control">
                             <option value="0">---</option>
+
                             @foreach ($estados as $estado)
 
                             @if (old('estado') == $estado->id)
