@@ -11,7 +11,7 @@ use View;
 use App\Classes\Rest;
 use Redirect;
 
-use Decano;
+use App\Decano;
 
 class LoginController extends Controller
 {

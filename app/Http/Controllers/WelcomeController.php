@@ -51,6 +51,10 @@ class WelcomeController extends Controller
         
         $buscador->__destruct();
 
+        $programas = $buscador->buscadorProgramas($programas);
+
+        $buscador->__destruct();
+
         $tipos = Tipo::all();
 
         $estados = Estado::all();

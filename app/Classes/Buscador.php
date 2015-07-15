@@ -12,6 +12,9 @@ class Buscador{
 
 	private $resultado = "";
 	
+	/**
+	*filtra los administrativos de acuerdo a los que halla en la database
+	**/
 	function buscadorAdministrativo($administrativos, $ids){
 
 		
@@ -37,6 +40,9 @@ class Buscador{
 
 	}
 
+	/**
+	*filtra los profesores de acuerdo a los que halla en la database
+	**/
 	function buscadorProfesor($profesores, $ids){
 
 		
@@ -62,6 +68,9 @@ class Buscador{
 
 	}
 
+	/**
+	*filtra los programas de acuerdo a los que halla en la database
+	**/
 	function buscadorPrograma($programas, $ids){
 
 		foreach ($programas['programas'] as $programa) {
@@ -85,6 +94,9 @@ class Buscador{
 
 	}
 
+	/**
+	*Verifica si el estudiante tiene matriculado una materia de grado
+	**/
 	function buscadorPrematricula($prematricula){
 		
 		if (!$prematricula==null) {
@@ -104,6 +116,9 @@ class Buscador{
 		return false;
 	}
 
+	/**
+	*Verifica si el estudiante ha visto una materia de grado
+	**/
 	function buscadorCursadas($cursadas){
 		
 		if (!$cursadas==null) {
@@ -123,6 +138,21 @@ class Buscador{
 		return false;
 	}
 
+	function buscadorProgramas($programas){
+
+		foreach ($programas['programas'] as $programa) {
+
+			$this->resultado[$programa['programa']['id']] = $programa['programa']['programa'];
+			
+		}
+		asort($this->resultado);
+		return $this->resultado;
+
+	}
+
+	/**
+	*formatea las facultades en un array[id_facultad] = string(facultad)
+	**/
 	function buscadorFacultades($programas){
 		
 		foreach ($programas['programas'] as $programa) {
@@ -133,6 +163,9 @@ class Buscador{
 		return $this->resultado;
 	}
 
+	/**
+	*formatea los profesores en un array[id_profesor] = string(profesor)
+	**/
 	function buscadorProfesores($profesores){
 
 		if (isset($profesores['error'])) {
@@ -152,7 +185,21 @@ class Buscador{
 
 	}
 
+	function buscadorProgramasXFacultad($programas, $facultad){
+
+		foreach ($programas['programas'] as $programa) {
+			
+			if ($programa['programa']['id_facultad'] == $facultad) {
+			
+				$this->resultado[$programa['programa']['id']] = $programa['programa']['programa'];
+			
+			}
+		
+		}
+
+		return $this->resultado;
+
+	}
+
 	
-
-
 }

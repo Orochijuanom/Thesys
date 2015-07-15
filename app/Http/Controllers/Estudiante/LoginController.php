@@ -36,6 +36,8 @@ class LoginController extends Controller
 
         $programas = json_decode($response,true); 
 
+        $buscador = new Buscador();
+        $programas = $buscador->buscadorProgramas($programas); 
         return View::make('estudiante.auth.login')->with('programas', $programas);
 
     }
@@ -55,7 +57,7 @@ class LoginController extends Controller
       $response = $rest->CallAPI('POST', 'http://ryca.itfip.edu.co:8888/estudiante/login', 
         [
 
-          'usuario' => $request['username'],
+          'usuario' => strtoupper($request['username']),
           'clave' => $request['password'],
           'programa' => $request['programa'], 
 

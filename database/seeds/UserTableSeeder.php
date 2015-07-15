@@ -14,16 +14,11 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->insert([
 
-        	'username' => 'JCRUZ02',
+        	'username' => 'AJIMENEZ',
         	
 
         	]);
 
-        DB::table('users')->insert([
-
-            'username' => 'RDIAZ13',
-            
-
-        ]);
+        
     }
 }
