@@ -11,4 +11,9 @@ class Area extends Model
     protected $fillable = ['cod_facu_ryca', 'area'];
 
     public $timestamps = false;
+
+    public function lineas()
+    {
+        return $this->hasMany('App\Linea');
+    }
 }

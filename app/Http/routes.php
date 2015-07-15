@@ -33,7 +33,7 @@ Route::get('estudiante/home', 'Estudiante\HomeController@index');
 //rutas del decano
 Route::controller('decano/login', 'Decano\LoginController');
 Route::get('decano/home', 'Decano\HomeController@index');
-Route::resource('decano/areas', 'Decano\AreasController');
+Route::resource('decano/areas', 'Decano\AreasController', ['except' => 'show']);
 
 
 /*// Authentication routes...
