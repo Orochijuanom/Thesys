@@ -118,7 +118,20 @@
                     <div class="form-group input-group">                    
                         <span class="input-group-addon">Área Institucional</span>
                         <select id="area" name="area" class="form-control">
-                            <option value="0">---</option>                        
+                            <option value="0" selected>---</option>
+                            @foreach ($areas as $id => $area)
+
+                            @if (old('area') == $id)
+
+                            <option value="{{$id}}">{{$area}}</option>
+                            
+                            @else
+
+                            <option value="{{$id}}">{{$area}}</option>
+
+                            @endif
+
+                            @endforeach                        
                         </select>
                     </div>
                     <div class="form-group input-group">                    
