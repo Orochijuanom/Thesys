@@ -34,6 +34,7 @@ Route::get('estudiante/home', 'Estudiante\HomeController@index');
 Route::controller('decano/login', 'Decano\LoginController');
 Route::get('decano/home', 'Decano\HomeController@index');
 Route::resource('decano/areas', 'Decano\AreasController', ['except' => 'show']);
+Route::resource('decano/lineas', 'Decano\LineasController');
 
 
 /*// Authentication routes...

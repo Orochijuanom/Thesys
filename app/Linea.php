@@ -14,6 +14,6 @@ class Linea extends Model
 
     public function areas()
     {
-        return $this->belongsTo('App\Area');
+        return $this->belongsTo('App\Area', 'area_id', 'id');
     }
 }
