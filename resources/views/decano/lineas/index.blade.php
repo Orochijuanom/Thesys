@@ -58,7 +58,7 @@
                                         <tbody>
                                             
                                             @foreach ($lineas as $linea)
-
+                                            @if($linea->areas->cod_facu_ryca == session()->get('user.facultad'))
                                             <tr>
                                                 <td data-title='linea'>{{$linea['linea']}}</td>
                                                 <td data-title='Area'>{{$linea->areas->area}}</td>
@@ -79,7 +79,7 @@
                                                     </form>
                                                 </td>
                                             </tr>
-
+                                            @endif
                                             @endforeach
                                         </tbody>
 
