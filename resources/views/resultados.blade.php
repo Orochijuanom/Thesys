@@ -62,30 +62,67 @@
     </nav>   
     <!-- /. NAV TOP  --> 
 
-    <div class="content">
+    <div class="content" style="padding: 20px">      
 
-        <div class="search"> 
-            <h1 style="text-align: center;">Holaaaa</h1>
-        </div>        
+        <div class="panel panel-primary">
+                        <div class="panel-heading title-caja">Resultados de la Búsqueda - # Proyectos de Grado encontrados</div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            Panel Footer
+                        </div>
+                    </div>
 
     </div>
 
-    <div id="footer" style="text-align: center;">
-        <img src="/assets/img/logow.png"><br />
-        Roberto Andrés Díaz Ricardo<br />
-        Juan Sebastian Cruz Perdomo<br />       
-        Miguel Mauricio Correcha Peña<br />
-        Ingeniería de Sistemas - ITFIP 2015
-    </div> 
+<div id="footer" style="text-align: center;">
+    <img src="/assets/img/logow.png"><br />
+    Roberto Andrés Díaz Ricardo<br />
+    Juan Sebastian Cruz Perdomo<br />       
+    Miguel Mauricio Correcha Peña<br />
+    Ingeniería de Sistemas - ITFIP 2015
+</div> 
 
-    <!-- JQUERY SCRIPTS -->
-    <script src="{{ '/' }}assets/js/jquery-1.10.2.js"></script>
-    <!-- BOOTSTRAP SCRIPTS -->
-    <script src="{{ '/' }}assets/js/bootstrap.min.js"></script>
-    <!-- METISMENU SCRIPTS -->
-    <script src="{{ '/' }}assets/js/jquery.metisMenu.js"></script>
-    <!-- CUSTOM SCRIPTS -->
-    <script src="{{ '/' }}assets/js/custom.js"></script>    
+<!-- JQUERY SCRIPTS -->
+<script src="{{ '/' }}assets/js/jquery-1.10.2.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="{{ '/' }}assets/js/bootstrap.min.js"></script>
+<!-- METISMENU SCRIPTS -->
+<script src="{{ '/' }}assets/js/jquery.metisMenu.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="{{ '/' }}assets/js/custom.js"></script>    
 
 </body>
 </html>

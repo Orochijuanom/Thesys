@@ -66,13 +66,14 @@
 
         <div class="search"> 
             <h1 style="text-align: center;">Buscador de Trabajos de Grado</h1>                 
-            <form action="/search" method="GET">
+            <form action="/search" method="POST">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group input-group">
                     <input type="checkbox" id="filtrar" value="1" name="filtrar" onclick="filtrado();"> Utilizar Búsqueda Avanzada
                 </div>
                 <div class="form-group">
                     <label>Escribe el título del proyecto</label>
-                    <input class="form-control" placeholder="Título del proyecto o parte del título">
+                    <input class="form-control" id="titulo" name="titulo" placeholder="Título del proyecto o parte del título">
                 </div>                
                 <div id="filtros" style="display: none;">
                     <p>Seleccione cada uno de los elementos por los cuales desea filtrar la búsqueda.</p>                    
