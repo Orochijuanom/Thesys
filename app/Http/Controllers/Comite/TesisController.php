@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Linea;
 use App\Tipo;
 use App\Estado;
 use App\Tesi;
@@ -29,13 +30,14 @@ class TesisController extends Controller
      */
     public function index()
     {
-        $tesis = Tesi::with('estudiantes')->get();
+
+        $tesis = Tesi::with('estudiantes')->orderBy('created_at')->where('cod_prog_ryca', '=', session()->get('user.programa'))->get();
 
         $estados = Estado::all();
 
-        return View::make('comite.tesis.index');
+        return View::make('comite.tesis.index')->with(['tesis' => $tesis, 'estados' => $estados]);
 
-        }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -65,7 +67,11 @@ class TesisController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $tesis = Tesi::with('estudiantes')->where('id', '=', $id)->get();
+
+        dd($tesis);
+
     }
 
     /**

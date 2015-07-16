@@ -5,7 +5,7 @@
 
 <ul class="nav" id="main-menu">
     <li>
-        <a href="{{ '/' }}estudiante/tesis" class="active-menu"><i class="fa fa-list fa-3x"></i>Trabajo de Grado</a>
+        <a href="{{ '/' }}comite/tesis" class="active-menu"><i class="fa fa-list fa-3x"></i>Trabajos de Grado</a>
     </li>
     
 </ul>
@@ -42,45 +42,38 @@
                             </div>
                             @endif
 
-                            @if(count($estudiante['tesis'])>0)
+                            @if(count($tesis)>0)
                            
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
                                                 <th>Titulo</th>
-                                                <th>Director</th>
+                                                <th>Año</th>
                                                 <th>Estado</th>
                                                 <th>Archivo</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             
-                                            @foreach ($estudiante->tesis as $tesis)
+                                            @foreach ($tesis as $tesis)
                                             
-                                                @if(session()->get('user.programa') == $tesis['cod_prog_ryca'])
-                                                    <tr>
-                                                        <td data-title='titulo' style="max-width:450px"><a href="estudiante/tesis/{{$tesis->id}}">{{$tesis['titulo']}}</td></a>                 
+                                                <tr>
+                                                    <td data-title='titulo' style="max-width:450px"><a href="/comite/tesis/{{$tesis->id}}">{{$tesis['titulo']}}</td></a>
 
-                                                        <td data-title='Profesor'>{{$profesores[$tesis['director_cod_user_ryca']]}}</td>
-                                                        @foreach($estados as $estado)
+                                                    <td data-title='Año'>{{substr($tesis['created_at'], 0, 4)}}</td>
+                                                    @foreach($estados as $estado)
 
-                                                            @if($estado['id'] == $tesis['estado_id'])
-                                                                
-                                                                <td data-title='Estado'>{{$estado['estado']}}</td>
-                                                                
-                                                            @endif
+                                                        @if($estado['id'] == $tesis['estado_id'])
+                                                            
+                                                            <td data-title='Estado'>{{$estado['estado']}}</td>
+                                                            
+                                                        @endif
 
-                                                        @endforeach
-                                                        
-                                                        <td data-title='archivo'><a href="{{ '/' }}{{$tesis->source}}" target="_blank" >File</a></td>
-                                                    </tr>
-
-                                                @else
-
-                                                    <p class='alert alert-info'><strong>Whoops!</strong> No se encuetran Tesis en el sistema.</p>
-
-                                                @endif
+                                                    @endforeach
+                                                    
+                                                    <td data-title='archivo'><a href="{{ '/' }}{{$tesis->source}}" target="_blank">File</a></td>
+                                                </tr>
 
                                             @endforeach
                                         </tbody>
@@ -94,9 +87,7 @@
 
                             @endif
 
-                            <div class="col-md-5 col-md-offset-5">
-                            <a href="{{url('estudiante/tesis/create')}}" class="btn btn-primary btn-lg"><i class="fa fa-plus"> Añadir Tesis</i></a>
-                        </div>
+                            
                             
                         </div>
                     </div> 

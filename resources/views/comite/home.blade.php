@@ -4,7 +4,7 @@
 @parent
 <ul class="nav" id="main-menu">
     <li>
-        <a href="{{ '/' }}estudiante/tesis" class="active-menu"><i class="fa fa-list fa-3x"></i>Trabajo de Grado</a>
+        <a href="{{ '/' }}comite/tesis" class="active-menu"><i class="fa fa-list fa-3x"></i>Trabajo de Grado</a>
     </li>
     
 </ul>
