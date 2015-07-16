@@ -142,7 +142,31 @@
                     <input class="form-control" placeholder="Título del proyecto o parte del título">
                 </div>                
                 <div id="filtros" style="display: none;">
-                    <p>* Seleccione cada uno de los elementos por los cuales desea filtrar la búsqueda.</p>
+                    <p>Seleccione cada uno de los elementos por los cuales desea filtrar la búsqueda.</p>                    
+                    <div class="form-group input-group">                    
+                        <span class="input-group-addon">Facultad</span>
+                        <select id="facultad" name="facultad" onchange="facul();" class="form-control">
+                            <option value="0">---</option>
+                            @foreach ($facultades as $id => $facultad)
+
+                            @if (old('facultad') == $id)
+
+                            <option value="{{$id}}" selected>{{$facultad}}</option>
+                            @else
+
+                            <option value="{{$id}}">{{$facultad}}</option>
+
+                            @endif
+
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group input-group">                    
+                        <span class="input-group-addon">Programa</span>
+                        <select id="programa" name="programa" class="form-control" disabled>
+                            <option value="0">---</option>                            
+                        </select>
+                    </div>
                     <div class="form-group input-group">                    
                         <span class="input-group-addon">Área Institucional</span>
                         <select id="area" name="area" class="form-control" onchange="arlin();">
@@ -166,30 +190,6 @@
                         <span class="input-group-addon">Línea de Investigación</span>
                         <select id="linea" name="linea" class="form-control" disabled>
                             <option value="0">---</option>
-                        </select>
-                    </div>
-                    <div class="form-group input-group">                    
-                        <span class="input-group-addon">Facultad</span>
-                        <select id="facultad" name="facultad" onchange="facul();" class="form-control">
-                            <option value="0">---</option>
-                            @foreach ($facultades as $id => $facultad)
-
-                            @if (old('facultad') == $id)
-
-                            <option value="{{$id}}" selected>{{$facultad}}</option>
-                            @else
-
-                            <option value="{{$id}}">{{$facultad}}</option>
-
-                            @endif
-
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group input-group">                    
-                        <span class="input-group-addon">Programa</span>
-                        <select id="programa" name="programa" class="form-control" disabled>
-                            <option value="0">---</option>                            
                         </select>
                     </div>
                     @if(session()->has('user'))
