@@ -16,4 +16,9 @@ class Linea extends Model
     {
         return $this->belongsTo('App\Area', 'area_id', 'id');
     }
+
+    public function tesis()
+    {
+        return $this->hasMany('App\Tesi', 'linea_id', 'id');
+    }
 }

@@ -98,7 +98,9 @@ class ComitesController extends Controller
 
         $programas = json_decode($response,true);
 
-        $programas = $buscador->buscadorProgramas($programas); 
+        $programas = $buscador->buscadorProgramas($programas);
+
+        $buscador->__destruct(); 
         
         return View::make('admin.comites.create')->with(['profesores' => $profesores, 'programas' => $programas]);
 

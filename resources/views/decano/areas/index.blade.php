@@ -57,7 +57,8 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($areas as $area)
-
+                                        
+                                        @if($facultades[$area['cod_facu_ryca']] == $facultades[session()->get('user.facultad')])
                                         <tr>
                                             <td data-title='Facultad'>{{$facultades[$area['cod_facu_ryca']]}}</td>
                                             <td data-title='Area'>{{$area['area']}}</td>
@@ -78,6 +79,8 @@
                                                 </form>
                                             </td>
                                         </tr>
+
+                                        @endif
 
                                         @endforeach
                                     </tbody>

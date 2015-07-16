@@ -8,7 +8,10 @@ class Tipo extends Model
 {
     protected $table = 'tipos';
 
-    
+	public $timestamps = false;
 
-    public $timestamps = false;
+	public function tesis()
+    {
+        return $this->hasMany('App\Tesi', 'tipo_id', 'id');
+    }
 }

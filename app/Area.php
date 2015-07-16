@@ -14,6 +14,6 @@ class Area extends Model
 
     public function lineas()
     {
-        return $this->hasMany('App\Linea');
+        return $this->hasMany('App\Linea', 'area_id', 'id');
     }
 }
