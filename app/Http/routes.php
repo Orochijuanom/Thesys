@@ -13,6 +13,7 @@
 
 Route::get('/', 'WelcomeController@index');
 Route::post('/search', 'ResultadosController@index');
+Route::get('/search/{tesis}', 'ResultadosController@show');
 
 Route::get('logout', function(){
 

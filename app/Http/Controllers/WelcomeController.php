@@ -65,7 +65,5 @@ class WelcomeController extends Controller
         $lineas = Linea::with('areas')->get();
 
         return View::make('welcome')->with(['programas' => $programas, 'facultades' => $facultades, 'estados' => $estados, 'tipos' => $tipos, 'profesores' => $profesores, 'areas' => $areas, 'lineas' => $lineas]);
-    }
-
-   
+    }   
 }

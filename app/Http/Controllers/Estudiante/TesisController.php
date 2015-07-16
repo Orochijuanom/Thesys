@@ -171,12 +171,7 @@ class TesisController extends Controller
         }
 
         return Redirect::back() -> with('mensagge', 'Trabajo de grado cargado al sistema');        
-        
-        
-
-        
-
-
+ 
     }
 
     /**
