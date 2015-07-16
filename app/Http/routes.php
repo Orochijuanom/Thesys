@@ -12,8 +12,8 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-Route::get('/search/{titulo}/{}', 'ResultadosController@index');
-Route::get('/search/{tesis}', 'ResultadosController@show');
+Route::get('/search/{filter}/{titulo}/{facultad}/{programa}/{area}/{linea}/{tipo}/{estado}/{anio}/{semestre}', 'ResultadosController@index');
+Route::get('/proyecto/{tesis}', 'ResultadosController@show');
 
 Route::get('logout', function(){
 

@@ -66,10 +66,10 @@
 
         <div class="search"> 
             <h1 style="text-align: center;">Buscador de Trabajos de Grado</h1>                 
-            <form action="/search" method="POST">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <form action="/search" method="GET">                
                 <div class="form-group input-group">
-                    <input type="checkbox" id="filtrar" value="1" name="filtrar" onclick="filtrado();"> Utilizar Búsqueda Avanzada
+                    <input type="checkbox" id="filtrar" name="filtrar" onclick="filtrado();"> Utilizar Búsqueda Avanzada
+                    <input type="hidden" id="filter" name="filter" value="0">
                 </div>
                 <div class="form-group">
                     <label>Escribe el título del proyecto</label>
@@ -97,19 +97,19 @@
                     </div>
                     <div class="form-group input-group">                    
                         <span class="input-group-addon">Programa</span>
-                        <select id="programa" name="programa" class="form-control" disabled>
+                        <select id="programa" name="programa" class="form-control" style="display: none;">
                             <option value="0">---</option>                            
                         </select>
                     </div>
                     <div class="form-group input-group">                    
                         <span class="input-group-addon">Área Institucional</span>
-                        <select id="area" name="area" class="form-control" onchange="arlin();" disabled>
+                        <select id="area" name="area" class="form-control" onchange="arlin();" style="display: none;">
                             <option value="0" selected>---</option>          
                         </select>
                     </div>
                     <div class="form-group input-group">                    
                         <span class="input-group-addon">Línea de Investigación</span>
-                        <select id="linea" name="linea" class="form-control" disabled>
+                        <select id="linea" name="linea" class="form-control" style="display: none;">
                             <option value="0">---</option>
                         </select>
                     </div>
@@ -179,7 +179,7 @@
                             <option value="0" selected>---</option>
                         </select>
                         <span class="input-group-addon">Período</span>
-                        <select id="periodo" name="periodo" class="form-control">
+                        <select id="semestre" name="semestre" class="form-control">
                             <option value="0">---</option>
                             <option value="a">Semestre A</option>
                             <option value="b">Semestre B</option>                        
@@ -244,8 +244,8 @@
           sel5.appendChild(option6);
           var f = document.getElementById('facultad').value;
           if (f != 0 ) {
-            document.getElementById('programa').disabled=false;
-            document.getElementById('area').disabled=false;
+            document.getElementById('programa').style.display="block";
+            document.getElementById('area').style.display="block";            
             @foreach($programas as $id => $programa)
             if ({{$programa['facultad']}} == f) {
                 var option = document.createElement('option');
@@ -263,12 +263,11 @@
                 sel5.appendChild(option5);
             }            
             @endforeach
-
         }
-        else {            
-            sel.disabled=true;
-            sel5.disabled=true;                 
-        } 
+        else {
+            sel.style.display = "none";
+            sel5.style.display = "none";                
+        }         
     }  
 
     function arlin(){   
@@ -284,7 +283,7 @@
       sele.appendChild(option4);
       var a = document.getElementById('area').value;
       if (a != 0 ) {
-        document.getElementById('linea').disabled=false;        
+        document.getElementById('linea').style.display="block";                
         @foreach($lineas as $linea)
         if ({{$linea->area_id}} == a) {
             var option3 = document.createElement('option');
@@ -294,8 +293,8 @@
         }                
         @endforeach
     }
-    else {            
-        sele.disabled=true;                
+    else {
+        sele.style.display = "none";                
     }
 }     
 </script>    
