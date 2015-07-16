@@ -36,15 +36,8 @@ class TesisController extends Controller
 
         $estudiante = Estudiante::with('tesis')->where('username', '=', session()->get('user.user'))->first();
         
-        if (isset($estudiante->tesis[0])) {
-         
-            $estado = Estado::find($estudiante->tesis[0]->estado_id);
+        $estados = Estado::all();
            
-        }else{
-
-            $estado = "";
-
-        }
         $rest = new Rest();
         
         $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/profesor/activo', 
@@ -65,7 +58,7 @@ class TesisController extends Controller
 
         
 
-        return View::make('estudiante.tesis.index')->with(['estudiante' => $estudiante, 'estado' => $estado, 'profesores' => $profesores]);
+        return View::make('estudiante.tesis.index')->with(['estudiante' => $estudiante, 'estados' => $estados, 'profesores' => $profesores]);
 
         
 

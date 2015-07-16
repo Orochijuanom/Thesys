@@ -15,7 +15,7 @@ class CreateTesisTable extends Migration
         Schema::create('tesis', function(Blueprint $table){
 
             $table->increments('id');
-            $table->string('titulo');
+            $table->longText('titulo');
             $table->integer('linea_id')->unsigned();
             $table->integer('cod_prog_ryca');
             $table->string('semestre',1);

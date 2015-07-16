@@ -109,7 +109,7 @@ class LoginController extends Controller
 
         }else{
 
-          $estudiante = Estudiante::where('userame', '=', $request['username'])->first();
+          $estudiante = Estudiante::where('username', '=', $request['username'])->first();
           
           if (!$estudiante) {
             

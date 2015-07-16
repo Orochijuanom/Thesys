@@ -43,7 +43,8 @@ Route::resource('decano/lineas', 'Decano\LineasController');
 
 //rutas del comite
 Route::controller('comite/login', 'Comite\LoginController');
-
+Route::get('comite/home', 'Comite\HomeController@index');
+Route::get('comite/tesis', 'Comite\TesisController@index');
 
 /*// Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

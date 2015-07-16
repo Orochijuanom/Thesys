@@ -42,8 +42,8 @@
                             </div>
                             @endif
 
-                            @if(count($estudiante)>0)
-                            <section id='no-more-tables'>
+                            @if(count($estudiante['tesis'])>0)
+                           
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
@@ -58,24 +58,36 @@
                                             
                                             @foreach ($estudiante->tesis as $tesis)
                                             
-                                            <tr>
-                                                <td data-title='titulo'>{{$tesis['titulo']}}</td>
+                                                @if(session()->get('user.programa') == $tesis['cod_prog_ryca'])
+                                                    <tr>
+                                                        <td data-title='titulo'>{{$tesis['titulo']}}</td>
 
-                                                <td data-title='Profesor'>{{$profesores[$tesis['director_cod_user_ryca']]}}</td>
+                                                        <td data-title='Profesor'>{{$profesores[$tesis['director_cod_user_ryca']]}}</td>
+                                                        @foreach($estados as $estado)
 
-                                                <td data-title='Estado'>{{$estado['estado']}}</td>
-                                                
-                                                <td data-title='archivo'><a href="{{ '/' }}{{$tesis->source}}" >File</a></td>
-                                                
-                                                
-                                            </tr>
-                                            
+                                                            @if($estado['id'] == $tesis['estado_id'])
+                                                                
+                                                                <td data-title='Estado'>{{$estado['estado']}}</td>
+                                                                
+                                                            @endif
+
+                                                        @endforeach
+                                                        
+                                                        <td data-title='archivo'><a href="{{ '/' }}{{$tesis->source}}" >File</a></td>
+                                                    </tr>
+
+                                                @else
+
+                                                    <p class='alert alert-info'><strong>Whoops!</strong> No se encuetran Tesis en el sistema.</p>
+
+                                                @endif
+
                                             @endforeach
                                         </tbody>
 
                                     </table>
                                 </div>                                
-                            </section>
+                            
                             @else
 
                             <p class='alert alert-info'><strong>Whoops!</strong> No se encuetran Tesis en el sistema.</p>

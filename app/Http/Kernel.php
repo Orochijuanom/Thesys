@@ -32,5 +32,6 @@ class Kernel extends HttpKernel
         'authadmin' => \App\Http\Middleware\AuthAdminMiddleware::class,
         'authestudiante' => \App\Http\Middleware\AuthEstudianteMiddleware::class,
         'authdecano' => \App\Http\Middleware\AuthDecanoMiddleware::class,
+        'authcomite' => \App\Http\Middleware\AuthComiteMiddleware::class,
     ];
 }
