@@ -39,6 +39,9 @@ Route::get('decano/home', 'Decano\HomeController@index');
 Route::resource('decano/areas', 'Decano\AreasController', ['except' => 'show']);
 Route::resource('decano/lineas', 'Decano\LineasController');
 
+//rutas del comite
+Route::controller('comite/login', 'Comite\LoginController');
+
 
 /*// Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
