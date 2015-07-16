@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::post('/search', 'ResultadosController@index');
 
 Route::get('logout', function(){
 
