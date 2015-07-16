@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-Route::get('/search?filter={filter}&titulo={titulo}&facultad={facultad}&programa={programa}&area={area}&linea={linea}&tipo={tipo}&estado={estado}&anio={anio}&semestre={semestre}', 'ResultadosController@index');
+Route::get('/search', 'ResultadosController@index');
 Route::get('/proyecto/{tesis}', 'ResultadosController@show');
 
 Route::get('logout', function(){

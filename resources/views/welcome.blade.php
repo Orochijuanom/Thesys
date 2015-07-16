@@ -68,8 +68,7 @@
             <h1 style="text-align: center;">Buscador de Trabajos de Grado</h1>                 
             <form action="/search" method="GET">                
                 <div class="form-group input-group">
-                    <input type="checkbox" id="filtrar" name="filtrar" onclick="filtrado();"> Utilizar Búsqueda Avanzada
-                    <input type="hidden" id="filter" name="filter" value="0">
+                    <input type="checkbox" id="filtrar" name="filtrar" value="1" onclick="filtrado();"> Utilizar Búsqueda Avanzada                    
                 </div>
                 <div class="form-group">
                     <label>Escribe el título del proyecto</label>

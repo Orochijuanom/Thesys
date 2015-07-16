@@ -16,16 +16,24 @@ use App\Tesi;
 
 class ResultadosController extends Controller
 {
-	public function index($filter, $titulo, $facultad, $programa, $area, $linea, $tipo, $estado, $anio, $semestre){
-
-		dd($filter);
-		if ($filter==1) {
-			$filtro="Si utilizo el filtro";
-			return View::make('resultados')->with(['filtro' => $filtro]);
+	public function index(){
+				
+		$titulo=$_GET['titulo'];
+		$facultad=$_GET['facultad'];
+		$programa=$_GET['programa'];
+		$area=$_GET['area'];
+		$linea=$_GET['linea'];
+		$tipo=$_GET['tipo'];
+		$estado=$_GET['estado'];
+		$anio=$_GET['anio'];
+		$semestre=$_GET['semestre'];		
+		
+		if (isset($_GET['filtrar'])) {
+			return View::make('resultados');
 		}
 		else{			
 
-			$tesis = Tesi::where('titulo', 'like', '%'.$titulo.'%')->paginate(10);
+			$tesis = Tesi::where('titulo', 'like', '%'.$titulo.'%')->paginate(15);
 
 			$rest = new Rest();
 
