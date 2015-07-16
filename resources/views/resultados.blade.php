@@ -78,19 +78,20 @@
                                             <th class="celdas">#</th>
                                             <th class="celdas">Título</th>
                                             <th class="celdas">Programa</th>
-                                            <th class="celdas">Detalles</th>
+                                            <th class="celdas">Año</th>
                                             <th class="celdas">Archivo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                             <? $i=1 ?>
-                                            @foreach ($tesis as $tesis)                
+                                            @foreach ($tesis as $tesi)                
                                             <tr>
                                                 <td data-title="num" class="celdas">{{$i}}</td>
-                                                <td data-title="titulo" style="max-width: 450px; text-align: justify;">{{$tesis->titulo}}</td>
-                                                <td data-title="programa" class="celdas">{{$programas[$tesis->cod_prog_ryca]}}</td>
-                                                <td data-title="detalles" class="celdas"><a href="/show/{{$tesis->id}}">Ver</a></td>
-                                                <td data-title="archivo" class="celdas"><a href="{{$tesis->source}}">Down</a></td>
+                                                <td data-title="titulo" style="max-width: 600px; text-align: justify;"><a href="/show/{{$tesi->id}}">{{strtoupper($tesi->titulo)}}</a></td>
+                                                <td data-title="programa" class="celdas">{{$programas[$tesi->cod_prog_ryca]}}</td>
+                                                <td data-title="detalles" class="celdas">{{substr($tesi->created_at,0,4)}}</td>
+                                                <td data-title="archivo" class="celdas"><a href="{{$tesi->source}}" class="btn btn-success btn-circle">
+                                                <i class="fa fa-download fa-3x"></i></a></td>
                                             </tr>
                                             <? $i++ ?>
                                             @endforeach
@@ -98,8 +99,8 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="panel-footer">
-                            TheSys
+                        <div class="panel-footer" style="text-align: center;">                        
+                            {!! $tesis->render() !!}
                         </div>
                     </div>
 

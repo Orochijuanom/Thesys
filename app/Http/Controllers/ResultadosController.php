@@ -25,7 +25,7 @@ class ResultadosController extends Controller
 		}
 		else{			
 
-			$tesis = Tesi::where('titulo', 'like', '%'.$request->titulo.'%')->get();
+			$tesis = Tesi::where('titulo', 'like', '%'.$request->titulo.'%')->paginate(10);
 
 			$rest = new Rest();
 
