@@ -33,7 +33,7 @@ class ResultadosController extends Controller
 		}
 		else{			
 
-			$tesis = Tesi::where('titulo', 'like', '%'.$titulo.'%')->paginate(15);
+			$tesis = Tesi::where('titulo', 'like', '%'.$titulo.'%')->paginate(20);
 
 			$rest = new Rest();
 

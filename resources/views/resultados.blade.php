@@ -87,7 +87,7 @@
                                             @foreach ($tesis as $tesi)                
                                             <tr>
                                                 <td data-title="num" class="celdas">{{$i}}</td>
-                                                <td data-title="titulo" style="max-width: 600px; text-align: justify;"><a href="/show/{{$tesi->id}}">{{strtoupper($tesi->titulo)}}</a></td>
+                                                <td data-title="titulo" style="max-width: 600px; text-align: justify;"><a href="/proyecto/{{$tesi->id}}">{{strtoupper($tesi->titulo)}}</a></td>
                                                 <td data-title="programa" class="celdas">{{$programas[$tesi->cod_prog_ryca]}}</td>
                                                 <td data-title="detalles" class="celdas">{{substr($tesi->created_at,0,4)}}</td>
                                                 <td data-title="archivo" class="celdas"><a href="{{$tesi->source}}" class="btn btn-success btn-circle">
