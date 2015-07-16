@@ -23,10 +23,9 @@ class ResultadosController extends Controller
 			$filtro="Si utilizo el filtro";
 			return View::make('resultados')->with(['filtro' => $filtro]);
 		}
-		else{
-			$filtro="No utilizo el filtro";
+		else{			
 
-			$tesis = Tesi::all();
+			$tesis = Tesi::where('titulo', 'like', '%'.$request->titulo.'%')->get();
 
 			$rest = new Rest();
 
@@ -38,11 +37,9 @@ class ResultadosController extends Controller
 	        //$programas[$tesis->cod_prog_ryca]
 			$programas = $buscador->buscadorProgramas($programas);
 
-			$buscador->__destruct();
+			$buscador->__destruct();			
 
-			
-
-			return View::make('resultados')->with(['filtro' => $filtro]);
+			return View::make('resultados')->with(['tesis' => $tesis, 'programas' => $programas]);
 		}
 	}
 

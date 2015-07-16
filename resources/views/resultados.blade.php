@@ -36,6 +36,10 @@
         #footer{
             height: 35px;            
         }
+        .celdas{
+            text-align:center; 
+            vertical-align: middle !important;
+        }
     </style>
 
 </head>
@@ -65,20 +69,31 @@
     <div class="content" style="padding: 20px">      
 
         <div class="panel panel-primary">
-                        <div class="panel-heading title-caja">Resultados de la Búsqueda - # Proyectos de Grado encontrados</div>
+                        <div class="panel-heading title-caja">Resultados de la Búsqueda: {{count($tesis)}} Proyectos de Grado encontrados</div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Título</th>
-                                            <th>Programa</th>
-                                            <th>{{$filtro}}</th>
+                                        <tr style="text-align: center;">
+                                            <th class="celdas">#</th>
+                                            <th class="celdas">Título</th>
+                                            <th class="celdas">Programa</th>
+                                            <th class="celdas">Detalles</th>
+                                            <th class="celdas">Archivo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                            <? $i=1 ?>
+                                            @foreach ($tesis as $tesis)                
+                                            <tr>
+                                                <td data-title="num" class="celdas">{{$i}}</td>
+                                                <td data-title="titulo" style="max-width: 450px; text-align: justify;">{{$tesis->titulo}}</td>
+                                                <td data-title="programa" class="celdas">{{$programas[$tesis->cod_prog_ryca]}}</td>
+                                                <td data-title="detalles" class="celdas"><a href="/show/{{$tesis->id}}">Ver</a></td>
+                                                <td data-title="archivo" class="celdas"><a href="{{$tesis->source}}">Down</a></td>
+                                            </tr>
+                                            <? $i++ ?>
+                                            @endforeach
                                     </tbody>
                                 </table>
                             </div>
