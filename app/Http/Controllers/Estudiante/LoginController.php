@@ -109,15 +109,15 @@ class LoginController extends Controller
 
         }else{
 
-          $estudiante = Estudiante::where('documento', '=', $usuario->user->dni)->first();
+          $estudiante = Estudiante::where('userame', '=', $request['username'])->first();
           
           if (!$estudiante) {
             
-            Estudiante::create(['documento' => $usuario->user->dni]);
+            Estudiante::create(['username' => $request['username']]);
 
           }
 
-          session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante', 'user.dni' => $usuario->user->dni, 'user.foto' => $usuario->user->foto]);
+          session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante', 'user.dni' => $usuario->user->dni, 'user.foto' => $usuario->user->foto, 'user.programa' => $request['programa'], 'user.user' => $request['username']]);
 
           return Redirect::to('/estudiante/home'); 
 
@@ -125,15 +125,15 @@ class LoginController extends Controller
 
       }else{
         
-        $estudiante = Estudiante::where('documento', '=', $usuario->user->dni)->first();
+        $estudiante = Estudiante::where('username', '=', $request['username'])->first();
         
         if (!$estudiante) {
             
-          Estudiante::create(['documento' => $usuario->user->dni]);
+          Estudiante::create(['username' => $request['username']]);
 
         }
 
-        session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante', 'user.dni' => $usuario->user->dni, 'user.foto' => $usuario->user->foto]);
+        session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'estudiante', 'user.dni' => $usuario->user->dni, 'user.foto' => $usuario->user->foto, 'user.programa' => $request['programa'], 'user.user' => $request['username']]);
         
         return Redirect::to('/estudiante/home'); 
 

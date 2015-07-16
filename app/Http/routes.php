@@ -29,6 +29,9 @@ Route::resource('admin/comites', 'Admin\ComitesController', ['except' => ['show'
 //rutas del estudiante
 Route::controller('estudiante/login', 'Estudiante\LoginController');
 Route::get('estudiante/home', 'Estudiante\HomeController@index');
+route::get('estudiante/tesis', 'Estudiante\TesisController@index');
+Route::get('estudiante/tesis/create', 'Estudiante\TesisController@create');
+Route::post('estudiante/tesis', 'Estudiante\TesisController@store');
 
 //rutas del decano
 Route::controller('decano/login', 'Decano\LoginController');

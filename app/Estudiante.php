@@ -8,7 +8,14 @@ class Estudiante extends Model
 {
     protected $table = 'estudiantes';
 
-    protected $fillable = ['documento'];
+    protected $fillable = ['username'];
 
     public $timestamps = false;
+
+    function tesis()
+    {
+
+    	return $this->belongsToMany('App\Tesi', 'estudiante_tesi', 'estudiante_id', 'tesi_id');
+
+    }
 }

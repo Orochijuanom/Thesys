@@ -17,7 +17,6 @@ class CreateTesisTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->integer('linea_id')->unsigned();
-            $table->integer('cod_sede_ryca');
             $table->integer('cod_prog_ryca');
             $table->string('semestre',1);
             $table->integer('director_cod_user_ryca')->nullable();

@@ -10,14 +10,22 @@ use App\Http\Controllers\Controller;
 use App\Linea;
 use App\Tipo;
 use App\Estado;
+use App\Tesi;
+use App\Estudiante;
 
 use App\Classes\Rest;
 use App\Classes\Buscador;
 
 use View;
+use Storage;
+use Redirect;
 
 class TesisController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('authestudiante');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +34,34 @@ class TesisController extends Controller
     public function index()
     {
 
+        $estudiante = Estudiante::with('tesis')->where('username', '=', session()->get('user.user'))->first();
+        
+        $estado = Estado::find($estudiante->tesis[0]->estado_id);
 
-//
+        
+
+        $rest = new Rest();
+        
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/profesor/activo', 
+          [
+
+            'token' => session('user.token')
+
+          ]);
+
+         $profesores = json_decode($response,true);
+
+         $buscador = new Buscador();
+
+        //compara los profesores de ryca con los datos del sistema
+        $profesores = $buscador->buscadorProfesores($profesores);
+
+        $buscador->__destruct();
+
+        return View::make('estudiante.tesis.index')->with(['estudiante' => $estudiante, 'estado' => $estado, 'profesores' => $profesores]);
+
+        
+
     }
 
     /**
@@ -37,9 +71,10 @@ class TesisController extends Controller
      */
     public function create()
     {
+
         $lineas = Linea::All();
 
-        $Tipo = Estado::All();
+        $tipos = Tipo::All();
 
         $rest = new Rest();
         
@@ -52,12 +87,22 @@ class TesisController extends Controller
 
         $profesores = json_decode($response,true);
 
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+
+        $programas = json_decode($response,true);
+
         $buscador = new Buscador();
 
         //formatea los profesores
         $profesores = $buscador->buscadorProfesores($profesores);
 
         $buscador->__destruct();
+
+        $programas = $buscador->buscadorProgramas($programas);
+
+        $buscador->__destruct();
+
+        return View::make('estudiante.tesis.create')->with(['lineas' => $lineas, 'tipos' => $tipos, 'profesores' => $profesores, 'programas' => $programas]);
 
 
     }
@@ -67,9 +112,64 @@ class TesisController extends Controller
      *
      * @return Response
      */
-    public function store()
-    {
-        //
+    public function store(Request $request)
+    {   
+        
+        $this->validate($request,[
+
+            'titulo' => 'required',
+            'linea' => 'required',
+            'programa' => 'required',
+            'semestre' => 'required',
+            'profesor' => 'required',
+            'tipo' => 'required',
+            'files.archivo' => 'mimes:application/pdf'
+
+            ]);
+
+        $ruta = session()->get('user.user').'/'.session()->get('user.programa').'/trabajo.'.$request->file('archivo')->getClientOriginalExtension();
+        
+       try {
+              Storage::put($ruta, file_get_contents($request->file('archivo')->getRealPath()));
+     
+            } catch (Exception $e) {
+
+                return Redirect::back()->withInput()->withErrors(['mesagge' => 'No se ha podido cargar el archivo.']);
+
+            }
+
+        try {
+
+            $tesis = Tesi::create([
+
+                'titulo' => $request['titulo'],
+                'linea_id' => $request['linea'],
+                'cod_prog_ryca' => $request['programa'],
+                'semestre' => $request['semestre'],
+                'director_cod_user_ryca' => $request['profesor'],
+                'tipo_id' => $request['tipo'],
+                'estado_id' => 1,
+                'source' => 'storage/'.$ruta
+
+                ]);
+
+            $estudiante = Estudiante::where('username', '=', session()->get('user.user'))->first();
+
+            $tesis->estudiantes()->attach($estudiante->id); 
+            
+        } catch (\PDOException $exception) {
+           
+            return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMessage()]);
+
+        }
+
+        return Redirect::back() -> with('mensagge', 'Trabajo de grado cargado al sistema');        
+        
+        
+
+        
+
+
     }
 
     /**
