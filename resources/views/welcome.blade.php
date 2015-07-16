@@ -42,8 +42,8 @@
         function filtrado() {     
             if (document.getElementById('filtrar').checked == true) {
                 $('#filtros').css('display','block');
-            };
-            if (document.getElementById('filtrar').checked == false) {
+            }
+            else {
                 $('#filtros').css('display','none');
             }             
         } 
@@ -55,10 +55,10 @@
               sel.remove(sel.selectedIndex);
           }
           var option2 = document.createElement('option');
-                option2.innerHTML = "---";
-                option2.value = 0;
-                option2.selected = true;
-                sel.appendChild(option2);
+          option2.innerHTML = "---";
+          option2.value = 0;
+          option2.selected = true;
+          sel.appendChild(option2);
           var f = document.getElementById('facultad').value;
           if (f != 0 ) {
             document.getElementById('programa').disabled=false;
@@ -74,7 +74,35 @@
         else {            
             sel.disabled=true;                
         }
-    }       
+    }  
+
+    function arlin(){   
+        var sele = document.getElementById('linea');
+        var largo = sele.options.length;
+        for (j = 0; j < largo; j++) {
+          sele.remove(sele.selectedIndex);
+      }
+      var option4 = document.createElement('option');
+      option4.innerHTML = "---";
+      option4.value = 0;
+      option4.selected = true;
+      sele.appendChild(option4);
+      var a = document.getElementById('area').value;
+      if (a != 0 ) {
+        document.getElementById('linea').disabled=false;        
+        @foreach($lineas as $linea)
+        if ({{$linea->area_id}} == a) {
+            var option3 = document.createElement('option');
+            option3.innerHTML = "{{$linea->linea}}";
+            option3.value = {{$linea->id}};
+            sele.appendChild(option3);
+        }                
+        @endforeach
+    }
+    else {            
+        sele.disabled=true;                
+    }
+}     
 </script>
 
 </head>
@@ -117,7 +145,7 @@
                     <p>* Seleccione cada uno de los elementos por los cuales desea filtrar la búsqueda.</p>
                     <div class="form-group input-group">                    
                         <span class="input-group-addon">Área Institucional</span>
-                        <select id="area" name="area" class="form-control">
+                        <select id="area" name="area" class="form-control" onchange="arlin();">
                             <option value="0" selected>---</option>
                             @foreach ($areas as $area)
 
@@ -136,7 +164,7 @@
                     </div>
                     <div class="form-group input-group">                    
                         <span class="input-group-addon">Línea de Investigación</span>
-                        <select id="linea" name="linea" class="form-control">
+                        <select id="linea" name="linea" class="form-control" disabled>
                             <option value="0">---</option>
                         </select>
                     </div>
