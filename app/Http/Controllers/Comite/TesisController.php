@@ -30,8 +30,12 @@ class TesisController extends Controller
     public function index()
     {
         $tesis = Tesi::with('estudiantes')->get();
-        dd($tesis);
-    }
+
+        $estados = Estado::all();
+
+        return View::make('comite.tesis.index');
+
+        }
 
     /**
      * Show the form for creating a new resource.
