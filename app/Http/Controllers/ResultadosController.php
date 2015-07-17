@@ -53,6 +53,20 @@ class ResultadosController extends Controller
 
 	public function show($id){
 
-			return View::make('proyectos');
+			$tesis = Tesi::where('id', '=', $id)->get();
+
+			$rest = new Rest();
+
+			$response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+
+			$buscador = new Buscador();
+
+			$programas = json_decode($response,true);
+	        
+			$programas = $buscador->buscadorProgramas($programas);
+
+			$buscador->__destruct();
+
+			return View::make('proyectos')->with(['tesis' => $tesis, 'programas' => $programas]);
 	}
 }

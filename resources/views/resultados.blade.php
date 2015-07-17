@@ -74,12 +74,12 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
-                                        <tr style="text-align: center;">
+                                        <tr>
                                             <th class="celdas">#</th>
                                             <th class="celdas">Título</th>
                                             <th class="celdas">Programa</th>
                                             <th class="celdas">Año</th>
-                                            <th class="celdas">Archivo</th>
+                                            <th class="celdas">Ficha</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -87,11 +87,11 @@
                                             @foreach ($tesis as $tesi)                
                                             <tr>
                                                 <td data-title="num" class="celdas">{{$i}}</td>
-                                                <td data-title="titulo" style="max-width: 600px; text-align: justify;"><a href="/proyecto/{{$tesi->id}}">{{strtoupper($tesi->titulo)}}</a></td>
+                                                <td data-title="titulo" style="max-width: 600px; text-align: justify;">{{strtoupper($tesi->titulo)}}</td>
                                                 <td data-title="programa" class="celdas">{{$programas[$tesi->cod_prog_ryca]}}</td>
                                                 <td data-title="detalles" class="celdas">{{substr($tesi->created_at,0,4)}}</td>
-                                                <td data-title="archivo" class="celdas"><a href="{{$tesi->source}}" class="btn btn-success btn-circle">
-                                                <i class="fa fa-download fa-3x"></i></a></td>
+                                                <td data-title="archivo" class="celdas"><a href="/proyecto/{{$tesi->id}}" class="btn btn-primary btn-circle">
+                                                <i class="fa fa-info fa-3x"></i></a></td>
                                             </tr>
                                             <? $i++ ?>
                                             @endforeach
