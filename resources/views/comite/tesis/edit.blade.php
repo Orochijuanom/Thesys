@@ -42,7 +42,9 @@
                         </div>
                         @endif
 
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal" role="form" method="POST" action="/comite/tesis/{{$tesis->id}}">
+                        <input name='_method' type='hidden' value='PUT'>
+                        <input name='_token' type='hidden' value='{{csrf_token()}}'>
                             
 
                             <div class="form-group input-group">
@@ -123,9 +125,22 @@
                             <div class="form-group input-group">
 
                                 <span class="input-group-addon">Estado</span>
-                                <select id="tipo" name="tipo" class="form-control" disabled>
+                                <select id="tipo" name="tipo" class="form-control">
 
-                                    <option value="{{$tesis->estados->id}}" selected>{{$tesis->estados->estado}}</option>
+                                    @foreach ($estados as $estado)
+
+                                    @if ($tesis->estados->id == $estado->id)
+
+                                    <option value="{{$estado->id}}" selected>{{$estado->estado}}</option>
+                                    @else
+
+                                    <option value="{{$estado->id}}">{{$estado->estado}}</option>
+
+                                    @endif
+
+                                    @endforeach
+
+                                    
                                                                                
                                 </select>
 
@@ -160,15 +175,14 @@
 
                             </div>
    
-
+                            <div class="form-group">
+                                <div class="col-md-5 col-md-offset-5">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fa fa-check"> Aceptar</i>
+                                    </button>                                
+                                </div>
+                            </div>
                             
-                        </form>
-
-                        <form action='/comite/tesis/{{$tesis->id}}/edit' method='get'>
-                                                        
-                            <button type="submit" class="btn btn-success">
-                                Editar
-                            </button>
                         </form>
 
                     </div>

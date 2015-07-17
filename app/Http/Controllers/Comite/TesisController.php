@@ -140,7 +140,7 @@ class TesisController extends Controller
 
         $buscador->__destruct();
 
-        return View::make('comite.tesis.edit')->with(['tesis' => $tesis, 'programas' => $programas, 'profesores' => $profesores, 'estados' => $estado]);
+        return View::make('comite.tesis.edit')->with(['tesis' => $tesis, 'programas' => $programas, 'profesores' => $profesores, 'estados' => $estados]);
 
     }
 
