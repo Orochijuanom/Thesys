@@ -83,12 +83,13 @@
 
                 <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">FACULTAD</h4>
+                    <p>{{$programas[$tesis->cod_prog_ryca]['facultad']}}</p>
                     <p></p>
                 </div>
 
                 <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">PROGRAMA</h4>
-                    <p>{{$programas[$tesis->cod_prog_ryca]}}</p>
+                    <p>{{$programas[$tesis->cod_prog_ryca]['programa']}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">ÁREA INSTITUCIONAL</h4>
