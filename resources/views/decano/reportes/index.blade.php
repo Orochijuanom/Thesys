@@ -86,50 +86,57 @@
 
 <script type="text/javascript">
 
-   function grafica(g){
+ function grafica(g){
 
     $('#graph').css('display','block');
 
-       if (g==1) {
+    if (g==1) {
 
-        new Chartist.Bar('.ct-chart', {
-          labels: ['Facultad de Ingeniería y Ciencias Agroindustriales'],
-          series: [17]
-            }, {
-          distributeSeries: true,
-      });
+        var data = {
+            labels: ['Facultad de Ingeniería'],
+            series: [
+            [3]
+            ]
+        };
 
     }
     else if (g==2) {
 
-        new Chartist.Bar('.ct-chart', {
-          labels: ['Sistemas', 'Electrónica', 'Civil'],
-          series: [5, 10, 15, 8, 0, 2, 7]
-            }, {
-          distributeSeries: true,
-      });
+        var data = {
+          labels: ['Sistemas', 'Electrónica', 'Civil', 'Mecánica'],
+          series: [
+          [14, 8, 10, 6]
+          ]
+      };
 
-    }
-    else if (g==3) {
-       
-        new Chartist.Bar('.ct-chart', {
-          labels: ['Linea 1', 'Linea 2', 'Linea 3'],
-          series: [8, 15, 3]
-            }, {
-          distributeSeries: true,
-      });
+  }
+  else if (g==3) {
 
-    }
-    else{
-      
-        new Chartist.Bar('.ct-chart', {
-          labels: ['2014', '2015'],
-          series: [15, 8]
-            }, {
-          distributeSeries: true,
-      });
+    var data = {
+      labels: ['Linea 1', 'Linea 1', 'Linea 1'],
+      series: [
+      [2, 8, 6]
+      ]
+  };
 
-    };    
+}
+else{
+
+    var data = {
+      labels: ['2014', '2015'],
+      series: [
+      [2, 6]
+      ]
+  };
+
+}; 
+
+var options = {  
+  low: 0,
+  horizontalBars: true,  
+};
+
+new Chartist.Bar('.ct-chart', data, options);   
 
 }
 
