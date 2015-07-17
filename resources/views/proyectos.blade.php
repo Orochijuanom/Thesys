@@ -80,46 +80,46 @@
                 </div>
 
                 <div class="col-md-12 col-sm-12">
-                    <h4><strong>TÍTULO</strong></h4>
-                    <p>{{$proyecto->titulo}}</p>
+                    <h4 class="titulo-ficha">TÍTULO</h4>
+                    <p style="text-transform: uppercase;">{{$proyecto->titulo}}</p>
                 </div>
 
                 <div class="col-md-6 col-sm-6">
-                    <h4><strong>FACULTAD</strong></h4>
+                    <h4 class="titulo-ficha">FACULTAD</h4>
                     <p>{{$proyecto->facultad}}</p>
                 </div>
 
                 <div class="col-md-6 col-sm-6">
-                    <h4><strong>PROGRAMA</strong></h4>
+                    <h4 class="titulo-ficha">PROGRAMA</h4>
                     <p>{{$programas[$proyecto->cod_prog_ryca]}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <h4><strong>ÁREA INSTITUCIONAL</strong></h4>
+                    <h4 class="titulo-ficha">ÁREA INSTITUCIONAL</h4>
                     <p>{{$proyecto->area}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <h4><strong>LÍNEA DE INVESTIGACIÓN</strong></h4>
+                    <h4 class="titulo-ficha">LÍNEA DE INVESTIGACIÓN</h4>
                     <p>{{$proyecto->linea_id}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <h4><strong>TIPO</strong></h4>
+                    <h4 class="titulo-ficha">TIPO</h4>
                     <p>{{$proyecto->tipo_id}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <h4><strong>ESTADO</strong></h4>
+                    <h4 class="titulo-ficha">ESTADO</h4>
                     <p>{{$proyecto->estado_id}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <h4><strong>AÑO</strong></h4>
-                    <p>{{$proyecto->area}}</p>
+                    <h4 class="titulo-ficha">AÑO</h4>
+                    <p>{{substr($proyecto->created_at,0,4)}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                <h4><strong>PERÍODO</strong></h4>
+                <h4 class="titulo-ficha">PERÍODO</h4>
                     <p>{{$proyecto->linea_id}}</p>
                 </div>
             </div>
             <div class="panel-footer" style="text-align: center;">
-                <a href="{{ '/' }}{{$proyecto->source}}" class="btn btn-success btn-circle" target="_blank">
+                <a href="{{ '/' }}{{$proyecto->source}}" class="btn btn-success btn-circle" target="_blank" title="Descargar Proyecto">
                     <i class="fa fa-download fa-3x"></i></a>
                 </div>
 
