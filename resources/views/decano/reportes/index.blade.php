@@ -93,8 +93,8 @@
        if (g==1) {
 
         new Chartist.Bar('.ct-chart', {
-          labels: ['Sistemas', 'Electrónica', 'Civil', 'L', 'XL', 'XXL', 'XXXL'],
-          series: [5, 10, 15, 8, 0, 2, 7]
+          labels: ['Facultad de Ingeniería y Ciencias Agroindustriales'],
+          series: [17]
             }, {
           distributeSeries: true,
       });
