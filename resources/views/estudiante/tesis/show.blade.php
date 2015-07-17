@@ -5,7 +5,7 @@
 
 <ul class="nav" id="main-menu">
     <li>
-        <a href="{{ '/' }}estudiante/tesis" class="active-menu"><i class="fa fa-book fa-3x"></i>Trabajo de Grado</a>
+        <a href="#" class="active-menu"><i class="fa fa-book fa-3x"></i>Trabajo de Grado</a>
     </li>
     
 </ul>
@@ -155,7 +155,7 @@
                             
                         </form>
 
-                        <form action='/comite/tesis/{{$tesis->id}}/edit' method='get'>
+                        <form action='/estudiante/tesis/{{$tesis->id}}/edit' method='get'>
                                                         
                             <button type="submit" class="btn btn-success">
                                 Revisar

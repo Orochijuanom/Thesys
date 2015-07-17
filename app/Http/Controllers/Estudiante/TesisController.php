@@ -214,7 +214,37 @@ class TesisController extends Controller
      */
     public function edit($id)
     {
-        //
+
+         $tesis = Tesi::with('estudiantes', 'lineas', 'tipos', 'estados', 'revisiones')->where('id', '=', $id)->first();
+
+        
+        $rest = new Rest();
+        
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/profesor/activo', 
+          [
+
+            'token' => session('user.token')
+
+          ]);
+
+        $profesores = json_decode($response,true);
+
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+
+        $programas = json_decode($response,true);
+
+        $buscador = new Buscador();
+
+        $programas = $buscador->buscadorProgramas($programas);
+
+        $buscador->__destruct();
+
+        $profesores = $buscador->buscadorProfesores($profesores);
+
+        $buscador->__destruct();
+
+        return View::make('estudiante.tesis.edit')->with(['tesis' => $tesis, 'programas' => $programas, 'profesores' => $profesores, ]);
+
     }
 
     /**
@@ -223,9 +253,45 @@ class TesisController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($id, Request $request)
     {
-        //
+
+         $this->validate($request,[
+
+            'titulo' => 'required',
+            'files.archivo' => 'mimes:application/pdf'
+
+            ]);
+
+        $ruta = session()->get('user.user').'/'.session()->get('user.programa').'/trabajo.'.$request->file('archivo')->getClientOriginalExtension();
+        
+       try {
+                
+                $test = Storage::put($ruta, file_get_contents($request->file('archivo')->getRealPath()));
+                
+     
+            } catch (Exception $e) {
+
+                return Redirect::back()->withInput()->withErrors(['mesagge' => 'No se ha podido cargar el archivo.']);
+
+            }
+
+        try {
+
+            $tesis = Tesi::find($id);
+
+            $tesis->titulo = $request['titulo'];
+            
+            $tesis->save();
+            
+        } catch (\PDOException $exception) {
+           
+            return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMessage()]);
+
+        }
+
+        return Redirect::back() -> with('mensagge', 'Trabajo de grado editado');        
+
     }
 
     /**

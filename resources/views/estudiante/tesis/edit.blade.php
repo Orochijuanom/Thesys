@@ -5,7 +5,7 @@
 
 <ul class="nav" id="main-menu">
     <li>
-        <a href="{{ '/' }}estudiante/tesis" class="active-menu"><i class="fa fa-book fa-3x"></i>Trabajo de Grado</a>
+        <a href="#" class="active-menu"><i class="fa fa-book fa-3x"></i>Trabajo de Grado</a>
     </li>
     
 </ul>
@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="row">                
                 <div class="panel panel-primary">
-                    <div class="panel-heading title-caja">Trabajo de Grado</div>
+                    <div class="panel-heading title-caja">Revisar Trabajo de Grado</div>
                     <div class="panel-body" style="padding: 30px;">
                         @if (Session::get('mensagge'))
                         <div class="alert alert-success">
@@ -42,13 +42,15 @@
                         </div>
                         @endif
 
-                        <form class="form-horizontal" role="form">
-                            
+                        <form class="form-horizontal" role="form" method="POST" action="/estudiante/tesis/{{$tesis->id}}" enctype="multipart/form-data">
+                        <input name='_method' type='hidden' value='PUT'>
+                        <input name='_token' type='hidden' value='{{csrf_token()}}'>
+                        
 
                             <div class="form-group input-group">
 
                                 <span class="input-group-addon">Titulo</span>
-                                <textarea rows="4" id="titulo" name="titulo" class="form-control" disabled>{{$tesis->titulo}}</textarea>
+                                <textarea rows="4" id="titulo" name="titulo" class="form-control">{{$tesis->titulo}}</textarea>
 
                             </div>
 
@@ -114,9 +116,10 @@
                             <div class="form-group input-group">
 
                                 <span class="input-group-addon">Estado</span>
-                                <select id="estado" name="estado" class="form-control" disabled>
+                                <select id="estado" name="estado" class="form-control">
 
                                     <option value="{{$tesis->estados->id}}" selected>{{$tesis->estados->estado}}</option>
+                                                               
                                                                                
                                 </select>
 
@@ -143,6 +146,28 @@
 
                             </div>
 
+                            <div class="form-group input-group">
+
+                                <span class="input-group-addon">Observaciones</span>
+                                <label class="form-control">
+
+                                    @foreach($tesis->revisiones as $revision)
+
+                                        {{$revision->revision}}
+                                        </br>
+
+                                    @endforeach
+
+                                </label>
+
+                            </div>
+
+                            <div class="form-group input-group">
+
+                                <span class="input-group-addon">Archivo</span>
+                                <input type="file" id="archivo" name="archivo" class="form-control" value="{{old('archivo')}}" required>
+
+                            </div> 
 
                             <div class="form-group input-group">
 
@@ -150,16 +175,17 @@
                                 <label class="form-control"><a href="{{ '/' }}{{$tesis->source}}" class="btn btn-success btn-circle" target="_blank"><i class="fa fa-download fa-3x"></i></a></label>
 
                             </div>
+
+
    
-
+                            <div class="form-group">
+                                <div class="col-md-5 col-md-offset-5">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fa fa-check"> Aceptar</i>
+                                    </button>                                
+                                </div>
+                            </div>
                             
-                        </form>
-
-                        <form action='/comite/tesis/{{$tesis->id}}/edit' method='get'>
-                                                        
-                            <button type="submit" class="btn btn-success">
-                                Revisar
-                            </button>
                         </form>
 
                     </div>

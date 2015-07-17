@@ -34,7 +34,9 @@ Route::get('estudiante/home', 'Estudiante\HomeController@index');
 route::get('estudiante/tesis', 'Estudiante\TesisController@index');
 Route::get('estudiante/tesis/create', 'Estudiante\TesisController@create');
 Route::post('estudiante/tesis', 'Estudiante\TesisController@store');
-Route::get('comite/tesis/{tesis}', 'Estudiante\TesisController@show');
+Route::get('estudiante/tesis/{tesis}', 'Estudiante\TesisController@show');
+Route::get('estudiante/tesis/{tesis}/edit', 'Estudiante\TesisController@edit');
+Route::put('estudiante/tesis/{tesis}', 'Estudiante\TesisController@update');
 
 //rutas del decano
 Route::controller('decano/login', 'Decano\LoginController');
