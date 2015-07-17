@@ -5,7 +5,7 @@
 
 <ul class="nav" id="main-menu">
     <li>
-        <a href="{{ '/' }}estudiante/tesis" class="active-menu"><i class="fa fa-book fa-3x"></i>Trabajo de Grado</a>
+        <a href="#" class="active-menu"><i class="fa fa-book fa-3x"></i>Trabajo de Grado</a>
     </li>
     
 </ul>
@@ -51,7 +51,7 @@
                                         <th>Titulo</th>
                                         <th>Director</th>
                                         <th>Estado</th>
-                                        <th>Archivo</th>
+                                        <th>Ficha</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,7 +60,8 @@
 
                                     @if(session()->get('user.programa') == $tesis['cod_prog_ryca'])
                                     <tr>
-                                        <td data-title='titulo' style="max-width:450px"><a href="estudiante/tesis/{{$tesis->id}}">{{$tesis['titulo']}}</td></a>                 
+                                    <td data-title='titulo' style="max-width:450px; text-transform: uppercase;">
+                                    {{$tesis['titulo']}}</td>                 
                                         <td data-title='Profesor'>{{$profesores[$tesis['director_cod_user_ryca']]}}</td>
                                         @foreach($estados as $estado)
 
@@ -73,7 +74,7 @@
                                         @endforeach
 
                                         <td data-title='archivo'>
-                                        <a href="{{ '/' }}{{$tesis->source}}" class="btn btn-success btn-circle" target="_blank"><i class="fa fa-download fa-3x"></i></a>
+                                            <a href="/proyecto/{{$tesis->id}}" class="btn btn-primary btn-circle" title="Ver Ficha"><i class="fa fa-info fa-3x"></i></a>
                                         </td>
                                     </tr>
 

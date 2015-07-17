@@ -109,10 +109,12 @@
                     @endforeach
                 </p>
             </div>
+            @if(session()->has('user'))
             <div class="col-md-6 col-sm-6">
                 <h4 class="titulo-ficha">DIRECTOR</h4>
                 <p>{{$profesores[$tesis->director_cod_user_ryca]}}</p>
-            </div>                
+            </div>
+            @endif                
             <div class="col-md-6 col-sm-6">
                 <h4 class="titulo-ficha">TIPO</h4>
                 <p>{{$tesis->tipos->tipo}}</p>
