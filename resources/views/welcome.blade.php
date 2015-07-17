@@ -70,7 +70,7 @@
                 <div class="form-group input-group">
                     <input type="checkbox" id="filtrar" name="filtrar" value="1" onclick="filtrado();"> Utilizar Búsqueda Avanzada                    
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="sencillo" name="sencillo">
                     <label>Escribe el título del proyecto</label>
                     <input class="form-control" id="titulo" name="titulo" placeholder="Título del proyecto o parte del título">
                 </div>                
@@ -213,9 +213,11 @@
         function filtrado() {     
             if (document.getElementById('filtrar').checked == true) {
                 $('#filtros').css('display','block');
+                $('#sencillo').css('display','none');
             }
             else {
                 $('#filtros').css('display','none');
+                $('#sencillo').css('display','block');
             }             
         } 
 

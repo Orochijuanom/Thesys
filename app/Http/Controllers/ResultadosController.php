@@ -30,7 +30,38 @@ class ResultadosController extends Controller
 		$semestre=$_GET['semestre'];		
 		
 		if (isset($_GET['filtrar'])) {
-			return View::make('resultados');
+
+			if ($titulo=="") {
+				$tesis = Tesi::where('cod_prog_ryca', '=', $programa)
+				->orWhere('linea_id', '=', $linea)
+				->orWhere('tipo_id', '=', $tipo)
+				->orWhere('estado_id', '=', $estado)							
+				->orWhere('semestre', '=', $semestre)
+				->paginate(20);
+			}
+			else{
+				$tesis = Tesi::where('titulo', 'like', '%'.$titulo.'%')
+				->orWhere('cod_prog_ryca', '=', $programa)
+				->orWhere('linea_id', '=', $linea)
+				->orWhere('tipo_id', '=', $tipo)
+				->orWhere('estado_id', '=', $estado)							
+				->orWhere('semestre', '=', $semestre)
+				->paginate(20);
+			}			
+
+			$rest = new Rest();
+
+			$response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+
+			$buscador = new Buscador();
+
+			$programas = json_decode($response,true);
+			
+			$programas = $buscador->buscadorProgramas($programas);
+
+			$buscador->__destruct();			
+
+			return View::make('resultados')->with(['tesis' => $tesis, 'programas' => $programas]);
 		}
 		else{			
 
@@ -43,7 +74,7 @@ class ResultadosController extends Controller
 			$buscador = new Buscador();
 
 			$programas = json_decode($response,true);
-	        //$programas[$tesis->cod_prog_ryca]
+
 			$programas = $buscador->buscadorProgramas($programas);
 
 			$buscador->__destruct();			
