@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="row">                
                     <div class="panel panel-primary">
-                        <div class="panel-heading title-caja">Líneas Investigación</div>
+                        <div class="panel-heading title-caja">Reportes</div>
                         <div class="panel-body" style="padding: 30px;">
                             @if (Session::get('mensagge_delete'))
                             <div class="alert alert-success">
@@ -44,59 +44,9 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            @endif
-
-                            @if(count($lineas)>0)
-                            <section id='no-more-tables'>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Línea</th>
-                                                <th>Área</th>
-                                                <th>Editar</th>
-                                                <th>Eliminar</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            
-                                            @foreach ($lineas as $linea)
-                                            @if($linea->areas->cod_facu_ryca == session()->get('user.facultad'))
-                                            <tr>
-                                                <td data-title='linea'>{{$linea['linea']}}</td>
-                                                <td data-title='Area'>{{$linea->areas->area}}</td>
-                                                <td data-title='Editar'>
-                                                    <form action='/decano/lineas/{{$linea->id}}/edit' method='get'>
-                                                        <button type="submit" class="btn btn-success">
-                                                            <i class="fa fa-pencil-square-o"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                                <td data-title='Eliminar'>
-                                                    <form action='/decano/lineas/{{$linea->id}}' method='post'>
-                                                        <input name='_method' type='hidden' value='DELETE'>
-                                                        <input name='_token' type='hidden' value='{{csrf_token()}}'>
-                                                        <button type="submit" onclick="clicked(event)" class="btn btn-danger">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            @endif
-                                            @endforeach
-                                        </tbody>
-
-                                    </table>
-                                </div>                                
-                            </section>
-                            @else
-
-                            <p class='alert alert-info'><strong>Whoops!</strong> No se encuetran lineas en el sistema.</p>
 
                             @endif
-
-                            <div class="col-md-5 col-md-offset-5">
-                            <a href="{{url('decano/lineas/create')}}" class="btn btn-primary btn-lg"><i class="fa fa-plus"> Añadir Línea</i></a>
+                            
                         </div>
                             
                         </div>
