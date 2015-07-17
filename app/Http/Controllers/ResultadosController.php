@@ -30,24 +30,14 @@ class ResultadosController extends Controller
 		$semestre=$_GET['semestre'];		
 		
 		if (isset($_GET['filtrar'])) {
-
-			if ($titulo=="") {
-				$tesis = Tesi::where('cod_prog_ryca', '=', $programa)
-				->orWhere('linea_id', '=', $linea)
-				->orWhere('tipo_id', '=', $tipo)
-				->orWhere('estado_id', '=', $estado)							
-				->orWhere('semestre', '=', $semestre)
-				->paginate(20);
-			}
-			else{
-				$tesis = Tesi::where('titulo', 'like', '%'.$titulo.'%')
-				->orWhere('cod_prog_ryca', '=', $programa)
-				->orWhere('linea_id', '=', $linea)
-				->orWhere('tipo_id', '=', $tipo)
-				->orWhere('estado_id', '=', $estado)							
-				->orWhere('semestre', '=', $semestre)
-				->paginate(20);
-			}			
+			
+			$tesis = Tesi::where('cod_prog_ryca', '=', $programa)
+			->orWhere('linea_id', '=', $linea)
+			->orWhere('tipo_id', '=', $tipo)
+			->orWhere('estado_id', '=', $estado)
+			->orWhere('created_at', 'like', $anio.'%')							
+			->orWhere('semestre', '=', $semestre)
+			->paginate(20);						
 
 			$rest = new Rest();
 
