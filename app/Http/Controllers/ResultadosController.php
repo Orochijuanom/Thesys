@@ -53,7 +53,7 @@ class ResultadosController extends Controller
 
 	public function show($id){
 
-			$tesis = Tesi::where('id', '=', $id)->get();
+		    $tesis = Tesi::with('estudiantes', 'lineas', 'tipos', 'estados')->where('id', '=', $id)->first();
 
 			$rest = new Rest();
 

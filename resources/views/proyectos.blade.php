@@ -68,9 +68,6 @@
 
     <div class="content" style="padding: 20px">
 
-        @foreach ($tesis as $proyecto)                
-        @endforeach      
-
         <div class="panel panel-primary">
             <div class="panel-heading title-caja">Ficha del Proyecto</div>
             <div class="panel-body">
@@ -81,45 +78,66 @@
 
                 <div class="col-md-12 col-sm-12">
                     <h4 class="titulo-ficha">TÍTULO</h4>
-                    <p style="text-transform: uppercase;">{{$proyecto->titulo}}</p>
+                    <p style="text-transform: uppercase;">{{$tesis->titulo}}</p>
                 </div>
 
                 <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">FACULTAD</h4>
-                    <p>{{$proyecto->facultad}}</p>
+                    <p></p>
                 </div>
 
                 <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">PROGRAMA</h4>
-                    <p>{{$programas[$proyecto->cod_prog_ryca]}}</p>
+                    <p>{{$programas[$tesis->cod_prog_ryca]}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">ÁREA INSTITUCIONAL</h4>
-                    <p>{{$proyecto->area}}</p>
+                    <p></p>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">LÍNEA DE INVESTIGACIÓN</h4>
-                    <p>{{$proyecto->linea_id}}</p>
+                    <p>{{$tesis->lineas->linea}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
+                    <h4 class="titulo-ficha">INTEGRANTES</h4>
+                    <p>@foreach($tesis->estudiantes as $estudiante)
+                                       @inject('buscador', 'App\Classes\Buscador') 
+                                        
+                                        {{$nombre = $buscador->buscadorEstudiante($estudiante->username)}}
+                                        </br>
+                                        
+                                    @endforeach
+                                    </p>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <h4 class="titulo-ficha">DIRECTOR</h4>
+                    <p></p>
+                </div>                
+                <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">TIPO</h4>
-                    <p>{{$proyecto->tipo_id}}</p>
+                    <p>{{$tesis->tipos->tipo}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">ESTADO</h4>
-                    <p>{{$proyecto->estado_id}}</p>
+                    <p>{{$tesis->estados->estado}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">AÑO</h4>
-                    <p>{{substr($proyecto->created_at,0,4)}}</p>
+                    <p>{{substr($tesis->created_at,0,4)}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                <h4 class="titulo-ficha">PERÍODO</h4>
-                    <p>{{$proyecto->linea_id}}</p>
+                    <h4 class="titulo-ficha">PERÍODO</h4>
+                    <p>
+                        @if($tesis->semestre == 'a')                                    
+                        Semestre A
+                        @else                                       
+                        Semestre B
+                        @endif                    
+                    </p>
                 </div>
             </div>
             <div class="panel-footer" style="text-align: center;">
-                <a href="{{ '/' }}{{$proyecto->source}}" class="btn btn-success btn-circle" target="_blank" title="Descargar Proyecto">
+                <a href="{{ '/' }}{{$tesis->source}}" class="btn btn-success btn-circle" target="_blank" title="Descargar Proyecto">
                     <i class="fa fa-download fa-3x"></i></a>
                 </div>
 
