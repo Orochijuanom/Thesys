@@ -152,7 +152,33 @@ class TesisController extends Controller
      */
     public function update($id, Request $request)
     {
-        dd($request);
+        $this->validate($request,[
+
+            
+            'profesor' => 'required',
+            'tipo' => 'required',
+            
+
+            ]);
+
+        try{
+
+            $tesis = Tesi::find($id);
+
+            $tesis->director_cod_user_ryca = $request['profesor'];
+            $tesis->tippo_id = $request ['tipo'];
+
+            $tesis->save();
+
+
+        } catch (\PDOException $exception) {
+            
+            return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getCode()]);
+        
+        }
+
+
+        return Redirect::back() ->with('mensagge', 'Tesis Revisada');
     }
 
     /**

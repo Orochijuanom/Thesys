@@ -33,5 +33,10 @@ class Tesi extends Model
         return $this->belongsToMany('App\Estudiante', 'estudiante_tesi', 'tesi_id', 'estudiante_id');
 
     }
+
+    public function revisiones()
+    {
+        return $this->hasMany('App\Revisione', 'tesi_id', 'id');
+    }
     
 }

@@ -45,7 +45,7 @@
                         <form class="form-horizontal" role="form" method="POST" action="/comite/tesis/{{$tesis->id}}">
                         <input name='_method' type='hidden' value='PUT'>
                         <input name='_token' type='hidden' value='{{csrf_token()}}'>
-                            
+                        
 
                             <div class="form-group input-group">
 
