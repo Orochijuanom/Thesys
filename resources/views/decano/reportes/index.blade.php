@@ -95,7 +95,7 @@
         var data = {
             labels: ['Facultad de Ingeniería'],
             series: [
-            [3]
+            [{{count($tesis)}}]
             ]
         };
 
@@ -132,8 +132,7 @@ else{
 }; 
 
 var options = {  
-  low: 0,
-  horizontalBars: true,  
+  low: 0,    
 };
 
 new Chartist.Bar('.ct-chart', data, options);   
