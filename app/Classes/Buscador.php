@@ -204,10 +204,11 @@ class Buscador{
 
 		$rest = new Rest();
 
-		$response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/estudiante?q='.$username.'&field=username');
+		$response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/estudiante?q='.strtoupper($username).'&field=username');
 
 		$datos = json_decode($response, true);
 		
+
 		foreach ($datos['estudiantes'] as $estudiante) {
 			
 			$this->resultado[$username] = $estudiante['nombres'].' '.$estudiante['apellidos'];
