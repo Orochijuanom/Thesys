@@ -47,6 +47,7 @@ Route::get('comite/home', 'Comite\HomeController@index');
 Route::get('comite/tesis', 'Comite\TesisController@index');
 Route::get('comite/tesis/{tesis}', 'Comite\TesisController@show');
 Route::get('comite/tesis/{tesis}/edit', 'Comite\TesisController@edit');
+Route::put('comite/tesis/{tesis}', 'Comite\ComitesController@update');
 
 /*// Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

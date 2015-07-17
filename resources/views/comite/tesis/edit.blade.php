@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="row">                
                 <div class="panel panel-primary">
-                    <div class="panel-heading title-caja">Editar Trabajo de Grado</div>
+                    <div class="panel-heading title-caja">Revisar Trabajo de Grado</div>
                     <div class="panel-body" style="padding: 30px;">
                         @if (Session::get('mensagge'))
                         <div class="alert alert-success">
@@ -164,6 +164,13 @@
                                     @endforeach
 
                                 </label>
+
+                            </div>
+
+                            <div class="form-group input-group">
+
+                                <span class="input-group-addon">Observaciones</span>
+                                <textarea rows="4" id="revision" name="revision" class="form-control" ></textarea>
 
                             </div>
 
