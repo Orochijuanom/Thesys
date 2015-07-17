@@ -5,10 +5,13 @@
 
 <ul class="nav" id="main-menu">
     <li>
-        <a href="{{ '/' }}decano/areas" class="active-menu"><i class="fa fa-list fa-3x"></i>Áreas Institucionales</a>
+        <a href="{{ '/' }}decano/areas" class="active-menu"><i class="fa fa-university fa-3x"></i>Áreas Institucionales</a>
     </li>
     <li>
         <a href="{{ '/' }}decano/lineas"><i class="fa fa-lightbulb-o fa-3x"></i>Líneas de Investigación</a>
+    </li>
+    <li>
+        <a href="{{ '/' }}decano/reportes"><i class="fa fa-bar-chart fa-3x"></i>Reportes</a>
     </li>   
 </ul>
 

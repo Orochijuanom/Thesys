@@ -9,7 +9,7 @@
 	<!-- BOOTSTRAP STYLES-->
 	<link href="{{ '/' }}assets/css/bootstrap.css" rel="stylesheet" />
 	<!-- FONTAWESOME STYLES-->
-	<link href="{{ '/' }}assets/css/font-awesome.css" rel="stylesheet" />
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
 	<!-- CUSTOM STYLES-->
 	<link href="{{ '/' }}assets/css/custom.css" rel="stylesheet" />
 	<!-- GOOGLE FONTS-->
