@@ -1,7 +1,7 @@
 @extends('app')
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 
 @section('sidebar')
 @parent
@@ -73,7 +73,9 @@
                             </div>
                         </div>
 
-                        <div id="graph" name="graph" style="display: none;" class="ct-chart ct-perfect-fourth"></div>
+                        <div id="graph" name="graph" style="display: none;">
+                            <canvas id="myChart" style="height: 400px; width: 100%;"></canvas>
+                        </div>                        
 
                     </div>
 
@@ -86,16 +88,22 @@
 
 <script type="text/javascript">
 
- function grafica(g){
+   function grafica(g){
 
-    $('#graph').css('display','block');
+    $('#graph').css('display','block');        
 
-    if (g==1) {
-
+    if (g==1) {        
         var data = {
-            labels: ['Facultad de Ingeniería'],
-            series: [
-            [{{count($tesis)}}]
+            labels: ["Total de Proyectos en la Facultad"],
+            datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(201,0,0,67.5)",
+                strokeColor: "rgba(201,0,0,67.8)",
+                highlightFill: "rgba(201,0,0,67.75)",
+                highlightStroke: "rgba(201,0,0,67,1)",
+                data: [ {{count($tesis)}} ]
+            }
             ]
         };
 
@@ -103,40 +111,58 @@
     else if (g==2) {
 
         var data = {
-          labels: ['Sistemas', 'Electrónica', 'Civil', 'Mecánica'],
-          series: [
-          [14, 8, 10, 6]
-          ]
-      };
+            labels: ["Sistemas", "Electrónica", "Civil", "Mecánica"],
+            datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(201,0,0,67.5)",
+                strokeColor: "rgba(201,0,0,67.8)",
+                highlightFill: "rgba(201,0,0,67.75)",
+                highlightStroke: "rgba(201,0,0,67,1)",
+                data: [ 15, 3, 7, 11 ]
+            }
+            ]
+        };
 
-  }
-  else if (g==3) {
+    }
+    else if (g==3) {
 
-    var data = {
-      labels: ['Linea 1', 'Linea 1', 'Linea 1'],
-      series: [
-      [2, 8, 6]
-      ]
-  };
+        var data = {
+            labels: ["Linea 1", "Linea 2", "Linea 3"],
+            datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(201,0,0,67.5)",
+                strokeColor: "rgba(201,0,0,67.8)",
+                highlightFill: "rgba(201,0,0,67.75)",
+                highlightStroke: "rgba(201,0,0,67,1)",
+                data: [ 2, 7, 11 ]
+            }
+            ]
+        };
 
-}
-else{
+    }
+    else{
 
-    var data = {
-      labels: ['2014', '2015'],
-      series: [
-      [2, 6]
-      ]
-  };
+        var data = {
+            labels: ["2011", "2012", "2013", "2014", "2015"],
+            datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(201,0,0,67.5)",
+                strokeColor: "rgba(201,0,0,67.8)",
+                highlightFill: "rgba(201,0,0,67.75)",
+                highlightStroke: "rgba(201,0,0,67,1)",
+                data: [ 25, 32, 16, 9 ]
+            }
+            ]
+        }; 
 
-}; 
+    };
 
-var options = {  
-  low: 0,    
-};
-
-new Chartist.Bar('.ct-chart', data, options);   
-
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myBarChart = new Chart(ctx).Bar(data);
+    myBarChart.destroy(); 
 }
 
 </script>
