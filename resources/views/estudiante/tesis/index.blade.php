@@ -60,8 +60,9 @@
 
                                     @if(session()->get('user.programa') == $tesis['cod_prog_ryca'])
                                     <tr>
-                                    <td data-title='titulo' style="max-width:450px; text-transform: uppercase;">
-                                    {{$tesis['titulo']}}</td>                 
+                                        <td data-title='titulo' style="max-width:450px; text-transform: uppercase;">
+                                        <a href="/estudiante/tesis/{{$tesis->id}}">{{$tesis['titulo']}}</a>
+                                        </td>                 
                                         <td data-title='Profesor'>{{$profesores[$tesis['director_cod_user_ryca']]}}</td>
                                         @foreach($estados as $estado)
 
@@ -73,8 +74,7 @@
 
                                         @endforeach
 
-                                        <td data-title='archivo'>
-                                            <a href="/proyecto/{{$tesis->id}}" class="btn btn-primary btn-circle" title="Ver Ficha"><i class="fa fa-info fa-3x"></i></a>
+                                        <td data-title='archivo'><a href="{{ '/' }}{{$tesis->source}}" target="_blank">File</a>
                                         </td>
                                     </tr>
 
