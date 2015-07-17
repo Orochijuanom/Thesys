@@ -22,7 +22,11 @@ use Redirect;
 
 
 class TesisController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('authcomite');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -68,10 +72,34 @@ class TesisController extends Controller
     public function show($id)
     {
 
-        $tesis = Tesi::with('estudiantes')->where('id', '=', $id)->get();
+        $tesis = Tesi::with('estudiantes', 'lineas', 'tipos', 'estados')->where('id', '=', $id)->first();
 
-        dd($tesis);
+         $rest = new Rest();
+        
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/profesor/activo', 
+          [
 
+            'token' => session('user.token')
+
+          ]);
+
+        $profesores = json_decode($response,true);
+
+        $response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+
+        $programas = json_decode($response,true);
+
+        $buscador = new Buscador();
+
+        $programas = $buscador->buscadorProgramas($programas);
+
+        $buscador->__destruct();
+
+        $profesores = $buscador->buscadorProfesores($profesores);
+
+        $buscador->__destruct();
+
+        return View::make('comite.tesis.show')->with(['tesis' => $tesis, 'programas' => $programas, 'profesores' => $profesores]);
     }
 
     /**

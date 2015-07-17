@@ -73,7 +73,7 @@
                                         @endforeach
 
                                         <td data-title='archivo'>
-                                        <a href="{{ '/' }}{{$tesis->source}}" class="btn btn-success btn-circle"><i class="fa fa-download fa-3x"></i></a>
+                                        <a href="{{ '/' }}{{$tesis->source}}" class="btn btn-success btn-circle" target="_blank"><i class="fa fa-download fa-3x"></i></a>
                                         </td>
                                     </tr>
 

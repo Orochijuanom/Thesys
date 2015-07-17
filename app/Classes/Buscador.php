@@ -1,6 +1,8 @@
 <?php
 namespace App\Classes;
 
+use App\Classes\Rest;
+
 
 class Buscador{
 
@@ -195,6 +197,24 @@ class Buscador{
 		}
 
 		return $this->resultado;
+
+	}
+
+	function buscadorEstudiante($username){
+
+		$rest = new Rest();
+
+		$response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/estudiante?q='.$username.'&field=username');
+
+		$datos = json_decode($response, true);
+		
+		foreach ($datos['estudiantes'] as $estudiante) {
+			
+			$this->resultado[$username] = $estudiante['nombres'].' '.$estudiante['apellidos'];
+
+		}
+
+		return $this->resultado[$username];
 
 	}
 
