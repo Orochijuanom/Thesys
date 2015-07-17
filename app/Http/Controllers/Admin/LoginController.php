@@ -73,7 +73,7 @@ class LoginController extends Controller
 
           }
           
-          session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'admin', 'user.foto' => $usuario->user->foto]);
+          session()->put(['user.name' => $usuario->user->nombres.' '.$usuario->user->apellidos, 'user.token' => $usuario->token, 'user.tipo' => 'admin', 'user.foto' => $usuario->user->foto, 'user.id' => $usuario->user->id]);
 
           return Redirect::to('/admin/home');  
 

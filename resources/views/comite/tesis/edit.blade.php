@@ -125,7 +125,7 @@
                             <div class="form-group input-group">
 
                                 <span class="input-group-addon">Estado</span>
-                                <select id="tipo" name="tipo" class="form-control">
+                                <select id="estado" name="estado" class="form-control">
 
                                     @foreach ($estados as $estado)
 

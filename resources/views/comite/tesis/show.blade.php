@@ -114,7 +114,7 @@
                             <div class="form-group input-group">
 
                                 <span class="input-group-addon">Estado</span>
-                                <select id="tipo" name="tipo" class="form-control" disabled>
+                                <select id="estado" name="estado" class="form-control" disabled>
 
                                     <option value="{{$tesis->estados->id}}" selected>{{$tesis->estados->estado}}</option>
                                                                                

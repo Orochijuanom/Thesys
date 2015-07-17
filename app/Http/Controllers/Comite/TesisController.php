@@ -12,6 +12,7 @@ use App\Tipo;
 use App\Estado;
 use App\Tesi;
 use App\Estudiante;
+use App\Revisione;
 
 use App\Classes\Rest;
 use App\Classes\Buscador;
@@ -156,24 +157,37 @@ class TesisController extends Controller
 
             
             'profesor' => 'required',
-            'tipo' => 'required',
+            'estado' => 'required',
             
 
             ]);
-
+            
         try{
 
             $tesis = Tesi::find($id);
 
             $tesis->director_cod_user_ryca = $request['profesor'];
-            $tesis->tippo_id = $request ['tipo'];
+            $tesis->estado_id = $request ['estado'];
 
             $tesis->save();
+
+            if ($request['revision']!="") {
+                
+                $revision = new Revisione;
+
+                $revision->revision = $request['revision'];
+                $revision->cod_user_ryca = session()->get('user.id');
+                $revision->tesi_id = $id;
+                $revision->fecha = date('Y-m-d H:i:s');
+
+                $revision->save();
+
+            }
 
 
         } catch (\PDOException $exception) {
             
-            return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getCode()]);
+            return Redirect::back() -> withErrors(['mesagge' => 'Ha ocurrido un error en la consulta '.$exception->getMessage()]);
         
         }
 
