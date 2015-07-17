@@ -214,6 +214,7 @@
             if (document.getElementById('filtrar').checked == true) {
                 $('#filtros').css('display','block');
                 $('#sencillo').css('display','none');
+                document.getElementById('titulo').value="";
             }
             else {
                 $('#filtros').css('display','none');
