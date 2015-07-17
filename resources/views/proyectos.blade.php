@@ -100,67 +100,66 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">INTEGRANTES</h4>
-                    <p>@foreach($tesis->estudiantes as $estudiante)
-                                       @inject('buscador', 'App\Classes\Buscador') 
-                                        
-                                        {{$nombre = $buscador->buscadorEstudiante($estudiante->username)}}
-                                        </br>
-                                        
-                                    @endforeach
-                                    </p>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <h4 class="titulo-ficha">DIRECTOR</h4>
-                    <p></p>
-                </div>                
-                <div class="col-md-6 col-sm-6">
-                    <h4 class="titulo-ficha">TIPO</h4>
-                    <p>{{$tesis->tipos->tipo}}</p>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <h4 class="titulo-ficha">ESTADO</h4>
-                    <p>{{$tesis->estados->estado}}</p>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <h4 class="titulo-ficha">AÑO</h4>
-                    <p>{{substr($tesis->created_at,0,4)}}</p>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <h4 class="titulo-ficha">PERÍODO</h4>
                     <p>
-                        @if($tesis->semestre == 'a')                                    
-                        Semestre A
-                        @else                                       
-                        Semestre B
-                        @endif                    
-                    </p>
-                </div>
+                        @foreach($tesis->estudiantes as $estudiante)
+                        @inject('buscador', 'App\Classes\Buscador')
+                        {{htmlentities($nombre = $buscador->buscadorEstudiante($estudiante->username))}}
+                    </br>
+                    @endforeach
+                </p>
             </div>
-            <div class="panel-footer" style="text-align: center;">
-                <a href="{{ '/' }}{{$tesis->source}}" class="btn btn-success btn-circle" target="_blank" title="Descargar Proyecto">
-                    <i class="fa fa-download fa-3x"></i></a>
-                </div>
-
+            <div class="col-md-6 col-sm-6">
+                <h4 class="titulo-ficha">DIRECTOR</h4>
+                <p>{{$profesores[$tesis->director_cod_user_ryca]}}</p>
+            </div>                
+            <div class="col-md-6 col-sm-6">
+                <h4 class="titulo-ficha">TIPO</h4>
+                <p>{{$tesis->tipos->tipo}}</p>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <h4 class="titulo-ficha">ESTADO</h4>
+                <p>{{$tesis->estados->estado}}</p>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <h4 class="titulo-ficha">AÑO</h4>
+                <p>{{substr($tesis->created_at,0,4)}}</p>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <h4 class="titulo-ficha">PERÍODO</h4>
+                <p>
+                    @if($tesis->semestre == 'a')                                    
+                    Semestre A
+                    @else                                       
+                    Semestre B
+                    @endif                    
+                </p>
+            </div>
+        </div>
+        <div class="panel-footer" style="text-align: center;">
+            <a href="{{ '/' }}{{$tesis->source}}" class="btn btn-success btn-circle" target="_blank" title="Descargar Proyecto">
+                <i class="fa fa-download fa-3x"></i></a>
             </div>
 
         </div>
 
-        <div id="footer" style="text-align: center;">
-            <img src="/assets/img/logow.png"><br />
-            Roberto Andrés Díaz Ricardo<br />
-            Juan Sebastian Cruz Perdomo<br />       
-            Miguel Mauricio Correcha Peña<br />
-            Ingeniería de Sistemas - ITFIP 2015
-        </div> 
+    </div>
 
-        <!-- JQUERY SCRIPTS -->
-        <script src="{{ '/' }}assets/js/jquery-1.10.2.js"></script>
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="{{ '/' }}assets/js/bootstrap.min.js"></script>
-        <!-- METISMENU SCRIPTS -->
-        <script src="{{ '/' }}assets/js/jquery.metisMenu.js"></script>
-        <!-- CUSTOM SCRIPTS -->
-        <script src="{{ '/' }}assets/js/custom.js"></script>    
+    <div id="footer" style="text-align: center;">
+        <img src="/assets/img/logow.png"><br />
+        Roberto Andrés Díaz Ricardo<br />
+        Juan Sebastian Cruz Perdomo<br />       
+        Miguel Mauricio Correcha Peña<br />
+        Ingeniería de Sistemas - ITFIP 2015
+    </div> 
 
-    </body>
-    </html>
+    <!-- JQUERY SCRIPTS -->
+    <script src="{{ '/' }}assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{{ '/' }}assets/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{{ '/' }}assets/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="{{ '/' }}assets/js/custom.js"></script>    
+
+</body>
+</html>

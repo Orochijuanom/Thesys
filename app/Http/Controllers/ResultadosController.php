@@ -13,11 +13,12 @@ use App\Classes\Rest;
 use App\Classes\Buscador;
 
 use App\Tesi;
+use App\Area;
 
 class ResultadosController extends Controller
 {
 	public function index(){
-				
+
 		$titulo=$_GET['titulo'];
 		$facultad=$_GET['facultad'];
 		$programa=$_GET['programa'];
@@ -53,20 +54,38 @@ class ResultadosController extends Controller
 
 	public function show($id){
 
-		    $tesis = Tesi::with('estudiantes', 'lineas', 'tipos', 'estados')->where('id', '=', $id)->first();
+		$tesis = Tesi::with('estudiantes', 'lineas', 'tipos', 'estados')->where('id', '=', $id)->first();
 
-			$rest = new Rest();
+		$rest = new Rest();
 
-			$response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
+		$response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/programas');
 
-			$buscador = new Buscador();
+		$programas = json_decode($response,true);
 
-			$programas = json_decode($response,true);
-	        
-			$programas = $buscador->buscadorProgramas($programas);
+		$response = $rest->CallAPI('GET', 'http://ryca.itfip.edu.co:8888/profesor/activo', 
+			
+			[
+			'token' => session('user.token')
+			]);
 
-			$buscador->__destruct();
+		$profesores = json_decode($response,true);
 
-			return View::make('proyectos')->with(['tesis' => $tesis, 'programas' => $programas]);
+		$buscador = new Buscador();
+
+		$facultades = $buscador->buscadorFacultades($programas);
+
+		$buscador->__destruct();
+
+		$profesores = $buscador->buscadorProfesores($profesores);
+
+		$buscador->__destruct();
+
+		$programas = $buscador->buscadorProgramaFacultad($programas);
+
+		$buscador->__destruct();
+
+		$areas = Area::all();
+
+		return View::make('proyectos')->with(['tesis' => $tesis, 'facultades' => $facultades, 'programas' => $programas, 'profesores' => $profesores, 'areas' => $areas]);
 	}
 }
