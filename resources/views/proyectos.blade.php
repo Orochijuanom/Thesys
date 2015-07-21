@@ -82,20 +82,6 @@
                 </div>
 
                 <div class="col-md-6 col-sm-6">
-                    <h4 class="titulo-ficha">FACULTAD</h4>
-                    <p>{{$programas[$tesis->cod_prog_ryca]['facultad']}}</p>
-                    <p></p>
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                    <h4 class="titulo-ficha">PROGRAMA</h4>
-                    <p>{{$programas[$tesis->cod_prog_ryca]['programa']}}</p>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <h4 class="titulo-ficha">ÁREA INSTITUCIONAL</h4>
-                    <p></p>
-                </div>
-                <div class="col-md-6 col-sm-6">
                     <h4 class="titulo-ficha">LÍNEA DE INVESTIGACIÓN</h4>
                     <p>{{$tesis->lineas->linea}}</p>
                 </div>
@@ -124,8 +110,8 @@
                 <p>{{$tesis->estados->estado}}</p>
             </div>
             <div class="col-md-6 col-sm-6">
-                <h4 class="titulo-ficha">AÑO</h4>
-                <p>{{substr($tesis->created_at,0,4)}}</p>
+                <h4 class="titulo-ficha">VIGENCIA</h4>
+                <p>{{$tesis->vigencia}}</p>
             </div>
             <div class="col-md-6 col-sm-6">
                 <h4 class="titulo-ficha">PERÍODO</h4>

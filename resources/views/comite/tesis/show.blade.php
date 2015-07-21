@@ -75,20 +75,9 @@
 
                             <div class="form-group input-group">
                                 
-                                <span class="input-group-addon">Semestre</span>                            
-                                <select class="form-control" name="semestre" disabled>
+                                <span class="input-group-addon">Vigencia</span>                            
+                                <input type="text"  class="form-control" name="vigencia" value="{{$tesis->vigencia}}" disabled>
                                     
-                                    @if($tesis->semestre == 'a')
-                                    
-                                        <option value="a">Semestre A</option>
-                                    
-                                    @else
-                                       
-                                        <option value="b">Semestre B</option>
-
-                                    @endif
-                                </select>
-
                             </div>
 
                             <div class="form-group input-group">

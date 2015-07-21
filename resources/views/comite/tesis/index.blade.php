@@ -49,7 +49,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Titulo</th>
-                                                <th>Año</th>
+                                                <th>Vigencia</th>
                                                 <th>Estado</th>
                                                 <th>Archivo</th>
                                             </tr>
@@ -61,7 +61,7 @@
                                                 <tr>
                                                     <td data-title='titulo' style="max-width:450px"><a href="/comite/tesis/{{$tesis->id}}">{{$tesis['titulo']}}</td></a>
 
-                                                    <td data-title='Año'>{{substr($tesis['created_at'], 0, 4)}}</td>
+                                                    <td data-title='Año'>{{$tesis['vigencia']}}</td>
                                                     @foreach($estados as $estado)
 
                                                         @if($estado['id'] == $tesis['estado_id'])
