@@ -14,7 +14,7 @@
         <a href="/decano/login"><i class="fa fa-user fa-3x"></i>Decano</a>
     </li>
     <li>
-        <a href="ui.html"><i class="fa fa-users fa-3x"></i>Cómite Curricular</a>
+        <a href="/comite/login"><i class="fa fa-users fa-3x"></i>Cómite Curricular</a>
     </li>            
     <li>
         <a class="active-menu" href="/admin/login"><i class="fa fa-tachometer fa-3x"></i>Administrador</a>
